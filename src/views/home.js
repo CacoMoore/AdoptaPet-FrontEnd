@@ -1,9 +1,11 @@
+import PhotoGallery from "./photoGallery";
+
 const Home = () => {
 
     return (
-        <div>
-            hola mundo
-        </div>
+        <>
+            <PhotoGallery />
+        </>
     )
 }
 export default Home;

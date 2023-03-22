@@ -1,0 +1,17 @@
+.selector-size {
+    width: 230px;
+}
+
+.icon-favorite {
+    background-color: aliceblue;
+    border-radius: 50%;
+    width: 40px;
+}
+
+.image-size-for-card {
+    max-width: 100%;
+}
+
+.container-photo-card{
+    max-width: 100%;
+}
