@@ -2,7 +2,7 @@ const Home = () => {
 
     return (
         <div>
-            hola mundo
+            hola mundo desde el Home!
         </div>
     )
 }
