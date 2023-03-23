@@ -6,6 +6,6 @@ const Home = () => {
         <>
             <PhotoGallery />
         </>
-    )
+       
 }
 export default Home;
