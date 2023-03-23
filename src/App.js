@@ -18,7 +18,7 @@ function App() {
         </Routes>
       <Footer />  
       </BrowserRouter>
-  );gigit
+  );
 }
 
 export default injectContext(App);
