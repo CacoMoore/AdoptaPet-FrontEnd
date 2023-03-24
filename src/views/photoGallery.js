@@ -1,151 +1,87 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import CardGallery from "../components/cardGallery"
+import FormGallery from "../components/formGallery"
 
 const PhotoGallery = () => {
 
-    const fav = <FontAwesomeIcon icon={faHeart} />
 
 
-    return <>
 
-        <div className="container pb-5 mt-5">
-            <form>
-                <div className="row">
-                    <div className="col-md-3 d-flex flex-column mb-3">
+    return <div className="div-main">
 
-                        <label>Tamaño De Mascota</label>
-                        <select name="Gender" type='text' className="selector-size rounded-pill px-5 py-1" >
-                            <option className="p-5 ">Seleccione</option>
-                            <option>Pequeño</option>
-                            <option>Mediano</option>
-                            <option>Grande</option>
-                        </select>
+        <div className="  header-gallery ">
 
-                    </div>
+        </div>
+        <div className=" div-header p-5">
+            <h1 className=" text-center">Galeria de mascotas</h1>
+            <p className="text-center fs-5 fw-lighter">
+                En estas sección se muestran los animalitos que buscan un hogar. Debido a la gran cantidad de mascotas callejar en Chile, es imposible rescatar a todos los perros y gatos que se encuentran viviendo en la calle. Pero un pequeño porcentaje aquí mostrados puede tener la posibilidad de encontrar un nuevo hogar.
+                <br />
+                <br />
+                "El abandono de perros es un problema nacional. Desde 2018 se estima que hay más de 300 mil animales callejeros en Chile, contando a perros y gatos. (subsecretaría de desarrollo regional y administrativo)"
 
-                    <div className="col-md-3 d-flex flex-column mb-3">
-
-                        <label >Especie</label>
-                        <select name="Gender" type='text' className="selector-size rounded-pill px-5 py-1 " >
-                            <option className="p-5">Seleccione</option>
-                            <option>Perro</option>
-                            <option>GAto</option>
-                            
-                        </select>
-
-                    </div>
-
-                    <div className="col-md-3 d-flex flex-column mb-3">
- 
-                        <label >Género</label>
-                        <select name="Gender" type='text' className="selector-size rounded-pill px-5 py-1 " >
-                            <option className="p-5">Seleccione</option>
-                            <option>Hembra</option>
-                            <option>Macho</option>
-                           
-                        </select>
-
-                    </div>
-
-                    <div className="col-md-3 ">
-
-                    <button type="button" class="btn btn-primary mt-3 px-5 rounded-pill">Buscar</button>
-
-                    </div>
-
-
-                    
-                </div>
-            </form>
+            </p>
         </div>
 
-        <div>
-            <div className="container-lg">
-                <div className="row ">
-                    <div className="col-md-3 mb-5">
-                        <div className="card border border-white shadow container-photo-card">
-                            <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg" className="card-img-top image-size-for-card" alt="..."  
-                              />
-                            <div className="card-body">
-                                <h5 className="card-title text-center">Tofy</h5>
-                                <div className="d-flex justify-content-evenly ">
-                                    <span>Macho</span>
-                                    <button type="button" class="btn btn-light ">{fav}</button>
-                                    <span>Perro</span>
-                                </div>
+
+        <div className="div-father">
 
 
-                            </div>
-                        </div>
-                    </div>
 
+            <div className="row d-flex flex-row-reverse">
 
-                    <div className="col-md-3 mb-5">
-                        <div className="card border border-white shadow">
-                            <img src="https://d3544la1u8djza.cloudfront.net/APHI/Blog/2021/07-06/small+white+fluffy+dog+smiling+at+the+camera+in+close-up-min.jpg" className="card-img-top image-size-for-card" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title text-center">Fofi</h5>
-                                <div className="d-flex justify-content-evenly">
-                                    <span>Macho</span>
-                                    <button type="button" class="btn btn-light ">{fav}</button>
-                                    <span>Perro</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div className="col-md-3 mb-5">
-                        <div className="card border border-white shadow">
-                            <img src="https://cdn1.epicgames.com/ue/product/Screenshot/1-1920x1080-891eead1cce612d01383427435066dab.png?resize=1&w=1920" className="card-img-top image-size-for-card" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title text-center">Sappy</h5>
-                                <div className="d-flex justify-content-evenly">
-                                    <span>Macho</span>
-                                    <button type="button" class="btn btn-light ">{fav}</button>
-                                    <span>Perro</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-3 mb-5">
-                        <div className="card border border-white shadow">
-                            <img src="https://media.allure.com/photos/62b333877389827cf6e080f9/16:9/w_2499,h_1405,c_limit/Is%20it%20ever%20ok%20to%20dye%20your%20dog's%20fur" className="card-img-top image-size-for-card" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title text-center">Fifi</h5>
-                                <div className="d-flex justify-content-evenly">
-                                    <span>Macho</span>
-                                    <button type="button" class="btn btn-light ">{fav}</button>
-                                    <span>Perro</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-3 mb-5">
-                        <div className="card border border-white shadow">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxGQmjhg0g5rasipm1XJJICEGRoeWUydk3NQ&usqp=CAU" className="card-img-top image-size-for-card " alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title text-center">Ofi</h5>
-                                <div className="d-flex justify-content-evenly ">
-                                    <span>Macho</span>
-                                    <button type="button" class="btn btn-light ">{fav}</button>
-                                    <span>Perro</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
+                <div className="col-md-4 mt-5">
+                    <FormGallery />
                 </div>
+
+                <div className=" col-md-7">
+                    <div className=" py-2 mb-2 ">
+
+                        <div className="row ">
+                            <h1 className="my-5 text-center display-4">Mascotas en adopción</h1>
+
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+                            <CardGallery />
+
+
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
-    </>
+        <div className="container p-5 mb-5 text-center d-flex justify-content-center div-footer rounded shadow-lg">
+            <p className="fs-5 fw-lighter border  p-2 w-50 bg-white rounded shadow ">Para lograr evitar el abandono de perros se necesita de <br /> una participación integral en donde se una la ciudadanía, <br />las instituciones o asociaciones de protección animal y las <br />autoridades.</p>
+        </div>
+    </div>
 }
 
 export default PhotoGallery
