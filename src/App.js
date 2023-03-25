@@ -9,6 +9,7 @@ import Login from './views/login';
 import Register from './views/register';
 import RecoverPass from './views/recoverPass';
 import AddPet from './views/addPet';
+import Info from './views/info';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/recoverpass" element={<RecoverPass />} />
           <Route path="/addpet" element={<AddPet />} />
+          <Route path="/info" element={<Info />} />
         </Routes>
       </BrowserRouter>
   )
