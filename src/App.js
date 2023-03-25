@@ -5,15 +5,23 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import injectContext from "./store/context";
 import Home from './views/home';
+import NavBar from './components/navbar';
 
 function App() {
   return (
     <BrowserRouter>
-        <Routes>
+      <NavBar/>
+      {/* <Routes>
           <Route path="/" element={<Home />} />
-        </Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/recoverpass" element={<RecoverPass />} />
+          <Route path="/addpet" element={<AddPet />} />
+          <Route path="/info" element={<Info />} />
+        </Routes> */}
+        
       </BrowserRouter>
-  );gigit
+  );
 }
 
 export default injectContext(App);
