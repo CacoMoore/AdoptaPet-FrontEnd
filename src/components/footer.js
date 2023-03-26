@@ -51,6 +51,7 @@ const Footer = (props) => {
                         <ul class="list-group">
                             <li class="list-group-item disabled" id="contact-info" aria-disabled="true">+569 xxx xxx xx</li>
                             <li class="list-group-item disabled" id="contact-info" aria-disabled="true">+562 xxx xxx xx</li>
+                            <li class="list-group-item disabled" id="contact-info" aria-disabled="true">fundacion@gmail.com</li>
                             <li class="list-group-item disabled" id="contact-info" aria-disabled="true">Dirección de la fundación</li>
                         </ul>
                         <ul class="list-group list-group-horizontal" id="rrss1">

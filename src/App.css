@@ -117,21 +117,23 @@ background-color: #5BD3C7;
 
 /* css footer*/
 .list-group {
- padding-top: 3%;
+ padding-top: 2.2%;
 }
 
 #rrss1{
   display: flex;
   justify-content: center;
+  padding-top: none;
 }
 #rrss {
-  padding-top: 3%;
+  
   list-style: none;
   width: 3%;
 }
 
 #footer{
   padding: 3%;
+  display: flex;
 }
 
 #cardfooter{
@@ -139,5 +141,6 @@ background-color: #5BD3C7;
 }
 #contact-info{
   border-color: transparent;
+  background-color: #E0E4EE;
 }
 /*css footer*/
