@@ -6,21 +6,22 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import injectContext from "./store/context";
 import Home from './views/home';
 import NavBar from './components/navbar';
+import Footer from './components/footer';
 
 function App() {
   return (
     <BrowserRouter>
       <NavBar/>
-      {/* <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+          {/*<Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/recoverpass" element={<RecoverPass />} />
           <Route path="/addpet" element={<AddPet />} />
-          <Route path="/info" element={<Info />} />
-        </Routes> */}
-        
-      </BrowserRouter>
+          <Route path="/info" element={<Info />} />*/}
+      </Routes> 
+      <Footer/> 
+    </BrowserRouter>
   );
 }
 
