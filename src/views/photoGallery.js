@@ -6,7 +6,7 @@ const PhotoGallery = () => {
 
 
 
-    return <div className="div-main">
+    return <div className="div-main ">
 
         <div className="  header-gallery ">
 
@@ -41,22 +41,7 @@ const PhotoGallery = () => {
 
                             <CardGallery />
                             <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
-                            <CardGallery />
+
 
 
 

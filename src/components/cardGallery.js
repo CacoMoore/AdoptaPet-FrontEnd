@@ -1,8 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
-
-
+import { Link } from "react-router-dom";
 
 const CardGallery = () => {
 
@@ -14,8 +13,8 @@ const CardGallery = () => {
 
             <div className="card   container-photo-card">
 
-                <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg" className="card-img-top image-size-for-card" alt="..."
-                />
+                <Link to='/pet'><img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg" className="card-img-top image-size-for-card" alt="..."
+                /></Link>
                 <div className='card-header d-flex justify-content-center bg-white fw-bold'>
                     <span>TOFY</span>
                     <span className='ms-2'>{fav}
