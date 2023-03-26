@@ -1,4 +1,5 @@
 
+import Blog from "../components/blog";
 import NavBar from "../components/navbar";
 
 const Home = () => {
@@ -6,7 +7,7 @@ const Home = () => {
     return (
         
         <div>
-            SOY EL HOME
+            <Blog></Blog>
         </div>
         
     )
