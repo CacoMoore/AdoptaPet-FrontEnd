@@ -30,8 +30,8 @@ const Register = () => {
                                 <input 
                                 onChange={actions.handleChange}
                                 type="text" 
-                                id="lastName"
-                                name="lastName" 
+                                id="last_name"
+                                name="last_name" 
                                 className="form-control" />
                                 <label 
                                 className="form-label" 
@@ -49,6 +49,17 @@ const Register = () => {
                             <label 
                             className="form-label" 
                             htmlFor="email">Correo</label>
+                        </div>
+                        <div className="form-outline mb-4 col-6">
+                            <input 
+                            onChange={actions.handleChange}
+                            type="number" 
+                            id="phone"
+                            name="phone"
+                            className="form-control" />
+                            <label 
+                            className="form-label" 
+                            htmlFor="email">Teléfono</label>
                         </div>
                         <div className="form-outline mb-4 col-6">
                             <input 
