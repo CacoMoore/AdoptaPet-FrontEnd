@@ -1,13 +1,18 @@
 
 import Blog from "../components/blog";
-import NavBar from "../components/navbar";
+import Jumbotron from "../components/jumbotron";
+
+
+
 
 const Home = () => {
 
     return (
         
         <div>
+            <Jumbotron></Jumbotron>
             <Blog></Blog>
+            
         </div>
         
     )
