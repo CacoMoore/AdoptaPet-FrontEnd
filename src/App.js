@@ -1,6 +1,3 @@
-import './App.css';
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import injectContext from "./store/context";
@@ -16,6 +13,9 @@ import Register from './views/register';
 import RecoverPass from './views/recoverPass';
 import AddPet from './views/addPet';
 import Info from './views/info';
+import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import Adopform from './views/adopform';
 
 
@@ -24,7 +24,6 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Routes>
-
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
