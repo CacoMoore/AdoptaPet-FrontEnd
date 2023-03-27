@@ -15,7 +15,7 @@ const Formcomp = () => {
                         <button type="button" className="btn my-3 rounded" style={{backgroundColor: "#5BD3C7"}}>Revisa acá los requisitos para adoptar</button>
                         <button type="button" className="btn my-3 rounded" style={{backgroundColor: "#5BD3C7"}}>Quiero Colaborar</button>
                         </Link>
-                        <Link to="photoGallery">
+                        <Link to="/photoGallery">
                         <button type="button" className="btn my-3 rounded" style={{backgroundColor: "#5BD3C7"}}>Quiero ver los animales en adopción</button>
                         </Link>
                     </div>
