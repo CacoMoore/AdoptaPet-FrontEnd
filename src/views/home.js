@@ -1,11 +1,18 @@
 import Blog from "../components/blog";
+import Jumbotron from "../components/jumbotron";
+
+
+
 
 const Home = () => {
 
     return (
         
         <div>
-            <Blog/>
+            
+            <Jumbotron></Jumbotron>
+            <Blog></Blog>
+            
         </div>
         
     )

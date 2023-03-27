@@ -16,6 +16,7 @@ import Info from './views/info';
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import Adopform from './views/adopform';
 
 
 function App() {
@@ -29,6 +30,10 @@ function App() {
         <Route path="/recoverpass" element={<RecoverPass />} />
         <Route path="/addpet" element={<AddPet />} />
         <Route path="/info" element={<Info />} />
+        <Route path="/adopform" element={<Adopform />} />
+
+
+        {/*SECCION DE GALERIA DE FOTOS Y INFORMACION INDIVIDUAL DE CADA PET */}
         <Route path="/photoGallery" element={<PhotoGallery />} />
         <Route path="/pet" element={<SinglePet />} />
       </Routes>
