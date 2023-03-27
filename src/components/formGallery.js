@@ -11,6 +11,7 @@ const FormGallery = () => {
                             <option selected>Selecionar</option>
                             <option value="1">Grande</option>
                             <option value="2">Mediano</option>
+                            <option value="2">Pequeño</option>
 
                         </select>
                     </div>

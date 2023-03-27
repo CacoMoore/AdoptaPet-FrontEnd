@@ -39,8 +39,22 @@ const PhotoGallery = () => {
                         <div className="row ">
                             <h1 className="my-5 text-center display-4">Mascotas en adopción</h1>
 
-                            <CardGallery />
-                            <CardGallery />
+                            <CardGallery
+                                imgGallery='https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg'
+                                nombreGallery='Abuelo'
+                                sexoGallery='Macho'
+                                especieGallery='Perro'
+                                tamanoGallery='Grande'
+
+                            />
+                            <CardGallery
+                                imgGallery='https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg'
+                                nombreGallery='Ofita'
+                                sexoGallery='Hembra'
+                                especieGallery='Gato'
+                                tamanoGallery='Mediano'
+
+                            />
 
 
 

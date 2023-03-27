@@ -32,7 +32,7 @@ function App() {
         <Route path="/info" element={<Info />} />
 
 
-
+        {/*SECCION DE GALERIA DE FOTOS Y INFORMACION INDIVIDUAL DE CADA PET */}
         <Route path="/photoGallery" element={<PhotoGallery />} />
         <Route path="/pet" element={<SinglePet />} />
       </Routes>
