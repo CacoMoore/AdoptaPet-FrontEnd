@@ -1,9 +1,14 @@
+import Blog from "../components/blog";
+
 const Home = () => {
 
     return (
+        
         <div>
-            hola mundo
+            <Blog/>
         </div>
+        
     )
 }
+
 export default Home;

@@ -1,0 +1,23 @@
+
+/*Se aplica una alutra min para que el footer se vaya abajo*/
+.div-main-singlepet {
+    min-height: 100vh;
+    
+}
+
+/*Se le quita los border a los input de informacion*/
+.lebel-singlePet {
+        border: none;
+}
+
+/*Se modifica el textareas*/
+.textarea-SinglePet {
+    width: 100%;
+    height: 30vh;
+    border: none;
+}
+
+/* Se aplica margin al titulo, al a col de card y al form*/
+.column-mt {
+    margin-top: 10rem;
+}
