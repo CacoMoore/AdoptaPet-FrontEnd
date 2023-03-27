@@ -7,7 +7,9 @@ const NavBar = () => {
   const pawn = <FontAwesomeIcon icon={faPaw} />
 
   return (
-    <div id="navbar">
+    <div 
+    className="row"
+    id="navbar">
       <nav className="navbar navbar-expand-lg bg">
         <div className="container">
           <Link to="/" ><h3 id="logo" >AdoptaPet {pawn}</h3></Link>

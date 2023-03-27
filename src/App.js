@@ -23,16 +23,12 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Routes>
-
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/recoverpass" element={<RecoverPass />} />
         <Route path="/addpet" element={<AddPet />} />
         <Route path="/info" element={<Info />} />
-
-
-        {/*SECCION DE GALERIA DE FOTOS Y INFORMACION INDIVIDUAL DE CADA PET */}
         <Route path="/photoGallery" element={<PhotoGallery />} />
         <Route path="/pet" element={<SinglePet />} />
       </Routes>

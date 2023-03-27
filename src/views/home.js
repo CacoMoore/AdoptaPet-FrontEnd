@@ -1,11 +1,11 @@
-
+import Blog from "../components/blog";
 
 const Home = () => {
 
     return (
         
         <div>
-            <Blog></Blog>
+            <Blog/>
         </div>
         
     )
