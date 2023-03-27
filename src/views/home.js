@@ -1,9 +1,13 @@
+
+
 const Home = () => {
 
     return (
-        <>
-
-        </>
+        
+        <div>
+            <Blog></Blog>
+        </div>
+        
     )
 }
 

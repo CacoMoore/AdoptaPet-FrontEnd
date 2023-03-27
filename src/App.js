@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import injectContext from "./store/context";
 import Home from './views/home';
+import NavBar from './components/navbar';
+import Footer from './components/footer';
 import './styles/photoGallery.css'
 import './styles/singlePet.css'
-import Footer from './components/footer';
-import NavBar from './components/navbar';
 import SinglePet from './views/singlePet';
 import PhotoGallery from './views/photoGallery';
 import Login from './views/login';
@@ -39,8 +39,6 @@ function App() {
       <Footer />
     </BrowserRouter>
   );
-
-
 }
 
 export default injectContext(App);
