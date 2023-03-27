@@ -4,6 +4,7 @@ import Jumbotron from "../components/jumbotron";
 
 
 
+
 const Home = () => {
 
     return (
@@ -11,6 +12,7 @@ const Home = () => {
         <div>
             <Jumbotron></Jumbotron>
             <Blog></Blog>
+            
         </div>
         
     )
