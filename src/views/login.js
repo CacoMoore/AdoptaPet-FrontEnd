@@ -13,7 +13,7 @@ const Login = () => {
             className="border border-dark shadow-lg m-4 p-2">
                 <div className="m-4">
                     <h1>Ingresa</h1>
-                    <form>
+                    <form onSubmit={actions.handleUserLogin}>
                         <div className="form-outline mb-4">
                             <input 
                             onChange={actions.handleChange}
@@ -38,7 +38,7 @@ const Login = () => {
                         </div>
 
                         <div className="text-center">
-                        <button type="button" className="btn btn-primary btn-block mb-4">Ingresa</button>
+                        <button type="submit" className="btn btn-primary btn-block mb-4">Ingresa</button>
                         </div>
                         <div className="text-center">
                             <p><Link to="/recoverpass">¿Olvidaste tu contraseña?</Link></p>
