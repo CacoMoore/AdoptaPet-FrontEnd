@@ -1,0 +1,47 @@
+
+/* Ajusta el alto de la imagen para que sea igual en todas*/
+.image-size-for-card {
+    
+   
+}
+
+/* poner un margin top en el div father para alejarlo del div header-gallery*/
+.div-father {
+    margin-top: 8rem;
+    
+}
+
+
+/* Poner un borde y un color al texto del lado derecho*/
+.paragraph-gallery{
+    border-left: solid black 1px;
+}
+
+.header-gallery {
+    background-image: url('https://s1.eestatic.com/2021/01/20/curiosidades/mascotas/552705427_170838548_1706x960.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 79vh;
+    
+}
+
+/* Contenedor principal de photoGallery*/
+
+.div-main {
+   
+    
+}
+
+/*Se encutra al final de photoGalery*/
+.div-footer{
+    
+}
+
+/**/
+.div-header {
+    background-color: white;
+}
+
+.form-bg {
+    background-color: white;
+}

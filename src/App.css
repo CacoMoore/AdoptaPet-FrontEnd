@@ -36,3 +36,112 @@
     transform: rotate(360deg);
   }
 }
+
+/* PALETA DE COLORES
+PALETA 1:
+#ff4747 - ROJO
+#00BCB4 - TURQUESA 
+#C4E86B - VERDE LIMON
+#FFB547 - AMARILLO/NARANJA */
+
+/* body{
+  background: #C4E86B ;
+}
+#navbar{
+background-color: #C4E86B;
+color: #00BCB4;
+}
+#logo{
+  color: #00BCB4;
+}
+a:link, a:visited{
+  text-decoration: none;
+}
+#btn-navbar{
+color: #00BCB4;
+box-shadow: #089690;
+}
+#footer{
+background-color: #C4E86B;
+}
+#cardfooter{
+  background: #FFB547;
+}
+#btn-footer{
+  background-color: #00BCB4;
+  color: white;
+} */
+/*PALETA 2:
+#7EC544 - VERDE LIMON
+#F4F4F2 - BLANCO INVIERNO
+#13C0E5 - CELESTE
+#037E8C - VERDE PETROLEO*/
+
+/*
+PALETA 3:
+#353755 - AZUL MARINO
+#FFFFFF - BLANCO
+#E0E4EE - GRIS CLARO
+#5BD3C7 - TURQUESA
+*/
+
+body{
+  background: #E0E4EE ;
+  color: #353755;
+}
+#navbar{
+background-color: #5BD3C7 ;
+color: #353755;
+}
+#logo{
+  color: #353755;
+}
+a:link, a:visited{
+  text-decoration: none;
+}
+#btn-navbar{
+color: #353755;
+box-shadow: #0B0C15;
+}
+#footer{
+background-color: #5BD3C7;
+}
+#cardfooter{
+  background: #E0E4EE;
+  color: #353755;
+}
+#btn-footer{
+  background-color: #353755;
+  color: #FFFFFF;
+}
+
+/* css footer*/
+.list-group {
+ padding-top: 2.2%;
+}
+
+#rrss1{
+  display: flex;
+  justify-content: center;
+  padding-top: none;
+  background-color: #E0E4EE;
+}
+#rrss {
+  
+  list-style: none;
+  width: 3%;
+}
+
+#footer{
+  padding: 3%;
+  display: flex;
+}
+
+#cardfooter{
+  border-color: transparent;
+}
+#contact-info{
+  border-color: transparent;
+  background-color: #E0E4EE;
+}
+/*css footer*/

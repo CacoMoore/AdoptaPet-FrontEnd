@@ -1,11 +1,12 @@
-import Adopform from "./adopform";
-
 const Home = () => {
 
     return (
+        
         <div>
-            <Adopform />
+            hola mundo desde el Home! por carolina.
         </div>
+        
     )
 }
+
 export default Home;
