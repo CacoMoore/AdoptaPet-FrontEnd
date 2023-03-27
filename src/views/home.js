@@ -1,8 +1,10 @@
+import Adopform from "./adopform";
+
 const Home = () => {
 
     return (
         <div>
-            hola mundo desde el Home! por carolina.
+            <Adopform />
         </div>
     )
 }
