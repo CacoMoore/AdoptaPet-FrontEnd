@@ -8,6 +8,19 @@ const getState = ({ setStore, getActions, getStore }) => {
         phone: "",
         password: "",
         rol_id: "",
+      },
+      pet: {
+        name: "",
+        gender:"",
+        age: "",
+        description: "",
+        species: "",
+        size:"",
+        medical_history:"",
+        is_adopted:"",
+        adress_id:"",
+        rol_id:"",
+
       }
     },
     actions: {
@@ -16,6 +29,15 @@ const getState = ({ setStore, getActions, getStore }) => {
         setStore({
           user: {
             ...user,
+            [e.target.name]: e.target.value,
+          },
+        })
+      },
+      handleChangePet: (e) => {
+        let { pet } = getStore()
+        setStore({
+          pet: {
+            ...pet,
             [e.target.name]: e.target.value,
           },
         })

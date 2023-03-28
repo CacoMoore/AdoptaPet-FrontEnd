@@ -8,7 +8,7 @@ const AddPet = () => {
             <form style={{ borderRadius: '5px' }}
             className="border border-dark shadow-lg m-4 p-2">
                 <div className="form-outline m-4">
-                    <input
+                    <input                       
                         type="text"
                         id="name"
                         name="name"
