@@ -23,6 +23,8 @@ const NavBar = () => {
               <li><Link className="dropdown-item" to="/user">Mi cuenta</Link></li>
               <li><Link className="dropdown-item" to="/addpet">Agregar mascota</Link></li>
               <li><Link className="dropdown-item" to="/addpost">Agregar noticia</Link></li>
+              <li><Link className="dropdown-item" to="/adminprofile">Administrador</Link></li>
+
             </ul>
           </div>
 
