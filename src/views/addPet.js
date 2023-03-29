@@ -8,11 +8,12 @@ const AddPet = () => {
             <form style={{ borderRadius: '5px' }}
             className="border border-dark shadow-lg m-4 p-2">
                 <div className="form-outline m-4">
-                    <input
+                    <input                       
                         type="text"
                         id="name"
                         name="name"
-                        className="form-control" />
+                        className="form-control"
+                        maxLength={50} />
                     <label
                         className="form-label"
                         htmlFor="name">Nombre</label>
@@ -31,32 +32,11 @@ const AddPet = () => {
                         htmlFor="gender">Género</label>
                 </div>
                 <div className="form-outline m-4">
-                    <select
+                    <input
+                        type="text"
                         id="age"
                         name="age"
-                        className="form-control">
-                        <option value="">Selecciona una opción</option>
-                        <option value="1">1 año</option>
-                        <option value="2">2 años</option>
-                        <option value="3">3 años</option>
-                        <option value="4">4 años</option>
-                        <option value="5">5 años</option>
-                        <option value="6">6 años</option>
-                        <option value="7">7 años</option>
-                        <option value="8">8 años</option>
-                        <option value="9">9 años</option>
-                        <option value="10">10 años</option>
-                        <option value="11">11 años</option>
-                        <option value="12">12 años</option>
-                        <option value="13">13 años</option>
-                        <option value="14">14 años</option>
-                        <option value="15">15 años</option>
-                        <option value="16">16 años</option>
-                        <option value="17">17 años</option>
-                        <option value="18">18 años</option>
-                        <option value="19">19 años</option>
-                        <option value="20">20 años</option>
-                    </select>
+                        className="form-control"/>
                     <label
                         className="form-label"
                         htmlFor="age">Edad</label>
