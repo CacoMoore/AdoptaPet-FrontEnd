@@ -20,6 +20,9 @@ import Adopform from './views/adopform';
 import User from './views/user';
 import AddPost from './views/addPost';
 import AddDescription from './views/addDescription';
+import Adminprofile from './views/adminprofile';
+import Solviewforadmin from './views/solviewforadmin';
+
 
 
 function App() {
@@ -37,6 +40,11 @@ function App() {
         <Route path="/adopForm" element={<Adopform />} />
         <Route path="/user" element={<User />} />
         <Route path="/addDescription" element={<AddDescription />} />
+        <Route path="/adopform" element={<Adopform />} />
+        <Route path="/adminprofile" element={<Adminprofile />} />
+        <Route path="/addPet" element={<AddPet />} />
+        <Route path="/solviewforadmin" element={<Solviewforadmin />} />
+
 
 
         {/*SECCION DE GALERIA DE FOTOS Y INFORMACION INDIVIDUAL DE CADA PET */}
