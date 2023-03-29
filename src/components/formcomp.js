@@ -396,11 +396,11 @@ const Formcomp = () => {
                             <label for="exampleFormControlTextarea1" className="form-label fw-semibold">44. ¿Esta de acuerdo con las condiciones  para adoptar y su seguimiento?</label>
                             <div className="">
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" id="" value="no"{...register('query44')} />
+                                    <input className="form-check-input" type="radio" id="" value="false" {...register('query44')} />
                                     <label className="form-check-label" for="flexCheckDefault">NO </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" id="" value="si"{...register('query44')} />
+                                    <input className="form-check-input" type="radio" id="" value="true"{...register('query44')} />
                                     <label className="form-check-label" for="flexCheckDefault">SI </label>
                                 </div>
                             </div>
