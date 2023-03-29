@@ -38,7 +38,8 @@ const Login = () => {
                         </div>
 
                         <div className="text-center">
-                        <button type="submit" className="btn btn-primary btn-block mb-4">Ingresa</button>
+                        <button type="submit" className="btn btn-block mb-4"
+                        style={{backgroundColor: "#5BD3C7"}}>Ingresa</button>
                         </div>
                         <div className="text-center">
                             <p><Link to="/recoverpass">¿Olvidaste tu contraseña?</Link></p>

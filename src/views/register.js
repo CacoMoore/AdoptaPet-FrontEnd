@@ -21,7 +21,9 @@ const Register = () => {
                                     type="text"
                                     id="name"
                                     name="name"
-                                    className="form-control" />
+                                    className="form-control"
+                                    maxLength={50}
+                                    placeholder="Máximo 50 caracteres" />
                                 <label
                                     className="form-label"
                                     htmlFor="name">Nombre</label>
@@ -32,7 +34,9 @@ const Register = () => {
                                     type="text"
                                     id="last_name"
                                     name="last_name"
-                                    className="form-control" />
+                                    className="form-control"
+                                    maxLength={50}
+                                    placeholder="Máximo 50 caracteres" />
                                 <label
                                     className="form-label"
                                     htmlFor="lastName">Apellido</label>
@@ -45,7 +49,9 @@ const Register = () => {
                                     type="email"
                                     id="email"
                                     name="email"
-                                    className="form-control" />
+                                    className="form-control"
+                                    maxLength={50}
+                                    placeholder="Máximo 50 caracteres" />
                                 <label
                                     className="form-label"
                                     htmlFor="email">Correo</label>
@@ -56,21 +62,11 @@ const Register = () => {
                                     type="number"
                                     id="phone"
                                     name="phone"
-                                    className="form-control" />
+                                    className="form-control"
+                                    placeholder="Ej: 963410066" />
                                 <label
                                     className="form-label"
                                     htmlFor="email">Teléfono</label>
-                            </div>
-                            <div className="form-outline mb-4 col-6">
-                                <input
-                                    onSelect={actions.handleChange}
-                                    type="number"
-                                    id="rol_id"
-                                    name="rol_id"
-                                    className="form-control"/>
-                                <label
-                                    className="form-label"
-                                    htmlFor="rol_id">Valor por defecto</label>
                             </div>
                             <div className="form-outline mb-4 col-6">
                                 <input
@@ -78,7 +74,8 @@ const Register = () => {
                                     type="password"
                                     id="password"
                                     name="password"
-                                    className="form-control" />
+                                    className="form-control"
+                                    maxLength={10} />
                                 <label
                                     className="form-label"
                                     htmlFor="password">Contraseña</label>
@@ -86,7 +83,8 @@ const Register = () => {
                         </div>
 
                         <div className="text-center">
-                            <button type="submit" className="btn btn-primary btn-block mb-4">Enviar</button>
+                            <button type="submit" className="btn btn-block mb-4"
+                            style={{backgroundColor: "#5BD3C7"}}>Enviar</button>
                         </div>
                         <div className="text-center">
                             <p>¿Ya eres miembro? <Link to="/Login">Ingresa</Link></p>
