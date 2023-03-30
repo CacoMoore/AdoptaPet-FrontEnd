@@ -8,9 +8,9 @@ const NavBar = () => {
 
   return (
     <div 
-    className="row"
+    className="row sticky-top"
     id="navbar">
-      <nav className="navbar navbar-expand-lg bg">
+      <nav className="navbar navbar-expand-lg bg ">
         <div className="container">
           <Link to="/" ><h3 id="logo" >AdoptaPet {pawn}</h3></Link>
           <div class="dropdown">
@@ -20,9 +20,12 @@ const NavBar = () => {
             <ul className="dropdown-menu dropdown-menu-end">
               <li><Link className="dropdown-item" to="/">Inicio</Link></li>
               <li><Link className="dropdown-item" to="/login">Ingresa</Link></li>
+              <li><Link className="dropdown-item" to="/photoGallery">Galería</Link></li>
               <li><Link className="dropdown-item" to="/user">Mi cuenta</Link></li>
               <li><Link className="dropdown-item" to="/addpet">Agregar mascota</Link></li>
               <li><Link className="dropdown-item" to="/addpost">Agregar noticia</Link></li>
+              <li><Link className="dropdown-item" to="/adminprofile">Administrador</Link></li>
+
             </ul>
           </div>
 

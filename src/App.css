@@ -121,15 +121,18 @@ background-color: #5BD3C7;
 }
 
 #rrss1{
-  display: flex;
+  display:flex;
   justify-content: center;
   padding-top: none;
   background-color: #E0E4EE;
 }
+.fcc-btn {
+  color: #353755;
+}
 #rrss {
   
   list-style: none;
-  width: 3%;
+  width: 20%;
 }
 
 #footer{

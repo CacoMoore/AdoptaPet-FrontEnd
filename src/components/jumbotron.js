@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaw } from '@fortawesome/free-solid-svg-icons'
-
 
 const Jumbotron = () => {
 
-    const pawn = <FontAwesomeIcon icon={faPaw} />
     let photo = { backgroundImage: `url('https://naturesmiracle.la/cl/wp-content/uploads/sites/2/2020/12/iStock-1013878116-1-scaled.jpg')`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition:"center"};
 
     return (
