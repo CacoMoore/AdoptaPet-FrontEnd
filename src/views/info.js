@@ -4,12 +4,9 @@ import InfoTwo from "../components/infoTwo";
 const Info = () => {
 
   return (
-    <div
-      style={{ borderRadius: '5px', minHeight: '100vh' }}
-    >
-      <div className="  header-gallery ">
+    <div style={{ borderRadius: '5px', minHeight: '100vh' }}>
 
-      </div>
+      <div className="  header-gallery "></div>
       <div className="m-4">
         <InfoOne />
       </div>
