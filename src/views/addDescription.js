@@ -57,7 +57,7 @@ const AddDescription = () => {
                                 htmlFor="style">Háblanos del lugar donde vives, ¿Tienes espacio para una mascota?</label>
                         </div>
                         <div className="text-center">
-                            <button type="submit" className="btn btn-block mb-4"
+                            <button type="submit" className="btn btn-lg text-light mb-4"
                                 style={{ backgroundColor: "#5BD3C7" }}>Enviar</button>
                         </div>
                         

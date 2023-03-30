@@ -20,7 +20,7 @@ const RecoverPass = () => {
                         </div>
 
                         <div className="text-center">
-                            <Link type="button" className="btn btn-block mb-4"
+                            <Link type="button" className="btn btn-lg text-light mb-4"
                             style={{backgroundColor: "#5BD3C7"}} onClick={mostrarAlerta} to="/">Enviar</Link>
                         </div>
                         <div className="text-center">
