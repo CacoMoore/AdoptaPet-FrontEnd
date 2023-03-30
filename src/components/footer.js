@@ -26,7 +26,7 @@ const Footer = (props) => {
                             <div className="card-body">
                                 <h5 className="card-title">Busca dónde adoptar</h5>
                                 <p className="card-text">Encuentra a tu mascota perfecta</p>
-                                <Link to={"/adoptar"}>
+                                <Link to={"/adopform"}>
                                     <button className="btn" id="btn-footer">Adoptar </button>
                                 </Link>
                             </div>

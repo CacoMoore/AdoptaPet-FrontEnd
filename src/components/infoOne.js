@@ -2,13 +2,14 @@ const InfoOne = () => {
 
     return (
             <div
+            id="acordeon1"
                 style={{ borderRadius: '5px' }}
-                className="text-center mt-4 pt-4 border border-dark shadow-lg">
+                className="text-center mt-4 pt-4 shadow-lg">
                 <h1>Información</h1>
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <button id="acordionbtn2" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                 ¿Quiénes somos?
                             </button>
                         </h2>
@@ -20,7 +21,7 @@ const InfoOne = () => {
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button id="acordionbtn2" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 ¿Cómo adoptar?
                             </button>
                         </h2>
@@ -33,13 +34,28 @@ const InfoOne = () => {
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <button id="acordionbtn2" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 ¿Dónde estamos?
                             </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                             En nuestra fundación, no contamos con una casa matriz central. En lugar de eso, cada "oficina" es un hogar temporal para nuestras mascotas en proceso de adopción. Esto significa que nuestras mascotas son atendidas y cuidadas en hogares amorosos, en lugar de en un refugio frío y desconocido. Este enfoque nos permite brindar a nuestras mascotas la atención personalizada que necesitan y merecen, y también nos permite estar presentes en múltiples comunidades para llegar a más personas y mascotas necesitadas. Nuestros voluntarios y cuidadores de hogares temporales trabajan arduamente para brindar a las mascotas un ambiente cálido y amoroso mientras esperan su adopción definitiva. Estamos orgullosos de ser una fundación descentralizada y comprometida con el bienestar de todas nuestras mascotas.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button id="acordionbtn2" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            ¿Quieres más información?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Quieres saber más información sobre nuestra fundación y comunidad. <br></br>
+                                Solicitar una cita para realizar una adopción o conocer a tu futura mascota.<br></br>
+                                Comunicate con nosotros a través de nuestros canales de información, haz <a class="link-opacity-100" href="#footer">click aquí</a>
+
                             </div>
                         </div>
                     </div>

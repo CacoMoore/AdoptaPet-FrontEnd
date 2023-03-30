@@ -14,6 +14,7 @@ const Home = () => {
             <Jumbotron></Jumbotron>
             <Blog></Blog>
             
+            
         </div>
         
     )
