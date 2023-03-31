@@ -121,15 +121,18 @@ background-color: #5BD3C7;
 }
 
 #rrss1{
-  display: flex;
+  display:flex;
   justify-content: center;
   padding-top: none;
   background-color: #E0E4EE;
 }
+.fcc-btn {
+  color: #353755;
+}
 #rrss {
   
   list-style: none;
-  width: 3%;
+  width: 20%;
 }
 
 #footer{
@@ -148,4 +151,22 @@ background-color: #5BD3C7;
 
 #jumbo{
 
+}
+
+/*CSS acordeon*/
+
+#btn-collapsed{
+  color: #353755;
+  background-color: #E8EAF1;
+}
+#acordionbtn2{
+  background-color: #E8EAF1;
+  color: #353755;
+}
+#accordion{
+  background-color: #E8EAF1;
+}
+#acordeon1{
+  background-color: #E8EAF1;
+  color: #353755;
 }
