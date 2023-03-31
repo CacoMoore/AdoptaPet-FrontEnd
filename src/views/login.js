@@ -10,9 +10,9 @@ const Login = () => {
         className="container mt-4">
             <div 
             style={{ borderRadius: '5px' }}
-            className="border border-dark shadow-lg m-4 p-2">
+            className="border shadow-lg m-4 p-2">
                 <div className="m-4">
-                    <h1>Ingresa</h1>
+                    <h1>Ingresa tus datos</h1>
                     <form onSubmit={actions.handleUserLogin}>
                         <div className="form-outline mb-4">
                             <input 
@@ -38,8 +38,8 @@ const Login = () => {
                         </div>
 
                         <div className="text-center">
-                        <button type="submit" className="btn btn-block mb-4"
-                        style={{backgroundColor: "#5BD3C7"}}>Ingresa</button>
+                        <button type="submit" className="btn btn-lg text-light mb-4"
+                        style={{backgroundColor: "#5BD3C7"}}>Ingresar</button>
                         </div>
                         <div className="text-center">
                             <p><Link to="/recoverpass">¿Olvidaste tu contraseña?</Link></p>
