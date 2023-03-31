@@ -153,27 +153,20 @@ background-color: #5BD3C7;
 
 }
 
-/*CSS acordeon
-#accordion{
-  background: #FFFFFF;
-  color:#353755;
-}
-#accordion{
-  color: #353755;
-  background-color: #5BD3C7;
-  
-}
+/*CSS acordeon*/
 
 #btn-collapsed{
   color: #353755;
-  background-color: #5BD3C7;
+  background-color: #E8EAF1;
 }
 #acordionbtn2{
-  background-color: #E0E4EE;
+  background-color: #E8EAF1;
   color: #353755;
+}
+#accordion{
+  background-color: #E8EAF1;
 }
 #acordeon1{
-  background-color: #E0E4EE;
+  background-color: #E8EAF1;
   color: #353755;
 }
-*/
