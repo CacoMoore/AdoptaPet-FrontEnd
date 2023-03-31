@@ -10,8 +10,10 @@ const NavBar = () => {
   const { loginUser } = store;
   const { rol_id } = loginUser
   return (
-    <div className="row" id="navbar">
-      <nav className="navbar navbar-expand-lg bg">
+    <div 
+    className="row sticky-top"
+    id="navbar">
+      <nav className="navbar navbar-expand-lg bg ">
         <div className="container">
           <Link to="/">
             <h3 id="logo">AdoptaPet {pawn}</h3>

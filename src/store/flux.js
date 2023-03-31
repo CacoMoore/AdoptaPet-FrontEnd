@@ -19,11 +19,12 @@ const getState = ({ setStore, getActions, getStore }) => {
         species: "",
         size: "",
         medical_history: "",
-        is_adopted: "",
-        adress_id: "",
-        rol_id: "",
+        is_adopted: false,
+        adress_id: false,
+        rol_id: false,
       },
       userDescription: [],
+      pets: [],
       loginUser: [],
       description: {
         description: "",
@@ -43,10 +44,13 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       handleChangePet: (e) => {
         let { pet } = getStore();
+        let name = e.target.name;
+        let value = e.target.value;
+        let checked = e.target.value ? true : false
         setStore({
           pet: {
             ...pet,
-            [e.target.name]: e.target.value,
+            [name]: name === "is_adopted" ? checked : value,
           },
         });
       },
@@ -135,6 +139,8 @@ const getState = ({ setStore, getActions, getStore }) => {
             });
             alert(JSON.stringify(data));
             console.log(data);
+      
+            // Fetch user information
             fetch(`http://localhost:8080/users/${data.user_id}`, {
               headers: {
                 "Content-Type": "application/json",
@@ -171,6 +177,44 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error));
       },
+
+
+      handlePostPet: (e) => {
+        e.preventDefault();
+        const { pet } = getStore();
+        fetch("http://localhost:8080/pets", {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify(pet)
+        }).then(res => res.json())
+          .then(data => console.log(data))
+          .catch(error => console.log(error))
+        setStore({
+          pet: {
+            name: "",
+            gender: "",
+            age: "",
+            description: "",
+            spicies: "",
+            size: "",
+            medical_history: "",
+            is_adopted: "",
+            adress_id: "",
+            rol_id: "",
+          },
+
+        })
+
+      },
+      getPets: () => {
+        fetch("http://localhost:8080/pets/list")
+          .then((res) => res.json())
+          .then((data) => setStore({ pets: data }))
+          .catch((error) => console.log(error))
+      },
+
     },
   };
 };

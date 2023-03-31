@@ -1,7 +1,33 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useState } from 'react'
+import { useParams } from "react-router-dom"
+
+
+
 
 const SinglePet = (props) => {
+    const { id } = useParams()
+
+    const [information, setInformation] = useState()
+    useEffect(() => {
+        const getPet = async () => {
+            const data = await fetch(`http://localhost:8080/pet/${id}`)
+
+            try {
+                const pet = await data.json()
+                setInformation(pet)
+            } catch (error) {
+                console.log('error en la api', error)
+            }
+
+
+        }
+
+        getPet()
+        console.log(id)
+    }, [id])
+
     const fav = <FontAwesomeIcon icon={faHeart} />
 
     return <div className="  div-main-singlepet">
@@ -50,7 +76,7 @@ const SinglePet = (props) => {
                                 placeholder=""
                                 className="ms-3 lebel-singlePet bg-white fs-5 fw-lighter"
 
-                            />
+                            ></input>
                         </div>
                         <div className="mb-3">
                             <label htmlFor='edad' className="fs-4">
