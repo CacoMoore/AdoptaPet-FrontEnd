@@ -10,7 +10,7 @@ const RecoverPass = () => {
         className="container mt-4 ">
             <div 
             style={{ borderRadius: '5px' }}
-            className="border border-dark shadow-lg m-4 p-2">
+            className="border shadow-lg m-4 p-2">
                 <div className="m-4">
                     <h1>Recuperar contraseña</h1>
                     <form>

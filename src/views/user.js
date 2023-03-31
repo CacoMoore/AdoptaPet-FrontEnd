@@ -5,9 +5,9 @@ import React, { useContext } from "react";
 
 const User = () => {
     const { store } = useContext(Context)
-    const { userDescription, loginUser } = store;
-    const { name, email, user_id, last_name, phone, rol_id } = loginUser
-    const { description, motivation, style } = userDescription;
+    const { userDescription, loginUser, user_id } = store;
+    const {  name, email, last_name, phone, rol_id } = loginUser
+    const {  description, motivation, style } = userDescription;
 
     if (rol_id === 1 || rol_id === 2) {
         return (

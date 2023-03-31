@@ -10,7 +10,7 @@ const Register = () => {
             className="container mt-4">
             <div
                 style={{ borderRadius: '5px' }}
-                className="border border-dark shadow-lg m-4">
+                className="border shadow-lg m-4">
                 <div className="m-4">
                     <h1>Registro</h1>
                     <form onSubmit={actions.handleUserRegister}>
@@ -39,7 +39,7 @@ const Register = () => {
                                     placeholder="Máximo 50 caracteres" />
                                 <label
                                     className="form-label"
-                                    htmlFor="lastName">Apellido</label>
+                                    htmlFor="lastName">Apellidos</label>
                             </div>
                         </div>
                         <div className="row d-flex justify-content-around p-2">

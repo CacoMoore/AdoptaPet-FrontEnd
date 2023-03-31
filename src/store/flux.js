@@ -10,7 +10,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         rol_id: 2,
       },
       token: "",
-      user_id:"",
+      user_id: "",
       pet: {
         name: "",
         gender: "",
@@ -27,8 +27,8 @@ const getState = ({ setStore, getActions, getStore }) => {
       loginUser: [],
       description: {
         description: "",
-        motivation:"",
-        style:"",
+        motivation: "",
+        style: "",
       }
     },
     actions: {
@@ -69,25 +69,25 @@ const getState = ({ setStore, getActions, getStore }) => {
           method: "POST",
           body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data => {
-          alert("Registro exitoso: " + JSON.stringify(data));
-          setStore({
-            user: {
-              name: "",
-              last_Name: "",
-              email: "",
-              phone: "",
-              password: "",
-              rol_id: 2,
-            }
+          .then(res => res.json())
+          .then(data => {
+            alert("Registro exitoso: " + JSON.stringify(data));
+            setStore({
+              user: {
+                name: "",
+                last_Name: "",
+                email: "",
+                phone: "",
+                password: "",
+                rol_id: 2,
+              }
+            });
+            console.log(data);
+          })
+          .catch(error => {
+            alert("Ocurrió un error al registrar el usuario: " + error.message);
+            console.log(error);
           });
-          console.log(data);
-        })
-        .catch(error => {
-          alert("Ocurrió un error al registrar el usuario: " + error.message);
-          console.log(error);
-        });
       },
       handleUserDescription: (e) => {
         e.preventDefault();
@@ -116,8 +116,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch((error) => console.log(error));
       },
-      
-      
       handleUserLogin: (e) => {
         e.preventDefault();
         const { user } = getStore();
@@ -128,30 +126,38 @@ const getState = ({ setStore, getActions, getStore }) => {
           method: "POST",
           body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data => {
-          setStore({
-            loginUser: data,
-            user: {
-              name: "",
-              last_Name: "",
-              email: "",
-              phone: "",
-              password: "",
-              rol_id: "",
-            },
-            token: data.token,
-            user_id: data.user_id,
-          });
-          alert("Haz iniciado sesión correctamente");
-          console.log(data);
-          getActions().getUserDescription(data.user_id);
-        })
-        .catch(error => console.log(error));
-      },
+          .then(res => res.json())
+          .then(data => {
+            setStore({
+              loginUser: data,
+              token: data.token,
+              user_id: data.user_id,
+            });
+            alert(data);
+            console.log(data);
       
+            // Fetch user information
+            fetch(`http://localhost:8080/users/${data.user_id}`, {
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${data.token}`
+              },
+              method: "GET",
+            })
+              .then(res => res.json())
+              .then(userData => {
+                setStore({
+                  loginUser: userData
+                });
+                console.log(userData);
+                getActions().getUserDescription(data.user_id);
+              })
+              .catch(error => console.log(error));
+          })
+          .catch(error => console.log(error));
+      },
       getUserDescription: () => {
-        const {user_id, token} = getStore();
+        const { user_id, token } = getStore();
         const urlFetch = `http://localhost:8080/users/description/${user_id}`;
         fetch(urlFetch, {
           headers: {
@@ -159,13 +165,13 @@ const getState = ({ setStore, getActions, getStore }) => {
             "Authorization": "Bearer " + token
           }
         })
-        .then(res => res.json())
-        .then(data => {
-          setStore({
-            userDescription: data
-          });
-        })
-        .catch(error => console.log(error));
+          .then(res => res.json())
+          .then(data => {
+            setStore({
+              userDescription: data
+            });
+          })
+          .catch(error => console.log(error));
       },
     },
   };

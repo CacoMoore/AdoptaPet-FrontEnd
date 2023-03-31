@@ -3,7 +3,7 @@ const InfoTwo = () => {
     return (
         <div
             style={{ borderRadius: '5px' }}
-            className="text-center mt-4 pt-4 border border-dark shadow-lg">
+            className="text-center mt-4 pt-4 border shadow-lg">
             <h1>¿Quieres colaborar?</h1>
             <div class="accordion" id="accordionExample2">
                 <div class="accordion-item">

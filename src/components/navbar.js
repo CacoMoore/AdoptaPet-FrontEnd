@@ -33,10 +33,13 @@ const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <Link className="dropdown-item" to="/login">
-                  Ingresa
-                </Link>
+                {rol_id !== 1 && rol_id !== 2 ? (
+                  <Link className="dropdown-item" to="/login">
+                    Ingresa
+                  </Link>
+                ) : null}
               </li>
+
               <li>
                 <Link className="dropdown-item" to="/photoGallery">
                   Galería
