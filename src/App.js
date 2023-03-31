@@ -17,6 +17,12 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Adopform from './views/adopform';
+import User from './views/user';
+import AddPost from './views/addPost';
+import AddDescription from './views/addDescription';
+import Adminprofile from './views/adminprofile';
+import Solviewforadmin from './views/solviewforadmin';
+
 
 
 function App() {
@@ -27,10 +33,18 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/recoverpass" element={<RecoverPass />} />
-        <Route path="/addpet" element={<AddPet />} />
+        <Route path="/recoverPass" element={<RecoverPass />} />
+        <Route path="/addPet" element={<AddPet />} />
+        <Route path="/addPost" element={<AddPost />} />
         <Route path="/info" element={<Info />} />
+        <Route path="/adopForm" element={<Adopform />} />
+        <Route path="/user" element={<User />} />
+        <Route path="/addDescription" element={<AddDescription />} />
         <Route path="/adopform" element={<Adopform />} />
+        <Route path="/adminprofile" element={<Adminprofile />} />
+        <Route path="/addPet" element={<AddPet />} />
+        <Route path="/solviewforadmin" element={<Solviewforadmin />} />
+
 
 
         {/*SECCION DE GALERIA DE FOTOS Y INFORMACION INDIVIDUAL DE CADA PET */}
