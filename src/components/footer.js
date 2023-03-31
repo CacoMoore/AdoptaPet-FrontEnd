@@ -15,9 +15,9 @@ const Footer = (props) => {
     */
     return (
 
-        <div 
-        className="row" 
-        id="footer">
+        <div
+            className="row"
+            id="footer">
             <div className="col-sm-6 mb-3 mb-sm-0">
                 <div className="card" id="cardfooter">
                     <div className="card-body">
@@ -57,9 +57,9 @@ const Footer = (props) => {
                             <li className="list-group-item disabled" id="contact-info" aria-disabled="true">Dirección de la fundación</li>
                         </ul>
                         <ul class="list-group list-group-horizontal" id="rrss1">
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="F"> F </li> 
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="I"> I </li> 
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="T"> T </li> 
+                            <li class="list-group-item" className="card-img-top" id="rrss" alt="F"> F </li>
+                            <li class="list-group-item" className="card-img-top" id="rrss" alt="I"> I </li>
+                            <li class="list-group-item" className="card-img-top" id="rrss" alt="T"> T </li>
                         </ul>
                     </div>
                 </div>
@@ -67,12 +67,12 @@ const Footer = (props) => {
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                 <div class="col-md-4 d-flex align-items-center">
                     <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                        <svg class="bi"  style={{width:"30", height:"24"}}></svg>
+                        <svg class="bi" style={{ width: "30", height: "24" }}></svg>
                     </a>
                     <span class="mb-3 mb-md-0 text-body-secondary">© 2023 AdoptaPet {pawn}, Inc</span>
                 </div>
             </footer>
-            
+
         </div>
 
     )

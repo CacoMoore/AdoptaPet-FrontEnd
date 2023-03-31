@@ -1,17 +1,25 @@
+import { useContext } from "react";
+import { Context } from "../store/context";
+
 const AddPet = () => {
+
+    const { actions } = useContext(Context)
+
+
 
     return (
         <div
-        style={{ borderRadius: '5px', minHeight: '100vh' }}
-        className="container mt-4">
+            style={{ borderRadius: '5px', minHeight: '100vh' }}
+            className="container mt-4">
             <h1>Agregar mascota</h1>
-            <form style={{ borderRadius: '5px' }}
-            className="border border-dark shadow-lg m-4 p-2">
+            <form onSubmit={actions.handlePostPet} style={{ borderRadius: '5px' }}
+                className="border border-dark shadow-lg m-4 p-2">
                 <div className="form-outline m-4">
-                    <input                       
+                    <input
                         type="text"
                         id="name"
                         name="name"
+                        onChange={actions.handleChangePet}
                         className="form-control"
                         maxLength={50} />
                     <label
@@ -22,10 +30,11 @@ const AddPet = () => {
                     <select
                         id="gender"
                         name="gender"
+                        onChange={actions.handleChangePet}
                         className="form-control">
-                        <option value="">Selecciona una opción</option>
-                        <option value="male">Masculino</option>
-                        <option value="female">Femenino</option>
+                        <option name="gender" value="Selecciona una opción">Selecciona una opción</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
                     </select>
                     <label
                         className="form-label"
@@ -36,20 +45,22 @@ const AddPet = () => {
                         type="text"
                         id="age"
                         name="age"
-                        className="form-control"/>
+                        onChange={actions.handleChangePet}
+                        className="form-control" />
                     <label
                         className="form-label"
                         htmlFor="age">Edad</label>
                 </div>
                 <div className="form-outline m-4">
                     <select
-                        id="spicies"
-                        name="spicies"
+                        id="species"
+                        name="species"
+                        onChange={actions.handleChangePet}
                         className="form-control">
-                        <option value="">Selecciona una opción</option>
-                        <option value="dog">Perro</option>
-                        <option value="cat">Gato</option>
-                        <option value="other">Otro</option>
+                        <option name="species" value="Selecciona una opción">Selecciona una opción</option>
+                        <option value="Perro">Perro</option>
+                        <option value="Gato">Gato</option>
+                        <option value="Otro">Otro</option>
                     </select>
                     <label
                         className="form-label"
@@ -59,11 +70,12 @@ const AddPet = () => {
                     <select
                         id="size"
                         name="size"
+                        onChange={actions.handleChangePet}
                         className="form-control">
-                        <option value="">Selecciona una opción</option>
-                        <option value="small">Pequeño</option>
-                        <option value="medium">Mediano</option>
-                        <option value="large">Grande</option>
+                        <option name="size" value="Selecciona una opción">Selecciona una opción</option>
+                        <option value="Pequeño">Pequeño</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Grande">Grande</option>
                     </select>
                     <label
                         className="form-label"
@@ -73,6 +85,7 @@ const AddPet = () => {
                     <input
                         type="text"
                         id="description"
+                        onChange={actions.handleChangePet}
                         name="description"
                         className="form-control" />
                     <label
@@ -83,7 +96,8 @@ const AddPet = () => {
                     <input
                         type="text"
                         id="medical"
-                        name="medical"
+                        onChange={actions.handleChangePet}
+                        name="medical_history"
                         className="form-control" />
                     <label
                         className="form-label"
@@ -91,27 +105,29 @@ const AddPet = () => {
                 </div>
                 <div className="form-outline m-4">
                     <select
-                        id="isAdopted"
-                        name="isAdopted"
+                        id="is_adopted"
+                        name="is_adopted"
+                        onFocus={actions.handleChangePet}
                         className="form-control">
-                        <option value="">Selecciona una opción</option>
-                        <option value="true">Sí</option>
-                        <option value="false">No</option>
+                        <option name="is_adopted" value="Selecciona una opción">Selecciona una opción</option>
+                        <option value={true}>Sí</option>
+                        <option value={false}>No</option>
                     </select>
                     <label
                         className="form-label"
-                        htmlFor="isAdopted">¿Está en adopción?</label>
+                        htmlFor="is_adopted">¿Está en adopción?</label>
                 </div>
                 <div className="form-outline m-4">
                     <input
                         type="text"
                         id="adress"
-                        name="adress"
+                        name="adress_id"
                         className="form-control" />
                     <label
                         className="form-label"
                         htmlFor="adress">Comuna de residencia</label>
                 </div>
+                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
     )
