@@ -2,24 +2,42 @@ const InfoTwo = () => {
 
     return (
         <div
+            id="accordion"
             style={{ borderRadius: '5px' }}
-            className="text-center mt-4 pt-4 border border-dark shadow-lg">
+            className="text-center mt-4 pt-4 shadow-lg">
             <h1>¿Quieres colaborar?</h1>
             <div className="accordion" id="accordionExample2">
                 <div className="accordion-item">
                     <h2 className="accordion-header" id="headingFour">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <button id="btn-collapsed" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                             Ayuda económica
                         </button>
                     </h2>
                     <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample2">
-                        <div className="accordion-body">¡Bienvenidos a nuestra Fundación! Si eres un amante de los animales y te gustaría ayudar a aquellos que cuidan de mascotas en su hogar, ¡estás en el lugar correcto! Nuestro objetivo es brindar apoyo económico a los cuidadores de mascotas que necesiten ayuda para cubrir los gastos médicos y de alimentación de sus animales. Si deseas hacer una donación, puedes hacerlo directamente en nuestra cuenta bancaria. ¡Cada pequeña contribución cuenta! En nuestra página web encontrarás información detallada sobre nuestra fundación y su trabajo, así como una lista de los cuidadores de mascotas que han recibido nuestra ayuda.<br></br><strong>¡Gracias por tu generosidad y apoyo a nuestra misión!</strong>
+                        <div className="accordion-body">¡Bienvenidos a nuestra Fundación! Si eres un amante de los animales y te gustaría ayudar a aquellos que cuidan de mascotas en su hogar, ¡estás en el lugar correcto! Nuestro objetivo es brindar apoyo económico a los cuidadores de mascotas que necesiten ayuda para cubrir los gastos médicos y de alimentación de sus animales. Si deseas hacer una donación, puedes hacerlo directamente en nuestra cuenta bancaria. ¡Cada pequeña contribución cuenta! En nuestra página web encontrarás información detallada sobre nuestra fundación y su trabajo, así como una lista de los cuidadores de mascotas que han recibido nuestra ayuda.
+                            <br></br><br></br>
+                            $20.000 = equivale a una esterilización
+                            <br></br>
+                            $30.000 = equivale a un saco de alimento
+                            <br></br>
+                            $40.000 = Vacunas para cachorros
+                            <br></br>
+                            $90.000 = Recuperación completa de un animal rescatado
+                            <br></br>
+                            <br></br>
+                            <strong>Nuestros datos bancarios son los siguientes:</strong>
+                            <br></br>Banco Scotiabank
+                            <br></br>Rut: 65.185.305-2
+                            <br></br>Email: empatianimal@gmail.com
+                            <br></br>
+                            <br></br>
+                            <strong>¡Gracias por tu generosidad y apoyo a nuestra misión!</strong>
                         </div>
                     </div>
                 </div>
                 <div className="accordion-item">
                     <h2 className="accordion-header" id="headingFive">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <button id="btn-collapsed" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                             Dona alimentos
                         </button>
                     </h2>
@@ -31,7 +49,7 @@ const InfoTwo = () => {
                 </div>
                 <div className="accordion-item">
                     <h2 className="accordion-header" id="headingSix">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+                        <button id="btn-collapsed" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
                             ¿Quieres ser un hogar temporal?
                         </button>
                     </h2>

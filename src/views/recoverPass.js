@@ -10,7 +10,7 @@ const RecoverPass = () => {
         className="container mt-4 ">
             <div 
             style={{ borderRadius: '5px' }}
-            className="border border-dark shadow-lg m-4 p-2">
+            className="border shadow-lg m-4 p-2">
                 <div className="m-4">
                     <h1>Recuperar contraseña</h1>
                     <form>
@@ -20,7 +20,7 @@ const RecoverPass = () => {
                         </div>
 
                         <div className="text-center">
-                            <Link type="button" className="btn btn-block mb-4"
+                            <Link type="button" className="btn btn-lg text-light mb-4"
                             style={{backgroundColor: "#5BD3C7"}} onClick={mostrarAlerta} to="/">Enviar</Link>
                         </div>
                         <div className="text-center">

@@ -23,9 +23,9 @@ const getState = ({ setStore, getActions, getStore }) => {
         adress_id: false,
         rol_id: false,
       },
-      loginUser: [],
       userDescription: [],
       pets: [],
+      loginUser: [],
       description: {
         description: "",
         motivation: "",
@@ -100,27 +100,26 @@ const getState = ({ setStore, getActions, getStore }) => {
         fetch("http://localhost:8080/users/description/", {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            Authorization: "Bearer " + token,
           },
           method: "POST",
-          body: JSON.stringify(descriptionWithUserId)
+          body: JSON.stringify(descriptionWithUserId),
         })
-          .then(res => res.json())
-          .then(data => {
+          .then((res) => res.json())
+          .then((data) => {
             setStore({
               description: {
-                description: "",
-                motivation: "",
-                style: "",
+                description: data.description,
+                motivation: data.motivation,
+                style: data.style,
               },
-            })
-            alert("Haz actualizado la información correctamente");
+            });
+            alert("La descripción ha sido actualizada exitosamente.");
             console.log(data);
             getActions().getUserDescription(data.user_id);
           })
-          .catch(error => console.log(error));
+          .catch((error) => console.log(error));
       },
-
       handleUserLogin: (e) => {
         e.preventDefault();
         const { user } = getStore();
@@ -135,24 +134,32 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(data => {
             setStore({
               loginUser: data,
-              user: {
-                name: "",
-                last_Name: "",
-                email: "",
-                phone: "",
-                password: "",
-                rol_id: "",
-              },
               token: data.token,
               user_id: data.user_id,
             });
-            alert("Haz iniciado sesión correctamente");
+            alert(data);
             console.log(data);
-            getActions().getUserDescription(data.user_id);
+
+            // Fetch user information
+            fetch(`http://localhost:8080/users/${data.user_id}`, {
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${data.token}`
+              },
+              method: "GET",
+            })
+              .then(res => res.json())
+              .then(userData => {
+                setStore({
+                  loginUser: userData
+                });
+                console.log(userData);
+                getActions().getUserDescription(data.user_id);
+              })
+              .catch(error => console.log(error));
           })
           .catch(error => console.log(error));
       },
-
       getUserDescription: () => {
         const { user_id, token } = getStore();
         const urlFetch = `http://localhost:8080/users/description/${user_id}`;

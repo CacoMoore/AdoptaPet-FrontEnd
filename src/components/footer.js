@@ -26,7 +26,7 @@ const Footer = (props) => {
                             <div className="card-body">
                                 <h5 className="card-title">Busca dónde adoptar</h5>
                                 <p className="card-text">Encuentra a tu mascota perfecta</p>
-                                <Link to={"/adoptar"}>
+                                <Link to={"/adopform"}>
                                     <button className="btn" id="btn-footer">Adoptar </button>
                                 </Link>
                             </div>
@@ -37,29 +37,16 @@ const Footer = (props) => {
             <div className="col-sm-6">
                 <div className="card" id="cardfooter">
                     <div className="card-body">
-                        <div className="mb-3">
-                            <label for="exampleFormControlInput1" className="form-label">Ingresa tu email</label>
-                            <input type="email" className="form-control" id="contactformemail" placeholder="name@gmail.com" />
-                        </div>
-                        <div>
-                            <label for="exampleFormControlInput2" className="form-label">Ingresa tu nombre</label>
-                            <input type="text" className="form-control" id="contactformname" placeholder="Nombre Apellido" />
-                        </div>
-                        <div className="mb-3">
-                            <label for="exampleFormControlTextarea1" className="form-label">Ingresa tu consulta</label>
-                            <textarea className="form-control" id="contactformconsult" rows="3" placeholder="Máximo 500 caracteres"></textarea>
-                        </div>
-                        <button className="btn" id="btn-footer">Enviar</button>
-                        <ul className="list-group">
-                            <li className="list-group-item disabled" id="contact-info" aria-disabled="true">+569 xxx xxx xx</li>
-                            <li className="list-group-item disabled" id="contact-info" aria-disabled="true">+562 xxx xxx xx</li>
-                            <li className="list-group-item disabled" id="contact-info" aria-disabled="true">fundacion@gmail.com</li>
-                            <li className="list-group-item disabled" id="contact-info" aria-disabled="true">Dirección de la fundación</li>
+                        <hi className="d-flex justify-content-center">Contáctanos</hi>
+                        <ul className="list-group ">
+                            <li className="list-group-item disabled" id="contact-info" aria-disabled="true">
+                                empatianimal@gmail.com</li>
+                            <li className="list-group-item disabled " id="contact-info" aria-disabled="true">+569 738 192 83 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+569 935 291 93</li>
+                            <li className="list-group-item disabled" id="contact-info" aria-disabled="true">Quilpue, Chile</li>
                         </ul>
                         <ul class="list-group list-group-horizontal" id="rrss1">
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="F"> F </li>
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="I"> I </li>
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="T"> T </li>
+                            <li class="list-group-item" className="card-img-top" id="rrss" alt="F"> <a target="_blank" class="fcc-btn" href="https://web.facebook.com/ColectivoEmpatiaAnimal/about/?ref=page_internal">Facebook</a> </li>
+                            <li class="list-group-item" className="card-img-top" id="rrss" alt="I"> <a target="_blank" class="fcc-btn" href="https://www.instagram.com/empatia_animal/">Instagram</a></li>
                         </ul>
                     </div>
                 </div>
