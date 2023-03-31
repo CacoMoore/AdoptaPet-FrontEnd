@@ -71,7 +71,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then(res => res.json())
           .then(data => {
-            alert("Registro exitoso: " + JSON.stringify(data));
+            alert(JSON.stringify(data));
             setStore({
               user: {
                 name: "",
@@ -85,7 +85,7 @@ const getState = ({ setStore, getActions, getStore }) => {
             console.log(data);
           })
           .catch(error => {
-            alert("Ocurrió un error al registrar el usuario: " + error.message);
+            alert(error.message);
             console.log(error);
           });
       },
@@ -133,10 +133,8 @@ const getState = ({ setStore, getActions, getStore }) => {
               token: data.token,
               user_id: data.user_id,
             });
-            alert(data);
+            alert(JSON.stringify(data));
             console.log(data);
-      
-            // Fetch user information
             fetch(`http://localhost:8080/users/${data.user_id}`, {
               headers: {
                 "Content-Type": "application/json",
