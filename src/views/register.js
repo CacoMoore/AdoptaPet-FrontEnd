@@ -3,81 +3,90 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/context";
 
 const Register = () => {
-        const { actions } = useContext(Context)
+    const { actions } = useContext(Context)
     return (
-        <div 
-        style={{ borderRadius: '5px', minHeight: '100vh' }}
-        className="container mt-4">
-            <div 
-            style={{ borderRadius: '5px' }}
-            className="border border-dark shadow-lg m-4">
+        <div
+            style={{ borderRadius: '5px', minHeight: '100vh' }}
+            className="container mt-4">
+            <div
+                style={{ borderRadius: '5px' }}
+                className="border shadow-lg m-4">
                 <div className="m-4">
                     <h1>Registro</h1>
-                    <form>
+                    <form onSubmit={actions.handleUserRegister}>
                         <div className="row d-flex justify-content-around p-2">
                             <div className="form-outline mb-4 col-6">
-                                <input 
-                                onChange={actions.handleChange}
-                                type="text" 
-                                id="name"
-                                name="name"
-                                className="form-control" />
-                                <label 
-                                className="form-label" 
-                                htmlFor="name">Nombre</label>
+                                <input
+                                    onChange={actions.handleChange}
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    className="form-control"
+                                    maxLength={50}
+                                    placeholder="Máximo 50 caracteres" />
+                                <label
+                                    className="form-label"
+                                    htmlFor="name">Nombre</label>
                             </div>
                             <div className="form-outline mb-4 col-6">
-                                <input 
-                                onChange={actions.handleChange}
-                                type="text" 
-                                id="last_name"
-                                name="last_name" 
-                                className="form-control" />
-                                <label 
-                                className="form-label" 
-                                htmlFor="lastName">Apellido</label>
+                                <input
+                                    onChange={actions.handleChange}
+                                    type="text"
+                                    id="last_name"
+                                    name="last_name"
+                                    className="form-control"
+                                    maxLength={50}
+                                    placeholder="Máximo 50 caracteres" />
+                                <label
+                                    className="form-label"
+                                    htmlFor="lastName">Apellidos</label>
                             </div>
                         </div>
                         <div className="row d-flex justify-content-around p-2">
-                        <div className="form-outline mb-4 col-6">
-                            <input 
-                            onChange={actions.handleChange}
-                            type="email" 
-                            id="email"
-                            name="email"
-                            className="form-control" />
-                            <label 
-                            className="form-label" 
-                            htmlFor="email">Correo</label>
-                        </div>
-                        <div className="form-outline mb-4 col-6">
-                            <input 
-                            onChange={actions.handleChange}
-                            type="number" 
-                            id="phone"
-                            name="phone"
-                            className="form-control" />
-                            <label 
-                            className="form-label" 
-                            htmlFor="email">Teléfono</label>
-                        </div>
-                        <div className="form-outline mb-4 col-6">
-                            <input 
-                            onChange={actions.handleChange}
-                            type="password" 
-                            id="password"
-                            name="password"
-                            className="form-control" />
-                            <label 
-                            className="form-label" 
-                            htmlFor="password">Contraseña</label> 
-                        </div>
+                            <div className="form-outline mb-4 col-6">
+                                <input
+                                    onChange={actions.handleChange}
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    className="form-control"
+                                    maxLength={50}
+                                    placeholder="Máximo 50 caracteres" />
+                                <label
+                                    className="form-label"
+                                    htmlFor="email">Correo</label>
+                            </div>
+                            <div className="form-outline mb-4 col-6">
+                                <input
+                                    onChange={actions.handleChange}
+                                    type="number"
+                                    id="phone"
+                                    name="phone"
+                                    className="form-control"
+                                    placeholder="Ej: 963410066" />
+                                <label
+                                    className="form-label"
+                                    htmlFor="email">Teléfono</label>
+                            </div>
+                            <div className="form-outline mb-4 col-6">
+                                <input
+                                    onChange={actions.handleChange}
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    className="form-control"
+                                    maxLength={10} />
+                                <label
+                                    className="form-label"
+                                    htmlFor="password">Contraseña</label>
+                            </div>
                         </div>
 
                         <div className="text-center">
-                            <button type="button" className="btn btn-primary btn-block mb-4">Enviar</button>
+                            <button type="submit" className="btn btn-lg text-light"
+                            style={{backgroundColor: "#5BD3C7"}}>Enviar</button>
                         </div>
-                        <div className="text-center">
+                        <div className="text-center pt-4">
                             <p>¿Ya eres miembro? <Link to="/Login">Ingresa</Link></p>
                         </div>
                     </form>
