@@ -31,7 +31,7 @@ const Blog = () => {
                                         </div>
                                         <div className="offcanvas-body">
                                             <p>
-                                                <table class="table table-striped">
+                                                <table className="table table-striped">
                                                     <thead>
                                                         <tr>
                                                             <th>Mes</th>
