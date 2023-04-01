@@ -10,8 +10,8 @@ const Adminprofile = () => {
 
     return (
         <div>
-            <div class="container ">
-                <div class="py-5 text-center">
+            <div className="container ">
+                <div className="py-5 text-center">
                     <p className="fs-1">{pawn}</p>
                     <h2>Portal del administrador</h2>
                     <p className="lead">En este portal como fundación o afrupación podran admisnitrar la página web. Podrán ver las solicitudes de adopción y eliminar las que ya no están vigentes,
