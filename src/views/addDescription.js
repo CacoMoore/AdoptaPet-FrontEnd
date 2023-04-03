@@ -18,10 +18,11 @@ const AddDescription = () => {
                 <div className="m-5">
                     <h1>¿Quieres actualizar tu información?</h1>
                     <form 
+                    onSubmit={actions.putUserInfo}
                     id="info">
                         <div className="form-outline mb-4 mt-5">
                             <input
-                                onChange={actions.handleChange}
+                                onChange={actions.handleChangeInfo}
                                 type="text"
                                 id="name"
                                 name="name"
@@ -35,10 +36,10 @@ const AddDescription = () => {
                         </div>
                         <div className="form-outline mb-4">
                             <input
-                                onChange={actions.handleChange}
+                                onChange={actions.handleChangeInfo}
                                 type="text"
-                                id="last_Name"
-                                name="last_Name"
+                                id="last_name"
+                                name="last_name"
                                 className="form-control"
                                 maxLength={50}
                                 required
@@ -49,21 +50,7 @@ const AddDescription = () => {
                         </div>
                         <div className="form-outline mb-4">
                             <input
-                                onChange={actions.handleChange}
-                                type="email"
-                                id="email"
-                                name="email"
-                                className="form-control"
-                                maxLength={50}
-                                required
-                                placeholder="Máximo 50 caracteres" />
-                            <label
-                                className="form-label"
-                                htmlFor="style">Correo:</label>
-                        </div>
-                        <div className="form-outline mb-4">
-                            <input
-                                onChange={actions.handleChange}
+                                onChange={actions.handleChangeInfo}
                                 type="number"
                                 id="phone"
                                 name="phone"

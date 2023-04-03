@@ -23,6 +23,7 @@ const Register = () => {
                                     name="name"
                                     className="form-control"
                                     maxLength={50}
+                                    required
                                     placeholder="Máximo 50 caracteres" />
                                 <label
                                     className="form-label"
@@ -36,6 +37,7 @@ const Register = () => {
                                     name="last_name"
                                     className="form-control"
                                     maxLength={50}
+                                    required
                                     placeholder="Máximo 50 caracteres" />
                                 <label
                                     className="form-label"
@@ -51,6 +53,7 @@ const Register = () => {
                                     name="email"
                                     className="form-control"
                                     maxLength={50}
+                                    required
                                     placeholder="Máximo 50 caracteres" />
                                 <label
                                     className="form-label"
@@ -75,6 +78,7 @@ const Register = () => {
                                     id="password"
                                     name="password"
                                     className="form-control"
+                                    required
                                     maxLength={10} />
                                 <label
                                     className="form-label"

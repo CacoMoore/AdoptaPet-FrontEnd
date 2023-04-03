@@ -10,7 +10,8 @@ const getState = ({ setStore, getActions, getStore }) => {
         rol_id: 2,
       },
       token: "",
-      user_id: "",
+      user_id: 0,
+      email:"",
       pet: {
         name: "",
         gender: "",
@@ -24,6 +25,11 @@ const getState = ({ setStore, getActions, getStore }) => {
         rol_id: false,
       },
       userDescription: [],
+      userInfo: {
+        name: "",
+        last_name: "",
+        phone:0,
+      },
       pets: [],
       loginUser: [],
       description: {
@@ -54,11 +60,76 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
         });
       },
-      handleChangeDescription: (e) => {
-        let { description } = getStore();
+      putUserInfo: (e) => { 
+        e.preventDefault();
+        const {email, user_id, token, userInfo} = getStore();
+        const info = {...userInfo, email};
+        const urlFetch = `http://localhost:8080/users/${user_id}`;
+        fetch(urlFetch, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+          method: "PUT",
+          body: JSON.stringify(info),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data); 
+          getActions().fetchUserData(user_id, data.token);
+        })
+        .catch((error) => console.log(error));
+      },
+      deleteUser: (e) => { 
+        e.preventDefault();
+        const {user_id, token} = getStore();
+        const urlFetch = `http://localhost:8080/users/${user_id}`;
+        fetch(urlFetch, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+          method: "DELETE",
+        })
+        .then((res) => res.json())
+        .then((data) => {
+          alert("Usuario eliminado");
+          
+        })
+        .catch((error) => console.log(error));
+      },
+      handleUserDescription: (e) => {
+        e.preventDefault();
+        const { description, token, user_id } = getStore();
+        const descriptionWithUserId = { ...description, user_id };
+        fetch("http://localhost:8080/users/description/", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+          method: "POST",
+          body: JSON.stringify(descriptionWithUserId),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setStore({
+              description: {
+                description: data.description,
+                motivation: data.motivation,
+                style: data.style,
+              },
+            });
+            alert("La descripción ha sido actualizada exitosamente.");
+            console.log(data);
+            getActions().getUserDescription(data.user_id);
+          })
+          .catch((error) => console.log(error));
+      },
+      handleChangeInfo: (e) => {
+        let { userInfo } = getStore();
         setStore({
-          description: {
-            ...description,
+          userInfo: {
+            ...userInfo,
             [e.target.name]: e.target.value,
           },
         });
@@ -93,33 +164,24 @@ const getState = ({ setStore, getActions, getStore }) => {
             console.log(error);
           });
       },
-      handleUserDescription: (e) => {
-        e.preventDefault();
-        const { description, token, user_id } = getStore();
-        const descriptionWithUserId = { ...description, user_id };
-        fetch("http://localhost:8080/users/description/", {
+      fetchUserData: (user_id, token) => {
+        fetch(`http://localhost:8080/users/${user_id}`, {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
+            "Authorization": `Bearer ${token}`
           },
-          method: "POST",
-          body: JSON.stringify(descriptionWithUserId),
+          method: "GET",
         })
-          .then((res) => res.json())
-          .then((data) => {
+          .then(res => res.json())
+          .then(userData => {
             setStore({
-              description: {
-                description: data.description,
-                motivation: data.motivation,
-                style: data.style,
-              },
+              loginUser: userData
             });
-            alert("La descripción ha sido actualizada exitosamente.");
-            console.log(data);
-            getActions().getUserDescription(data.user_id);
+            console.log(userData);
+            getActions().getUserDescription(user_id);
           })
-          .catch((error) => console.log(error));
-      },
+          .catch(error => console.log(error));
+      }, 
       handleUserLogin: (e) => {
         e.preventDefault();
         const { user } = getStore();
@@ -136,29 +198,22 @@ const getState = ({ setStore, getActions, getStore }) => {
               loginUser: data,
               token: data.token,
               user_id: data.user_id,
+              email: data.email,
             });
             alert(JSON.stringify(data));
             console.log(data);
-      
-            // Fetch user information
-            fetch(`http://localhost:8080/users/${data.user_id}`, {
-              headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${data.token}`
-              },
-              method: "GET",
-            })
-              .then(res => res.json())
-              .then(userData => {
-                setStore({
-                  loginUser: userData
-                });
-                console.log(userData);
-                getActions().getUserDescription(data.user_id);
-              })
-              .catch(error => console.log(error));
+            getActions().fetchUserData(data.user_id, data.token);
           })
           .catch(error => console.log(error));
+      },
+      handleChangeDescription: (e) => {
+        let { description } = getStore();
+        setStore({
+          description: {
+            ...description,
+            [e.target.name]: e.target.value,
+          },
+        });
       },
       getUserDescription: () => {
         const { user_id, token } = getStore();
@@ -177,8 +232,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error));
       },
-
-
       handlePostPet: (e) => {
         e.preventDefault();
         const { pet } = getStore();
@@ -214,7 +267,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((data) => setStore({ pets: data }))
           .catch((error) => console.log(error))
       },
-
     },
   };
 };
