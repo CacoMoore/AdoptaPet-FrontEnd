@@ -175,7 +175,15 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(res => res.json())
           .then(userData => {
             setStore({
-              loginUser: userData
+              loginUser: userData,
+              user: {
+                name: "",
+                last_Name: "",
+                email: "",
+                phone: "",
+                password: "",
+                rol_id: 2,
+              },
             });
             console.log(userData);
             getActions().getUserDescription(user_id);
@@ -199,6 +207,14 @@ const getState = ({ setStore, getActions, getStore }) => {
               token: data.token,
               user_id: data.user_id,
               email: data.email,
+              user: {
+                name: "",
+                last_Name: "",
+                email: "",
+                phone: "",
+                password: "",
+                rol_id: 2,
+              },
             });
             alert(JSON.stringify(data));
             console.log(data);

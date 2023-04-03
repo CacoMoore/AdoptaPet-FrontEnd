@@ -13,8 +13,8 @@ const User = () => {
     if (rol_id === 1 || rol_id === 2) {
         return (
             <div
-                style={{ borderRadius: '5px' }}
-                className="shadow-lg m-5 p-4 bg-white container">
+                style={{ borderRadius: '5px', minHeight: '100vh' }}
+                className="shadow-lg mt-5 mb-5 p-5 bg-white container">
                 <div className="row col-12">
                     <h1>Información personal: </h1>
                     <div id="left" className="col-6 pt-4">
@@ -43,7 +43,7 @@ const User = () => {
                             to="/addDescription"
                             style={{ backgroundColor: "#5BD3C7" }}
                         >
-                            Edita tu perfil
+                            Editar perfil
                         </Link>
                         <Link
                             className="btn btn-lg text-light mt-5 col-6"
@@ -52,7 +52,7 @@ const User = () => {
                             Adopta Aquí
                         </Link>
                     </div>
-                    <div className="">
+                    <div className="mt-4">
                         <button type="button" className="btn btn-lg btn-danger w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Eliminar perfil
                         </button>
@@ -67,10 +67,12 @@ const User = () => {
                                         ¿Realmente deseas eliminar tu cuenta?
                                     </div>
                                     <div className="modal-footer">
-                                        <Link type="button" to="/" className="btn btn-secondary" data-bs-dismiss="modal">Close</Link>
+                                        <Link type="button" to="/" className="btn btn-lg text-light"
+                                         style={{ backgroundColor: "#5BD3C7" }} data-bs-dismiss="modal">Cancelar</Link>
                                         <button 
                                         onClick={actions.deleteUser}
-                                        type="boton" className="btn btn-primary">Eliminar cuenta</button>
+                                        type="boton" className="btn btn-lg text-light"
+                                        style={{ backgroundColor: "#353755" }}>Eliminar cuenta</button>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +85,7 @@ const User = () => {
         return (
             <div className="container p-4">
                 <div className="row text-center p-5">
-                    <h4 className="">Inicia sesión para ver más información</h4>
+                    <h4 className="">Ups!... Al parecer no has iniciado sesión. </h4>
                 </div>
                 <div className="row">
                     <Link

@@ -66,7 +66,7 @@ const Register = () => {
                                     id="phone"
                                     name="phone"
                                     className="form-control"
-                                    placeholder="Ej: 963410066" />
+                                    placeholder="Ej: 988887777" />
                                 <label
                                     className="form-label"
                                     htmlFor="email">Teléfono</label>
