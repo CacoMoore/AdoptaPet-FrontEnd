@@ -45,8 +45,8 @@ const Footer = (props) => {
                             <li className="list-group-item disabled" id="contact-info" aria-disabled="true">Quilpue, Chile</li>
                         </ul>
                         <ul class="list-group list-group-horizontal" id="rrss1">
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="F"> <a target="_blank" class="fcc-btn" href="https://web.facebook.com/ColectivoEmpatiaAnimal/about/?ref=page_internal">Facebook</a> </li>
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="I"> <a target="_blank" class="fcc-btn" href="https://www.instagram.com/empatia_animal/">Instagram</a></li>
+                            <li class="list-group-item" className="card-img-top" id="rrss" alt="F"> <a target="_blank" class="fcc-btn" href="https://web.facebook.com/ColectivoEmpatiaAnimal/about/?ref=page_internal"><i class="bi bi-facebook"></i></a> </li>
+                            <li class="list-group-item" className="card-img-top" id="rrss" alt="I"> <a target="_blank" class="fcc-btn" href="https://www.instagram.com/empatia_animal/"><i class="bi bi-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>

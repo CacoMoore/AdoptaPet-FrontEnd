@@ -11,7 +11,7 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       token: "",
       user_id: 0,
-      email:"",
+      email: "",
       pet: {
         name: "",
         gender: "",
@@ -28,7 +28,7 @@ const getState = ({ setStore, getActions, getStore }) => {
       userInfo: {
         name: "",
         last_name: "",
-        phone:0,
+        phone: 0,
       },
       pets: [],
       loginUser: [],
@@ -60,10 +60,10 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
         });
       },
-      putUserInfo: (e) => { 
+      putUserInfo: (e) => {
         e.preventDefault();
-        const {email, user_id, token, userInfo} = getStore();
-        const info = {...userInfo, email};
+        const { email, user_id, token, userInfo } = getStore();
+        const info = { ...userInfo, email };
         const urlFetch = `http://localhost:8080/users/${user_id}`;
         fetch(urlFetch, {
           headers: {
@@ -73,30 +73,35 @@ const getState = ({ setStore, getActions, getStore }) => {
           method: "PUT",
           body: JSON.stringify(info),
         })
-        .then((res) => res.json())
-        .then((data) => {
-          alert(data); 
-          getActions().fetchUserData(user_id, data.token);
-        })
-        .catch((error) => console.log(error));
+          .then((res) => res.json())
+          .then((data) => {
+            alert(data);
+            getActions().fetchUserData(user_id, data.token);
+          })
+          .catch((error) => console.log(error));
       },
-      deleteUser: (e) => { 
+      /* eslint-disable no-restricted-globals */
+      deleteUser: (e) => {
         e.preventDefault();
-        const {user_id, token} = getStore();
+        const { user_id, token } = getStore();
         const urlFetch = `http://localhost:8080/users/${user_id}`;
-        fetch(urlFetch, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-          },
-          method: "DELETE",
-        })
-        .then((res) => res.json())
-        .then((data) => {
-          alert("Usuario eliminado");
-          
-        })
-        .catch((error) => console.log(error));
+        const confirmed = confirm("¿Está seguro que desea eliminar al usuario?");
+        if (confirmed) {
+          fetch(urlFetch, {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              alert(data);
+              // Aquí puedes agregar más componentes después de la eliminación del usuario
+            })
+            .catch((error) => console.log(error));
+        }
       },
       handleUserDescription: (e) => {
         e.preventDefault();
@@ -119,7 +124,7 @@ const getState = ({ setStore, getActions, getStore }) => {
                 style: data.style,
               },
             });
-            alert("La descripción ha sido actualizada exitosamente.");
+            alert(data);
             console.log(data);
             getActions().getUserDescription(data.user_id);
           })
@@ -158,6 +163,7 @@ const getState = ({ setStore, getActions, getStore }) => {
               }
             });
             console.log(data);
+            alert(data)
           })
           .catch(error => {
             alert(error.message);
@@ -173,9 +179,9 @@ const getState = ({ setStore, getActions, getStore }) => {
           method: "GET",
         })
           .then(res => res.json())
-          .then(userData => {
+          .then(data => {
             setStore({
-              loginUser: userData,
+              loginUser: data,
               user: {
                 name: "",
                 last_Name: "",
@@ -185,11 +191,10 @@ const getState = ({ setStore, getActions, getStore }) => {
                 rol_id: 2,
               },
             });
-            console.log(userData);
             getActions().getUserDescription(user_id);
           })
           .catch(error => console.log(error));
-      }, 
+      },
       handleUserLogin: (e) => {
         e.preventDefault();
         const { user } = getStore();

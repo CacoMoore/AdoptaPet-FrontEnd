@@ -53,30 +53,11 @@ const User = () => {
                         </Link>
                     </div>
                     <div className="mt-4">
-                        <button type="button" className="btn btn-lg btn-danger w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button 
+                        onClick={actions.deleteUser}
+                        type="button" className="btn btn-lg btn-danger w-100">
                             Eliminar perfil
                         </button>
-                        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div className="modal-dialog">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h1 className="modal-title fs-5" id="exampleModalLabel">Eliminar perfil</h1>
-                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div className="modal-body">
-                                        ¿Realmente deseas eliminar tu cuenta?
-                                    </div>
-                                    <div className="modal-footer">
-                                        <Link type="button" to="/" className="btn btn-lg text-light"
-                                         style={{ backgroundColor: "#5BD3C7" }} data-bs-dismiss="modal">Cancelar</Link>
-                                        <button 
-                                        onClick={actions.deleteUser}
-                                        type="boton" className="btn btn-lg text-light"
-                                        style={{ backgroundColor: "#353755" }}>Eliminar cuenta</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
