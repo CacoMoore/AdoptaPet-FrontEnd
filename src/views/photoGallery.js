@@ -11,14 +11,10 @@ const PhotoGallery = () => {
     useEffect(() => {
         actions.getPets()
     })
-
-
-
-
+    
     return <div className="div-main ">
 
         <div className="  header-gallery ">
-
         </div>
         <div className=" div-header p-5">
             <h1 className=" text-center">Galeria de mascotas</h1>
@@ -30,62 +26,37 @@ const PhotoGallery = () => {
 
             </p>
         </div>
-
-
         <div className="div-father">
-
-
-
             <div className="row d-flex flex-row-reverse">
-
                 <div className="col-md-4 mt-5">
                     <FormGallery />
                 </div>
-
                 <div className=" col-md-7">
                     <div className=" py-2 mb-2 ">
-
-                        <div className="row ">
+                        <div className="row">
                             <h1 className="my-5 text-center display-4">Mascotas en adopción</h1>
-                            {store.pets.map(pet => {
-
-                                return <div className=" col-lg-4 col-md-12 mb-5" key={pet.id}>
-                                    <Link to={`/pet/${pet.id}`}><CardGallery
-                                        pet={pet}
-
-                                        imgGallery='https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg'
-                                        nombreGallery={pet.name}
-                                        sexoGallery={pet.gender}
-                                        especieGallery={pet.species}
-                                        tamanoGallery={pet.size}
-
-                                    /></Link>
-                                </div>
-
-
-                            })}
-
-
-
-
-
+                            {store.pets.length ? (
+                                store.pets.map((pet) => (
+                                    <div className="col-lg-4 col-md-12 mb-5" key={pet.id}>
+                                        <Link to={`/pet/${pet.id}`}>
+                                            <CardGallery
+                                                pet={pet}
+                                                imgGallery="https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg"
+                                                nombreGallery={pet.name}
+                                                sexoGallery={pet.gender}
+                                                especieGallery={pet.species}
+                                                tamanoGallery={pet.size}
+                                            />
+                                        </Link>
+                                    </div>
+                                ))
+                            ) : (
+                                <p>No hay animales para adoptar</p>
+                            )}
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
         <div className="container p-5 mb-5 text-center d-flex justify-content-center div-footer rounded shadow-lg">
             <p className="fs-5 fw-lighter border  p-2 w-50 bg-white rounded shadow ">Para lograr evitar el abandono de perros se necesita de <br /> una participación integral en donde se una la ciudadanía, <br />las instituciones o asociaciones de protección animal y las <br />autoridades.</p>
