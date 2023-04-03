@@ -81,7 +81,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error));
       },
       /* eslint-disable no-restricted-globals */
-      deleteUser: (e) => {
+      deleteUser: (e, navigate) => {
         e.preventDefault();
         const { user_id, token } = getStore();
         const urlFetch = `http://localhost:8080/users/${user_id}`;
@@ -96,9 +96,9 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
             .then((res) => res.json())
             .then((data) => {
+              navigate("/login");
               console.log(data);
               alert(data);
-              // Aquí puedes agregar más componentes después de la eliminación del usuario
             })
             .catch((error) => console.log(error));
         }
@@ -195,7 +195,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error));
       },
-      handleUserLogin: (e) => {
+      handleUserLogin: (e, navigate) => {
         e.preventDefault();
         const { user } = getStore();
         fetch("http://localhost:8080/login", {
@@ -223,6 +223,7 @@ const getState = ({ setStore, getActions, getStore }) => {
             });
             alert(JSON.stringify(data));
             console.log(data);
+            navigate("/user");
             getActions().fetchUserData(data.user_id, data.token);
           })
           .catch(error => console.log(error));

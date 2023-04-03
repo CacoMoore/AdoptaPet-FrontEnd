@@ -1,20 +1,13 @@
 import { Form, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-/* import {faFacebookSquare }from '@fortawesome/fontawesome-svg-core'; '@fortawesome/free-solid-svg-icons'; '@fortawesome/react-fontawesome'*/
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
 
 
 
 const Footer = (props) => {
     const pawn = <FontAwesomeIcon icon={faPaw} />
-
-    /*const facebook = <FontAwesomeIcon icon={faFacebookSquare} />
-    const instagram = <FontAwesomeIcon icon={faInstagram} />
-    const twitter = <FontAwesomeIcon icon={faTwitter} />
-
-    */
+    
     return (
-
         <div
             className="row"
             id="footer">
@@ -59,9 +52,7 @@ const Footer = (props) => {
                     <span class="mb-3 mb-md-0 text-body-secondary">© 2023 AdoptaPet {pawn}, Inc</span>
                 </div>
             </footer>
-
         </div>
-
     )
 }
 

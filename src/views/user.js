@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/context";
 import React, { useContext } from "react";
 
@@ -8,7 +8,7 @@ const User = () => {
     const { userDescription, loginUser, user_id, email } = store;
     const { name, last_name, phone, rol_id } = loginUser
     const { description, motivation, style } = userDescription;
-
+    const navigate = useNavigate();
 
     if (rol_id === 1 || rol_id === 2) {
         return (
@@ -54,7 +54,7 @@ const User = () => {
                     </div>
                     <div className="mt-4">
                         <button 
-                        onClick={actions.deleteUser}
+                        onClick={ (e)=> actions.deleteUser(e, navigate)}
                         type="button" className="btn btn-lg btn-danger w-100">
                             Eliminar perfil
                         </button>
@@ -76,9 +76,7 @@ const User = () => {
                         Iniciar sesión
                     </Link>
                 </div>
-
             </div>
-
         )
     }
 }

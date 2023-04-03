@@ -43,7 +43,6 @@ function App() {
         <Route path="/adminprofile" element={<Adminprofile />} />
         <Route path="/addPet" element={<AddPet />} />
         <Route path="/solviewforadmin" element={<Solviewforadmin />} />
-        
         {/*SECCION DE GALERIA DE FOTOS Y INFORMACION INDIVIDUAL DE CADA PET */}
         <Route path="/photoGallery" element={<PhotoGallery />} />
         <Route path="/pet/:id" element={<SinglePet2 />} />

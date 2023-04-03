@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Context } from "../store/context";
 
@@ -13,6 +13,9 @@ const Login = () => {
     const handleMouseUp = () => {
         setPasswordType("password");
     };
+
+    const navigate = useNavigate();
+
 
     return (
         <div
@@ -35,7 +38,7 @@ const Login = () => {
                         className="border shadow-lg m-4 p-2">
                         <div className="m-4">
                             <h1 className="pb-4 text-center">Ingreso</h1>
-                            <form onSubmit={actions.handleUserLogin}>
+                            <form onSubmit={ (e)=> actions.handleUserLogin(e, navigate)}>
                                 <div className="form-outline mb-4">
                                     <input
                                         onChange={actions.handleChange}
