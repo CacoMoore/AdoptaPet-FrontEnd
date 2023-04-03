@@ -1,19 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/context";
 import React, { useContext } from "react";
 
 
 const User = () => {
-    const { store } = useContext(Context)
-    const { userDescription, loginUser, user_id } = store;
-    const {  name, email, last_name, phone, rol_id } = loginUser
-    const {  description, motivation, style } = userDescription;
+    const { store, actions } = useContext(Context)
+    const { userDescription, loginUser, user_id, email } = store;
+    const { name, last_name, phone, rol_id } = loginUser
+    const { description, motivation, style } = userDescription;
+    const navigate = useNavigate();
 
     if (rol_id === 1 || rol_id === 2) {
         return (
             <div
-                style={{ borderRadius: '5px' }}
-                className="shadow-lg m-5 p-4 bg-white container">
+                style={{ borderRadius: '5px', minHeight: '100vh' }}
+                className="shadow-lg mt-5 mb-5 p-5 bg-white container">
                 <div className="row col-12">
                     <h1>Información personal: </h1>
                     <div id="left" className="col-6 pt-4">
@@ -42,7 +43,7 @@ const User = () => {
                             to="/addDescription"
                             style={{ backgroundColor: "#5BD3C7" }}
                         >
-                            Edita tu perfil
+                            Editar perfil
                         </Link>
                         <Link
                             className="btn btn-lg text-light mt-5 col-6"
@@ -51,6 +52,13 @@ const User = () => {
                             Adopta Aquí
                         </Link>
                     </div>
+                    <div className="mt-4">
+                        <button 
+                        onClick={ (e)=> actions.deleteUser(e, navigate)}
+                        type="button" className="btn btn-lg btn-danger w-100">
+                            Eliminar perfil
+                        </button>
+                    </div>
                 </div>
             </div>
         )
@@ -58,7 +66,7 @@ const User = () => {
         return (
             <div className="container p-4">
                 <div className="row text-center p-5">
-                    <h4 className="">Inicia sesión para ver más información</h4>
+                    <h4 className="">Ups!... Al parecer no has iniciado sesión. </h4>
                 </div>
                 <div className="row">
                     <Link
@@ -68,9 +76,7 @@ const User = () => {
                         Iniciar sesión
                     </Link>
                 </div>
-
             </div>
-
         )
     }
 }

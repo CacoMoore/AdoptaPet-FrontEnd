@@ -1,20 +1,13 @@
 import { Form, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-/* import {faFacebookSquare }from '@fortawesome/fontawesome-svg-core'; '@fortawesome/free-solid-svg-icons'; '@fortawesome/react-fontawesome'*/
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
 
 
 
 const Footer = (props) => {
     const pawn = <FontAwesomeIcon icon={faPaw} />
-
-    /*const facebook = <FontAwesomeIcon icon={faFacebookSquare} />
-    const instagram = <FontAwesomeIcon icon={faInstagram} />
-    const twitter = <FontAwesomeIcon icon={faTwitter} />
-
-    */
+    
     return (
-
         <div
             className="row"
             id="footer">
@@ -45,8 +38,8 @@ const Footer = (props) => {
                             <li className="list-group-item disabled" id="contact-info" aria-disabled="true">Quilpue, Chile</li>
                         </ul>
                         <ul class="list-group list-group-horizontal" id="rrss1">
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="F"> <a target="_blank" class="fcc-btn" href="https://web.facebook.com/ColectivoEmpatiaAnimal/about/?ref=page_internal">Facebook</a> </li>
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="I"> <a target="_blank" class="fcc-btn" href="https://www.instagram.com/empatia_animal/">Instagram</a></li>
+                            <li class="list-group-item" className="card-img-top" id="rrss" alt="F"> <a target="_blank" class="fcc-btn" href="https://web.facebook.com/ColectivoEmpatiaAnimal/about/?ref=page_internal"><i class="bi bi-facebook"></i></a> </li>
+                            <li class="list-group-item" className="card-img-top" id="rrss" alt="I"> <a target="_blank" class="fcc-btn" href="https://www.instagram.com/empatia_animal/"><i class="bi bi-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -59,9 +52,7 @@ const Footer = (props) => {
                     <span class="mb-3 mb-md-0 text-body-secondary">© 2023 AdoptaPet {pawn}, Inc</span>
                 </div>
             </footer>
-
         </div>
-
     )
 }
 
