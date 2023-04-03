@@ -7,12 +7,13 @@ import CardGallery from "../components/cardGallery";
 
 
 
-const Favorites = (props) => {
+
+const Favorites = () => {
     const trash = <FontAwesomeIcon icon={faTrash} />   
     const { store, actions } = useContext(Context);
 
     return (
-        <CardGallery>
+        
             <div className="cards container px-4 py-5" id="custom-cards">
                 <h1>Favoritos</h1>
                     {store.favorite.length > 0 ? (
@@ -25,7 +26,7 @@ const Favorites = (props) => {
                                         type="button"
                                         className="btn btn-sm btn-outline-dark rounded-circle border-0 mb-2"
                                         onClick={() => actions.removeFavorite(item)}>{trash}</button>
-                                    <strong>{item}</strong>
+                                    <CardGallery pet={item} />
                                     
                                 </li>
 
@@ -40,12 +41,7 @@ const Favorites = (props) => {
                 
                 
             </div>
-
-
-
-
-
-        </CardGallery>
+        
     )
 
 }

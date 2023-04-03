@@ -216,10 +216,10 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error))
       },
 
-      addFavorite: (name) => {
+      addFavorite: (pet) => {
         const { favorite } = getStore();
-        if (!favorite.includes(name)) {
-          const newFavorites = [...favorite, name];
+        if (!favorite.includes(pet)) {
+          const newFavorites = [...favorite, pet];
           setStore({ favorite: newFavorites });
           console.log(newFavorites);
         }
