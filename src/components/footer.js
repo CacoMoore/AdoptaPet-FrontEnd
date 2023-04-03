@@ -22,7 +22,7 @@ const Footer = (props) => {
                             <h5>Contáctanos</h5>
                             <ul class="nav flex-column">
                                 <li className="nav-item mb-2"><a href="https://accounts.google.com/AccountChooser/signinchooser?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&flowName=GlifWebSignIn&flowEntry=AccountChooser" target="_blank" className="nav-link p-0 text-body-secondary">empatianimal@gmail.com</a></li>
-                                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">+569 738 192 83</a></li>
+                                <li className="nav-item mb-2 "><a href="#" className="nav-link p-0 text-body-secondary">+569 738 192 83</a></li>
                                 <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">+569 935 291 93</a></li>
                                 <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Quilpue, Chile</a></li>
                                 <li className="nav-item mb-2"><a href="https://web.facebook.com/ColectivoEmpatiaAnimal/about/?ref=page_internal" target="_blank" className="nav-link p-0 text-body-secondary">Facebook</a></li>

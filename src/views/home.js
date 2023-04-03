@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Blog from "../components/blog";
+import Blog from "./blog";
 import Jumbotron from "../components/jumbotron";
 import { Context } from "../store/context";
 

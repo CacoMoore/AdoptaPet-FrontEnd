@@ -151,3 +151,16 @@ a:visited {
 #btn-fav:hover {
   background-color: #353755;
 }
+
+/* BLOG */
+
+#btn-date-adoption{
+  background-color: #353755;
+  color: #FFFFFF;
+  margin-top: 5%;
+}
+#btn-add-news{
+  background-color: #353755;
+  color: #FFFFFF;
+  margin-left: 3%;
+}

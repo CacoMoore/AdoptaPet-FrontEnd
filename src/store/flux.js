@@ -224,9 +224,9 @@ const getState = ({ setStore, getActions, getStore }) => {
           console.log(newFavorites);
         }
       },
-      removeFavorites: name => {
+      removeFavorites: (pet) => {
         const store = getStore();
-        const newFavorites = store.favorite.filter(item => item !== name);
+        const newFavorites = store.favorite.filter(item => item !== pet);
         setStore({ favorite: newFavorites });
       }
       },
