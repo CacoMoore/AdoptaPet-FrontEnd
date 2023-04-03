@@ -30,7 +30,54 @@ const getState = ({ setStore, getActions, getStore }) => {
         description: "",
         motivation: "",
         style: "",
-      }
+      },
+      form: {
+        query1: "",
+        query2: "",
+        query3: "",
+        query4: "",
+        query5: "",
+        query6: "",
+        query7: "",
+        query8: "",
+        query9: "",
+        query10: "",
+        query11: "",
+        query12: "",
+        query13: "",
+        query14: "",
+        query15: "",
+        query16: "",
+        query17: "",
+        query18: "",
+        query19: "",
+        query20: "",
+        query21: "",
+        query22: "",
+        query23: "",
+        query24: "",
+        query25: "",
+        query26: "",
+        query27: "",
+        query28: "",
+        query29: "",
+        query30: "",
+        query31: "",
+        query32: "",
+        query33: "",
+        query34: "",
+        query35: "",
+        query36: "",
+        query37: "",
+        query38: "",
+        query39: "",
+        query40: "",
+        query41: "",
+        query42: "",
+        query43: "",
+        query44: "",
+      },
+      
     },
     actions: {
       handleChange: (e) => {
@@ -213,6 +260,70 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((res) => res.json())
           .then((data) => setStore({ pets: data }))
           .catch((error) => console.log(error))
+      },
+
+      sendForm: (e) => {
+        e.preventDefault();
+        const { form } = getStore();
+        fetch("http://localhost:8080/form", {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify(form)
+        }).then(res => res.json())
+          .then(data => console.log(data))
+          .catch(error => console.log(error))
+        setStore({
+          form: {
+            query1: "",
+            query2: "",
+            query3: "",
+            query4: "",
+            query5: "",
+            query6: "",
+            query7: "",
+            query8: "",
+            query9: "",
+            query10: "",
+            query11: "",
+            query12: "",
+            query13: "",
+            query14: "",
+            query15: "",
+            query16: "",
+            query17: "",
+            query18: "",
+            query19: "",
+            query20: "",
+            query21: "",
+            query22: "",
+            query23: "",
+            query24: "",
+            query25: "",
+            query26: "",
+            query27: "",
+            query28: "",
+            query29: "",
+            query30: "",
+            query31: "",
+            query32: "",
+            query33: "",
+            query34: "",
+            query35: "",
+            query36: "",
+            query37: "",
+            query38: "",
+            query39: "",
+            query40: "",
+            query41: "",
+            query42: "",
+            query43: "",
+            query44: "",
+          },
+
+        })
+
       },
 
     },
