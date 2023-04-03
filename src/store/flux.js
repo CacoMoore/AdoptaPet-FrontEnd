@@ -30,7 +30,8 @@ const getState = ({ setStore, getActions, getStore }) => {
         description: "",
         motivation: "",
         style: "",
-      }
+      },
+      favorite: [],
     },
     actions: {
       handleChange: (e) => {
@@ -215,7 +216,20 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error))
       },
 
-    },
+      addFavorite: (name) => {
+        const { favorite } = getStore();
+        if (!favorite.includes(name)) {
+          const newFavorites = [...favorite, name];
+          setStore({ favorite: newFavorites });
+          console.log(newFavorites);
+        }
+      },
+      removeFavorites: name => {
+        const store = getStore();
+        const newFavorites = store.favorite.filter(item => item !== name);
+        setStore({ favorite: newFavorites });
+      }
+      },
+    };
   };
-};
-export default getState;
+  export default getState;

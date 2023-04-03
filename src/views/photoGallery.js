@@ -50,7 +50,7 @@ const PhotoGallery = () => {
                             {store.pets.map(pet => {
 
                                 return <div className=" col-lg-4 col-md-12 mb-5" key={pet.id}>
-                                    <Link to={`/pet/${pet.id}`}><CardGallery
+                                            <CardGallery
                                         pet={pet}
 
                                         imgGallery='https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg'
@@ -58,8 +58,9 @@ const PhotoGallery = () => {
                                         sexoGallery={pet.gender}
                                         especieGallery={pet.species}
                                         tamanoGallery={pet.size}
-
-                                    /></Link>
+                                    />
+                                    <Link to={`/pet/${pet.id}`}> Ver más Información
+                                </Link>
                                 </div>
 
 
