@@ -326,7 +326,7 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
 
       handlePostPetFilter: (e) => {
-        e.preventDefault();
+
         const { pet } = getStore();
         fetch("http://localhost:8080/pets/search", {
           headers: {
