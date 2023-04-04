@@ -84,7 +84,6 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       /* eslint-disable no-restricted-globals */
       deleteUser: (e) => {
-        e.preventDefault();
         const { user_id, token } = getStore();
         const urlFetch = `http://localhost:8080/users/${user_id}`;
         const confirmed = confirm("¿Está seguro que desea eliminar al usuario?");
@@ -140,7 +139,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
         });
       },
-      handleUserRegister: (e) => {
+      handleUserRegister: (e, navigate) => {
         e.preventDefault();
         const { user } = getStore();
         fetch("http://localhost:8080/users", {
@@ -152,7 +151,6 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then(res => res.json())
           .then(data => {
-            alert(JSON.stringify(data));
             setStore({
               user: {
                 name: "",
@@ -164,7 +162,8 @@ const getState = ({ setStore, getActions, getStore }) => {
               }
             });
             console.log(data);
-            alert(data)
+            alert(JSON.stringify(data));
+            navigate("/login");
           })
           .catch(error => {
             alert(error.message);
@@ -224,8 +223,8 @@ const getState = ({ setStore, getActions, getStore }) => {
             });
             alert(JSON.stringify(data));
             console.log(data);
-            navigate("/user");
             getActions().fetchUserData(data.user_id, data.token);
+            navigate("/user");
           })
           .catch(error => console.log(error));
       },
