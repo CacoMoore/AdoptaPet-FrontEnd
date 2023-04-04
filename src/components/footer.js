@@ -64,8 +64,8 @@ const Footer = (props) => {
                     <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
                         <p>© 2023 AdoptaPet {pawn}, Inc</p>
                         <ul class="list-unstyled d-flex">
-                            <li class="ms-3"><a class="link-body-emphasis" href="https://web.facebook.com/ColectivoEmpatiaAnimal/about/?ref=page_internal"><svg class="bi" width="24" height="24"></svg>Facebook</a></li>
-                            <li class="ms-3"><a class="link-body-emphasis" href="https://www.instagram.com/empatia_animal/"><svg class="bi" width="24" height="24"></svg>Instagram</a></li>
+                            <li class="ms-3"><a class="link-body-emphasis" href="https://web.facebook.com/ColectivoEmpatiaAnimal/about/?ref=page_internal"><svg class="bi" width="24" height="24"></svg><i class="bi bi-facebook"></i></a></li>
+                            <li class="ms-3"><a class="link-body-emphasis" href="https://www.instagram.com/empatia_animal/"><svg class="bi" width="24" height="24"></svg><i class="bi bi-instagram"></i></a></li>
                         </ul>
                     </div>
                 </footer>

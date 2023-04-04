@@ -1,13 +1,10 @@
 import { useContext } from "react";
 import { Context } from "../store/context";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 const AddDescription = () => {
     const { actions } = useContext(Context)
-    const right = <FontAwesomeIcon icon={faArrowRight} />
-    const left = <FontAwesomeIcon icon={faArrowLeft} />
+
 
     return (
         <div
@@ -18,10 +15,10 @@ const AddDescription = () => {
 
                 <ul className="nav nav-pills justify-content-center m-1" id="pills-tab" role="tablist">
                     <li className="nav-item" role="presentation">
-                        <button className="btn btn-lg btn-light active m-2" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">{left}</button>
+                        <button className="btn btn-lg btn-light active m-2" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i class="bi bi-box-arrow-in-left"></i></button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="btn btn-lg btn-light m-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">{right}</button>
+                        <button className="btn btn-lg btn-light m-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="bi bi-box-arrow-in-right"></i></button>
                     </li>
                 </ul>
 
