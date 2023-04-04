@@ -81,7 +81,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error));
       },
       /* eslint-disable no-restricted-globals */
-      deleteUser: (e, navigate) => {
+      deleteUser: (e) => {
         e.preventDefault();
         const { user_id, token } = getStore();
         const urlFetch = `http://localhost:8080/users/${user_id}`;
@@ -96,7 +96,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
             .then((res) => res.json())
             .then((data) => {
-              navigate("/login");
               console.log(data);
               alert(data);
             })
