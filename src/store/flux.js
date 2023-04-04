@@ -1,7 +1,5 @@
 const getState = ({ setStore, getActions, getStore }) => {
   return {
-
-
     store: {
       user: {
         name: "",
@@ -292,7 +290,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((data) => setStore({ pets: data }))
           .catch((error) => console.log(error))
       },
-
       handlePostPetSearch: (e) => {
         e.preventDefault();
         const { pet } = getStore();
@@ -306,7 +303,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(data => setStore({ pets: data }))
           .catch(error => console.log(error))
       },
-
       handlePostPetDelete: (id) => {
 
         fetch(`http://localhost:8080/pet/${id}`, {
@@ -323,9 +319,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error))
       },
-
       handlePostPetFilter: (e) => {
-
         const { pet } = getStore();
         fetch("http://localhost:8080/pets/search", {
           headers: {
@@ -338,15 +332,9 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch(error => console.log(error))
         setStore({
           pet: {
-
             gender: "",
-
-
             spicies: "",
             size: "",
-
-
-
           },
           addFavorite: (pet) => {
             const { favorite } = getStore();
@@ -361,17 +349,9 @@ const getState = ({ setStore, getActions, getStore }) => {
             const newFavorites = store.favorite.filter(item => item !== name);
             setStore({ favorite: newFavorites });
           }
-
         })
       },
-
-
-
-
     }
-
-
-
   }
 };
 

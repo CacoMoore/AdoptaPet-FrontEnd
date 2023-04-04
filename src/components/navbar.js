@@ -70,8 +70,8 @@ const NavBar = () => {
               </li>
               <li>
                 {rol_id === 2 ? (
-                  <a href="/"> 
-                    Cerrar sesión</a>
+                  <Link to="/"> 
+                    Cerrar sesión</Link>
                 ) : null}
               </li>
             </ul>
