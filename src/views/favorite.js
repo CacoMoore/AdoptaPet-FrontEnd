@@ -37,9 +37,6 @@ const Favorites = () => {
                         <li className="dropdown-item-text text-center text-secondary"> Vacío </li>
 
                     )}
-                
-                
-                
             </div>
         
     )

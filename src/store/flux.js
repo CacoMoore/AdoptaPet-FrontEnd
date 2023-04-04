@@ -290,7 +290,22 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((data) => setStore({ pets: data }))
           .catch((error) => console.log(error))
       },
-    },
-  };
-}
+      addFavorite: (pet) => {
+        const { favorite } = getStore();
+        if (!favorite.includes(pet)) {
+          const newFavorites = [...favorite, pet];
+          setStore({ favorite: newFavorites });
+          console.log(newFavorites);
+        }
+      },
+        removeFavorites: name => {
+          const store = getStore();
+          const newFavorites = store.favorite.filter(item => item !== name);
+          setStore({ favorite: newFavorites });
+        }
+        },
+      };
+    };
+  
+
   export default getState;
