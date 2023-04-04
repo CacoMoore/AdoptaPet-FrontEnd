@@ -18,6 +18,7 @@ const Formcomp = () => {
         //actions.sendForm(data);
                   
     }
+    
 
     return (
         <div>

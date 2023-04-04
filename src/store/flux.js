@@ -41,54 +41,6 @@ const getState = ({ setStore, getActions, getStore }) => {
         style: "",
       },
       favorite: [],
-      
-      form: {
-        query1: "",
-        query2: "",
-        query3: "",
-        query4: "",
-        query5: "",
-        query6: "",
-        query7: "",
-        query8: "",
-        query9: "",
-        query10: "",
-        query11: "",
-        query12: "",
-        query13: "",
-        query14: "",
-        query15: "",
-        query16: "",
-        query17: "",
-        query18: "",
-        query19: "",
-        query20: "",
-        query21: "",
-        query22: "",
-        query23: "",
-        query24: "",
-        query25: "",
-        query26: "",
-        query27: "",
-        query28: "",
-        query29: "",
-        query30: "",
-        query31: "",
-        query32: "",
-        query33: "",
-        query34: "",
-        query35: "",
-        query36: "",
-        query37: "",
-        query38: "",
-        query39: "",
-        query40: "",
-        query41: "",
-        query42: "",
-        query43: "",
-        query44: "",
-      },
-      
     },
     actions: {
       handleChange: (e) => {
@@ -350,65 +302,78 @@ const getState = ({ setStore, getActions, getStore }) => {
             "Content-Type": "application/json"
           },
           method: "POST",
-          body: JSON.stringify(form)
+          body: JSON.stringify(pet)
         }).then(res => res.json())
-          .then(data => console.log(data))
+          .then(data => setStore({ pets: data }))
           .catch(error => console.log(error))
-        setStore({
-          form: {
-            query1: "",
-            query2: "",
-            query3: "",
-            query4: "",
-            query5: "",
-            query6: "",
-            query7: "",
-            query8: "",
-            query9: "",
-            query10: "",
-            query11: "",
-            query12: "",
-            query13: "",
-            query14: "",
-            query15: "",
-            query16: "",
-            query17: "",
-            query18: "",
-            query19: "",
-            query20: "",
-            query21: "",
-            query22: "",
-            query23: "",
-            query24: "",
-            query25: "",
-            query26: "",
-            query27: "",
-            query28: "",
-            query29: "",
-            query30: "",
-            query31: "",
-            query32: "",
-            query33: "",
-            query34: "",
-            query35: "",
-            query36: "",
-            query37: "",
-            query38: "",
-            query39: "",
-            query40: "",
-            query41: "",
-            query42: "",
-            query43: "",
-            query44: "",
-          },
-
-        })
-
       },
 
-    },
-  };
+      handlePostPetDelete: (id) => {
+
+        fetch(`http://localhost:8080/pet/${id}`, {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "DELETE",
+
+        }).then(res => res.json())
+          .then(data => {
+            console.log('Respuesta mascota eliminada', data)
+            setStore({ petsDelete: data })
+
+          })
+          .catch(error => console.log(error))
+      },
+
+      handlePostPetFilter: (e) => {
+
+        const { pet } = getStore();
+        fetch("http://localhost:8080/pets/search", {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify(pet)
+        }).then(res => res.json())
+          .then(data => setStore({ pets: data }))
+          .catch(error => console.log(error))
+        setStore({
+          pet: {
+
+            gender: "",
+
+
+            spicies: "",
+            size: "",
+
+
+
+          },
+          addFavorite: (pet) => {
+            const { favorite } = getStore();
+            if (!favorite.includes(pet)) {
+              const newFavorites = [...favorite, pet];
+              setStore({ favorite: newFavorites });
+              console.log(newFavorites);
+            }
+          },
+          removeFavorites: name => {
+            const store = getStore();
+            const newFavorites = store.favorite.filter(item => item !== name);
+            setStore({ favorite: newFavorites });
+          }
+
+        })
+      },
+
+
+
+
+    }
+
+
+
+  }
 };
 
 export default getState;
-
