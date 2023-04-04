@@ -336,8 +336,8 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((data) => setStore({ pets: data }))
           .catch((error) => console.log(error))
       },
-<<<<<<< HEAD
 
+      
       sendForm: (e) => {
         e.preventDefault();
         const { form } = getStore();
@@ -402,8 +402,6 @@ const getState = ({ setStore, getActions, getStore }) => {
 
       },
 
-=======
->>>>>>> ee6a557abc31d4d821822a93e75c657b480aaba7
     },
   };
 };
