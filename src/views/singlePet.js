@@ -11,7 +11,7 @@ const SinglePet = (props) => {
 
     const [information, setInformation] = useState()
     useEffect(() => {
-        const getPet = async () => {
+        const getPet = async (id) => {
             const data = await fetch(`http://localhost:8080/pet/${id}`)
 
             try {
@@ -24,7 +24,7 @@ const SinglePet = (props) => {
 
         }
 
-        getPet()
+        getPet(id)
         console.log(id)
     }, [id])
 
@@ -55,6 +55,7 @@ const SinglePet = (props) => {
                         <button type="button" class="btn btn-dark btn-lg mt-5 me-3">Adoptar</button>
                         <button type="button" class="btn btn-dark btn-lg mt-5 me-3">Favorito</button>
                         <button type="button" class="btn btn-dark btn-lg mt-5 ">Editar</button>
+                        <button type="button" class="btn btn-dark btn-lg mt-5 ">Borrar</button>
                     </div>
 
                 </div>

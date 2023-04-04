@@ -1,5 +1,7 @@
 const getState = ({ setStore, getActions, getStore }) => {
   return {
+
+
     store: {
       user: {
         name: "",
@@ -22,7 +24,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         medical_history: "",
         is_adopted: false,
         adress_id: false,
-        rol_id: false,
+        rol_id: 1,
       },
       userDescription: [],
       userInfo: {
@@ -31,6 +33,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         phone: 0,
       },
       pets: [],
+      petsDelete: '',
       loginUser: [],
       description: {
         description: "",
@@ -284,28 +287,106 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
 
       },
+
+      sendForm: (answers) => {
+            return fetch("http://localhost:8080/form", {
+              headers: {
+                "Content-Type": "application/json"
+              },
+              method: "POST",
+              body: JSON.stringify(answers)
+            }).then(res => res.json())
+              .then(data => console.log(data))
+              
+          },
+          
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())
           .then((data) => setStore({ pets: data }))
           .catch((error) => console.log(error))
       },
-      addFavorite: (pet) => {
-        const { favorite } = getStore();
-        if (!favorite.includes(pet)) {
-          const newFavorites = [...favorite, pet];
-          setStore({ favorite: newFavorites });
-          console.log(newFavorites);
-        }
-      },
-        removeFavorites: name => {
-          const store = getStore();
-          const newFavorites = store.favorite.filter(item => item !== name);
-          setStore({ favorite: newFavorites });
-        }
-        },
-      };
-    };
-  
 
-  export default getState;
+      handlePostPetSearch: (e) => {
+        e.preventDefault();
+        const { pet } = getStore();
+        fetch("http://localhost:8080/pets/search", {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify(pet)
+        }).then(res => res.json())
+          .then(data => setStore({ pets: data }))
+          .catch(error => console.log(error))
+      },
+
+      handlePostPetDelete: (id) => {
+
+        fetch(`http://localhost:8080/pet/${id}`, {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "DELETE",
+
+        }).then(res => res.json())
+          .then(data => {
+            console.log('Respuesta mascota eliminada', data)
+            setStore({ petsDelete: data })
+
+          })
+          .catch(error => console.log(error))
+      },
+
+      handlePostPetFilter: (e) => {
+
+        const { pet } = getStore();
+        fetch("http://localhost:8080/pets/search", {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify(pet)
+        }).then(res => res.json())
+          .then(data => setStore({ pets: data }))
+          .catch(error => console.log(error))
+        setStore({
+          pet: {
+
+            gender: "",
+
+
+            spicies: "",
+            size: "",
+
+
+
+          },
+          addFavorite: (pet) => {
+            const { favorite } = getStore();
+            if (!favorite.includes(pet)) {
+              const newFavorites = [...favorite, pet];
+              setStore({ favorite: newFavorites });
+              console.log(newFavorites);
+            }
+          },
+          removeFavorites: name => {
+            const store = getStore();
+            const newFavorites = store.favorite.filter(item => item !== name);
+            setStore({ favorite: newFavorites });
+          }
+
+        })
+      },
+
+
+
+
+    }
+
+
+
+  }
+};
+
+export default getState;
