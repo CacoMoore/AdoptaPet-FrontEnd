@@ -10,8 +10,13 @@ const PhotoGallery = () => {
 
     useEffect(() => {
         actions.getPets()
-    })
-    
+    }, [])
+
+    console.log(store.pets)
+
+
+
+
     return <div className="div-main ">
 
         <div className="  header-gallery ">
@@ -36,20 +41,17 @@ const PhotoGallery = () => {
                         <div className="row">
                             <h1 className="my-5 text-center display-4">Mascotas en adopción</h1>
                             {store.pets.length ? (
-                                store.pets.map((pet) => (
-                                    <div className="col-lg-4 col-md-12 mb-5" key={pet.id}>
-                                        <Link to={`/pet/${pet.id}`}>
-                                            <CardGallery
-                                                pet={pet}
-                                                imgGallery="https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg"
-                                                nombreGallery={pet.name}
-                                                sexoGallery={pet.gender}
-                                                especieGallery={pet.species}
-                                                tamanoGallery={pet.size}
-                                            />
+                                store.pets.map(pet => {
+
+                                    return <div className=" col-lg-4 col-md-12 mb-5" key={pet.id}>
+                                        <CardGallery pet={pet}
+
+                                        /*  imgGallery="https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg" */
+                                        />
+                                        <Link to={`/pet/${pet.id}`}> Ver más Información
                                         </Link>
                                     </div>
-                                ))
+                                })
                             ) : (
                                 <p>No hay animales para adoptar</p>
                             )}

@@ -2,13 +2,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom"
-
+import { useContext } from "react";
+import { Context } from "../store/context";
 
 
 
 const SinglePet2 = (props) => {
-    const { id } = useParams()
 
+
+
+
+    const { store, actions } = useContext(Context)
+
+
+    const { id } = useParams()
+    console.log(id)
     const [information, setInformation] = useState()
     useEffect(() => {
         const getPet = async () => {
@@ -27,6 +35,12 @@ const SinglePet2 = (props) => {
         getPet()
         console.log(id)
     }, [id])
+
+
+    const deletePetId = () => {
+        actions.handlePostPetDelete(id)
+        alert('Se elimino satisfactoriamente')
+    }
 
     const fav = <FontAwesomeIcon icon={faHeart} />
 
@@ -54,7 +68,7 @@ const SinglePet2 = (props) => {
                     <div className='d-flex justify-content-center'>
                         <button type="button" class="btn btn-dark btn-lg mt-5 me-3">Adoptar</button>
                         <button type="button" class="btn btn-dark btn-lg mt-5 me-3">Favorito</button>
-                        <button type="button" class="btn btn-dark btn-lg mt-5 ">Editar</button>
+                        <button onClick={() => deletePetId()} type="button" class="btn btn-dark btn-lg mt-5 ">Eliminar</button>
                     </div>
 
                 </div>

@@ -8,50 +8,68 @@ const Footer = (props) => {
     const pawn = <FontAwesomeIcon icon={faPaw} />
     
     return (
-        <div
-            className="row"
-            id="footer">
-            <div className="col-sm-6 mb-3 mb-sm-0">
-                <div className="card" id="cardfooter">
-                    <div className="card-body">
-                        <div className="card mb-3">
-                            <img src={props.map} className="card-img-top" alt="map" />
-                            <div className="card-body">
-                                <h5 className="card-title">Busca dónde adoptar</h5>
-                                <p className="card-text">Encuentra a tu mascota perfecta</p>
-                                <Link to={"/adopform"}>
-                                    <button className="btn" id="btn-footer">Adoptar </button>
-                                </Link>
+        <div id="footer">
+            <div class="container">
+                <footer class="py-5">
+                    <div class="row">
+                        <div class="col-6 col-md-2 mb-3">
+                            <h5>Contáctanos</h5>
+                            <ul class="nav flex-column">
+                                <li className="nav-item mb-2"><a href="https://accounts.google.com/AccountChooser/signinchooser?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&flowName=GlifWebSignIn&flowEntry=AccountChooser" target="_blank" className="nav-link p-0 text-body-secondary">empatianimal@gmail.com</a></li>
+                                <li className="nav-item mb-2 "><a href="#" className="nav-link p-0 text-body-secondary">+569 738 192 83</a></li>
+                                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">+569 935 291 93</a></li>
+                                <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Quilpue, Chile</a></li>
+                                <li className="nav-item mb-2"><a href="https://web.facebook.com/ColectivoEmpatiaAnimal/about/?ref=page_internal" target="_blank" className="nav-link p-0 text-body-secondary">Facebook</a></li>
+                                <li className="nav-item mb-2"><a href="https://www.instagram.com/empatia_animal/" target="_blank" className="nav-link p-0 text-body-secondary">Instagram</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6 col-md-2 mb-3">
+                            <h5>Información</h5>
+                            <ul class="nav flex-column">
+                                <li className="nav-item mb-2"><Link to="/photoGallery" className="nav-link p-0 text-body-secondary">Ver mascotas</Link></li>
+                                <li className="nav-item mb-2"><Link to="/info" className="nav-link p-0 text-body-secondary">Información de la fundación</Link></li>
+                                <li className="nav-item mb-2"><Link to="/info" className="nav-link p-0 text-body-secondary">Colaborar</Link></li>
+                                <li className="nav-item mb-2"><Link to="/adopform" className="nav-link p-0 text-body-secondary">Adoptar</Link></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-6 col-md-2 mb-3">
+                            <h5>Blog</h5>
+                            <ul class="nav flex-column">
+                                <li className="nav-item mb-2"><Link to="/" className="nav-link p-0 text-body-secondary">Jornadas de adopción</Link></li>
+                                <li className="nav-item mb-2"><Link to="/" className="nav-link p-0 text-body-secondary">Historias</Link></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="col-md-5 offset-md-1 mb-3">
+                            <div className="card" id="cardfooter">
+                                <div className="card-body">
+                                    <div className="card mb-3">
+                                        <img src={props.map} className="card-img-top" alt="map" />
+                                        <div className="card-body">
+                                            <h5 className="card-title">Busca dónde adoptar</h5>
+                                            <p className="card-text">Encuentra a tu mascota perfecta</p>
+                                            <Link to={"/adopform"}>
+                                                <button className="btn" id="btn-footer">Adoptar </button>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div className="col-sm-6">
-                <div className="card" id="cardfooter">
-                    <div className="card-body">
-                        <hi className="d-flex justify-content-center">Contáctanos</hi>
-                        <ul className="list-group ">
-                            <li className="list-group-item disabled" id="contact-info" aria-disabled="true">
-                                empatianimal@gmail.com</li>
-                            <li className="list-group-item disabled " id="contact-info" aria-disabled="true">+569 738 192 83 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+569 935 291 93</li>
-                            <li className="list-group-item disabled" id="contact-info" aria-disabled="true">Quilpue, Chile</li>
-                        </ul>
-                        <ul class="list-group list-group-horizontal" id="rrss1">
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="F"> <a target="_blank" class="fcc-btn" href="https://web.facebook.com/ColectivoEmpatiaAnimal/about/?ref=page_internal"><i class="bi bi-facebook"></i></a> </li>
-                            <li class="list-group-item" className="card-img-top" id="rrss" alt="I"> <a target="_blank" class="fcc-btn" href="https://www.instagram.com/empatia_animal/"><i class="bi bi-instagram"></i></a></li>
+
+                    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                        <p>© 2023 AdoptaPet {pawn}, Inc</p>
+                        <ul class="list-unstyled d-flex">
+                            <li class="ms-3"><a class="link-body-emphasis" href="https://web.facebook.com/ColectivoEmpatiaAnimal/about/?ref=page_internal"><svg class="bi" width="24" height="24"></svg>Facebook</a></li>
+                            <li class="ms-3"><a class="link-body-emphasis" href="https://www.instagram.com/empatia_animal/"><svg class="bi" width="24" height="24"></svg>Instagram</a></li>
                         </ul>
                     </div>
-                </div>
+                </footer>
             </div>
-            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-                <div class="col-md-4 d-flex align-items-center">
-                    <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                        <svg class="bi" style={{ width: "30", height: "24" }}></svg>
-                    </a>
-                    <span class="mb-3 mb-md-0 text-body-secondary">© 2023 AdoptaPet {pawn}, Inc</span>
-                </div>
-            </footer>
         </div>
     )
 }
