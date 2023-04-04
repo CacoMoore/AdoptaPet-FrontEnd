@@ -324,6 +324,38 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error))
       },
+
+      handlePostPetFilter: (e) => {
+        e.preventDefault();
+        const { pet } = getStore();
+        fetch("http://localhost:8080/pets/search", {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify(pet)
+        }).then(res => res.json())
+          .then(data => setStore({ pets: data }))
+          .catch(error => console.log(error))
+        setStore({
+          pet: {
+
+            gender: "",
+
+
+            spicies: "",
+            size: "",
+
+
+
+          },
+
+        })
+      },
+
+
+
+
     }
 
 

@@ -58,7 +58,7 @@ const FormGallery = () => {
 
                     <div className="mb-3 d-flex justify-content-center">
                         <button type="submit" class="btn btn-light">Buscar</button>
-                        <button onClick={actions.resetPets} type="submit" class="btn btn-light">Restablecer</button>
+                        <button onClick={() => actions.handlePostPetFilter()} type="submit" class="btn btn-light">Restablecer</button>
                     </div>
 
 
