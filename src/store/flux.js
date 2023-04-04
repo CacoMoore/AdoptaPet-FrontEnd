@@ -1,5 +1,7 @@
 const getState = ({ setStore, getActions, getStore }) => {
   return {
+
+
     store: {
       user: {
         name: "",
@@ -22,7 +24,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         medical_history: "",
         is_adopted: false,
         adress_id: false,
-        rol_id: false,
+        rol_id: 1,
       },
       userDescription: [],
       userInfo: {
@@ -31,12 +33,15 @@ const getState = ({ setStore, getActions, getStore }) => {
         phone: 0,
       },
       pets: [],
+      petsDelete: '',
       loginUser: [],
       description: {
         description: "",
         motivation: "",
         style: "",
       },
+      favorite: [],
+      
       form: {
         query1: "",
         query2: "",
@@ -337,11 +342,10 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error))
       },
 
-      
-      sendForm: (e) => {
+      handlePostPetSearch: (e) => {
         e.preventDefault();
-        const { form } = getStore();
-        fetch("http://localhost:8080/form", {
+        const { pet } = getStore();
+        fetch("http://localhost:8080/pets/search", {
           headers: {
             "Content-Type": "application/json"
           },
@@ -405,4 +409,6 @@ const getState = ({ setStore, getActions, getStore }) => {
     },
   };
 };
+
 export default getState;
+
