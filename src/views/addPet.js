@@ -32,7 +32,7 @@ const AddPet = () => {
                         name="gender"
                         onChange={actions.handleChangePet}
                         className="form-control">
-                        <option name="gender" value="Selecciona una opción">Selecciona una opción</option>
+                        <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                     </select>
@@ -53,11 +53,11 @@ const AddPet = () => {
                 </div>
                 <div className="form-outline m-4">
                     <select
-                        id="species"
+                        id="spicies"
                         name="species"
                         onChange={actions.handleChangePet}
                         className="form-control">
-                        <option name="species" value="Selecciona una opción">Selecciona una opción</option>
+                        <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Perro">Perro</option>
                         <option value="Gato">Gato</option>
                         <option value="Otro">Otro</option>
@@ -72,7 +72,7 @@ const AddPet = () => {
                         name="size"
                         onChange={actions.handleChangePet}
                         className="form-control">
-                        <option name="size" value="Selecciona una opción">Selecciona una opción</option>
+                        <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Pequeño">Pequeño</option>
                         <option value="Mediano">Mediano</option>
                         <option value="Grande">Grande</option>
@@ -109,7 +109,7 @@ const AddPet = () => {
                         name="is_adopted"
                         onFocus={actions.handleChangePet}
                         className="form-control">
-                        <option name="is_adopted" value="Selecciona una opción">Selecciona una opción</option>
+                        <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value={true}>Sí</option>
                         <option value={false}>No</option>
                     </select>
