@@ -36,7 +36,7 @@ const PhotoGallery = () => {
                         <div className="row">
                             <h1 className="my-5 text-center display-4">Mascotas en adopción</h1>
                             {store.pets.length ? (
-                            {store.pets.map(pet => {
+                            store.pets.map(pet => {
 
                                 return <div className=" col-lg-4 col-md-12 mb-5" key={pet.id}>
                                             <CardGallery pet={pet}
@@ -46,7 +46,7 @@ const PhotoGallery = () => {
                                     <Link to={`/pet/${pet.id}`}> Ver más Información
                                 </Link>
                                 </div>
-                            })}
+                            })
                                 ) : (
                                 <p>No hay animales para adoptar</p>
                             )}
