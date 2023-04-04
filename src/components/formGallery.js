@@ -21,7 +21,7 @@ const FormGallery = () => {
                             onChange={actions.handleChangePet}
                             name="size"
                             aria-label="Default select example">
-                            <option value={undefined}>Selecionar</option>
+                            <option value=''>Selecionar</option>
                             <option value="Grande">Grande</option>
                             <option value="Mediano">Mediano</option>
                             <option value="Pequeño">Pequeño</option>
@@ -35,7 +35,7 @@ const FormGallery = () => {
                             onChange={actions.handleChangePet}
                             name="species"
                             aria-label="Default select example">
-                            <option value={undefined}>Selecionar</option>
+                            <option value=''>Selecionar</option>
                             <option value="Perro">Perro</option>
                             <option value="Gato">Gato</option>
 
@@ -48,7 +48,7 @@ const FormGallery = () => {
                             onChange={actions.handleChangePet}
                             name="gender"
                             aria-label="Default select example">
-                            <option value={undefined}>Selecionar</option>
+                            <option value=''>Selecionar</option>
                             <option value="Femenino">Femenino</option>
                             <option value="Masculino">Masculino</option>
 
@@ -58,7 +58,7 @@ const FormGallery = () => {
 
                     <div className="mb-3 d-flex justify-content-center">
                         <button type="submit" class="btn btn-light">Buscar</button>
-                        <button onClick={actions.handlePostPetFilter} type="submit" class="btn btn-light">Restablecer</button>
+                        <button onClick={actions.handlePostPetRestore} type="submit" class="btn btn-light">Restablecer</button>
                     </div>
 
 

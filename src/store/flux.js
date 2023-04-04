@@ -325,7 +325,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch(error => console.log(error))
       },
 
-      handlePostPetFilter: (e) => {
+      handlePostPetRestore: (e) => {
 
         const { pet } = getStore();
         fetch("http://localhost:8080/pets/search", {
