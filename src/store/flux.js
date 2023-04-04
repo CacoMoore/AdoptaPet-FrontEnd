@@ -36,7 +36,8 @@ const getState = ({ setStore, getActions, getStore }) => {
         description: "",
         motivation: "",
         style: "",
-      }
+      },
+      favorite: [],
     },
     actions: {
       handleChange: (e) => {
@@ -291,5 +292,5 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
     },
   };
-};
-export default getState;
+}
+  export default getState;

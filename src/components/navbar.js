@@ -61,6 +61,19 @@ const NavBar = () => {
                   </Link>
                 ) : null}
               </li>
+              <li>
+                {rol_id === 2 ? (
+                  <Link className="dropdown-item" to="/favorites">
+                    Mis favoritos
+                  </Link>
+                ) : null}
+              </li>
+              <li>
+                {rol_id === 2 ? (
+                  <a href="/"> 
+                    Cerrar sesión</a>
+                ) : null}
+              </li>
             </ul>
           </div>
         </div>

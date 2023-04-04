@@ -22,6 +22,7 @@ import AddDescription from './views/addDescription';
 import Adminprofile from './views/adminprofile';
 import Solviewforadmin from './views/solviewforadmin';
 import SinglePet2 from './views/SinglePet2';
+import Favorites from './views/favorite';
 
 
 
@@ -46,6 +47,7 @@ function App() {
         {/*SECCION DE GALERIA DE FOTOS Y INFORMACION INDIVIDUAL DE CADA PET */}
         <Route path="/photoGallery" element={<PhotoGallery />} />
         <Route path="/pet/:id" element={<SinglePet2 />} />
+        <Route path='favorites' element={<Favorites/>} />
       </Routes>
       <Footer />
     </BrowserRouter>
