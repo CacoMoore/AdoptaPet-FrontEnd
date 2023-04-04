@@ -15,8 +15,9 @@ const Formcomp = () => {
 
     const onSubmit = (data) => {
         console.log(data);
-        //actions.sendForm(data);
-                  
+        actions.sendForm(data)
+        .then(() => {alert("Formulario enviado exitosamente")})  
+        .catch (()=>{alert("debe completar todos los campos")})                       
     }
     
 

@@ -287,6 +287,19 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
 
       },
+
+      sendForm: (answers) => {
+            return fetch("http://localhost:8080/form", {
+              headers: {
+                "Content-Type": "application/json"
+              },
+              method: "POST",
+              body: JSON.stringify(answers)
+            }).then(res => res.json())
+              .then(data => console.log(data))
+              
+          },
+          
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())
