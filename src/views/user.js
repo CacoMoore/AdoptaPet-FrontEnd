@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/context";
 import React, { useContext } from "react";
+import Favorites from "./favorite";
 
 
 const User = () => {
@@ -52,6 +53,7 @@ const User = () => {
                             Adopta Aquí
                         </Link>
                     </div>
+                    <Favorites/>
                     <div className="mt-4">
                         <button 
                         onClick={ (e)=> actions.deleteUser(e, navigate)}
