@@ -26,6 +26,7 @@ import Favorites from './views/favorite';
 
 
 
+
 function App() {
   return (
     <BrowserRouter>

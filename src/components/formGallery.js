@@ -18,10 +18,10 @@ const FormGallery = () => {
                     <div className="col-md-12 ">
                         <h6>Tamaño De Mascota</h6>
                         <select className="form-select"
-                            onChange={actions.handleChangePet}
+                            onChange={actions.PetFilterContainer}
                             name="size"
                             aria-label="Default select example">
-                            <option value=''>Selecionar</option>
+                            <option value={undefined}>Selecionar</option>
                             <option value="Grande">Grande</option>
                             <option value="Mediano">Mediano</option>
                             <option value="Pequeño">Pequeño</option>
@@ -32,10 +32,10 @@ const FormGallery = () => {
                     <div className="col-md-12 ">
                         <h6>Especie</h6>
                         <select className="form-select"
-                            onChange={actions.handleChangePet}
+                            onChange={actions.PetFilterContainer}
                             name="species"
                             aria-label="Default select example">
-                            <option value=''>Selecionar</option>
+                            <option value={undefined}>Selecionar</option>
                             <option value="Perro">Perro</option>
                             <option value="Gato">Gato</option>
 
@@ -45,10 +45,10 @@ const FormGallery = () => {
                     <div className="col-md-12 ">
                         <h6>Género</h6>
                         <select className="form-select"
-                            onChange={actions.handleChangePet}
+                            onChange={actions.PetFilterContainer}
                             name="gender"
                             aria-label="Default select example">
-                            <option value=''>Selecionar</option>
+                            <option value={undefined}>Selecionar</option>
                             <option value="Femenino">Femenino</option>
                             <option value="Masculino">Masculino</option>
 
@@ -57,7 +57,7 @@ const FormGallery = () => {
 
 
                     <div className="mb-3 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-light">Buscar</button>
+                        <button type="submit" class="btn btn-light ">Buscar</button>
                         <button onClick={actions.handlePostPetRestore} type="submit" class="btn btn-light">Restablecer</button>
                     </div>
 

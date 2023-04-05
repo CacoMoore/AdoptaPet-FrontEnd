@@ -34,6 +34,12 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       pets: [],
       petsDelete: '',
+      PetFilterContainer: {
+        gender: "",
+        spicies: "",
+        size: "",
+
+      },
       loginUser: [],
       description: {
         description: "",
@@ -41,6 +47,8 @@ const getState = ({ setStore, getActions, getStore }) => {
         style: "",
       },
       favorite: [],
+      currentPage: 1,
+      petsPerPage: 9,
     },
     actions: {
       handleChange: (e) => {
@@ -52,6 +60,47 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
         });
       },
+
+
+      //funcion para paginacion siguiente pagina
+      handleCurrentPageNext: (e) => {
+        let { currentPage } = getStore();
+        setStore({
+          currentPage: (currentPage + 1)
+        })
+      },
+
+
+      // Funcion para paginacion para devolverme a lpa ag anterior
+      handleCurrentPagePrevius: (e) => {
+        let { currentPage } = getStore();
+        setStore({
+          currentPage: (currentPage - 1)
+        })
+      },
+
+
+      onSpecificPage: (e) => {
+
+        setStore({
+          currentPage: e
+        })
+      },
+
+      //Funcion para atrapar el valor PetFilterContainer y asi poder usarla en el filtro de busqueda
+      PetFilterContainer: (e) => {
+        let { PetFilterContainer } = getStore();
+        let name = e.target.name;
+        let value = e.target.value;
+        setStore({
+          PetFilterContainer: {
+            ...PetFilterContainer,
+            [name]: value
+          }
+        })
+      },
+
+      //Funcion para atrapar el valor pet y asi usarla para para el post
       handleChangePet: (e) => {
         let { pet } = getStore();
         let name = e.target.name;
@@ -258,6 +307,9 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error));
       },
+
+
+      //Para subir la informacion de la pet
       handlePostPet: (e) => {
         e.preventDefault();
         const { pet } = getStore();
@@ -287,6 +339,8 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
 
       },
+
+      //Funcion para traer la informacion de cada pet funcion get
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())
@@ -294,20 +348,24 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error))
       },
 
+
+      //Funcion para filtrar se trae todos los pet que coincidan con el valor del filtro
       handlePostPetSearch: (e) => {
         e.preventDefault();
-        const { pet } = getStore();
+        const { PetFilterContainer } = getStore();
         fetch("http://localhost:8080/pets/search", {
           headers: {
             "Content-Type": "application/json"
           },
           method: "POST",
-          body: JSON.stringify(pet)
+          body: JSON.stringify(PetFilterContainer)
         }).then(res => res.json())
           .then(data => setStore({ pets: data }))
           .catch(error => console.log(error))
       },
 
+
+      // Se elimina la pet atraves de su id
       handlePostPetDelete: (id) => {
 
         fetch(`http://localhost:8080/pet/${id}`, {
@@ -325,45 +383,45 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch(error => console.log(error))
       },
 
+      //Se resetea el valor del filtro
       handlePostPetRestore: (e) => {
 
-        const { pet } = getStore();
+        const { PetFilterContainer } = getStore();
         fetch("http://localhost:8080/pets/search", {
           headers: {
             "Content-Type": "application/json"
           },
           method: "POST",
-          body: JSON.stringify(pet)
+          body: JSON.stringify(PetFilterContainer)
         }).then(res => res.json())
           .then(data => setStore({ pets: data }))
           .catch(error => console.log(error))
         setStore({
-          pet: {
+          PetFilterContainer: {
 
-            gender: "",
-
-
-            spicies: "",
-            size: "",
+            gender: undefined,
+            spicies: undefined,
+            size: undefined,
 
 
 
           },
-          addFavorite: (pet) => {
-            const { favorite } = getStore();
-            if (!favorite.includes(pet)) {
-              const newFavorites = [...favorite, pet];
-              setStore({ favorite: newFavorites });
-              console.log(newFavorites);
-            }
-          },
-          removeFavorites: name => {
-            const store = getStore();
-            const newFavorites = store.favorite.filter(item => item !== name);
-            setStore({ favorite: newFavorites });
-          }
+
 
         })
+      },
+      addFavorite: (pet) => {
+        const { favorite } = getStore();
+        if (!favorite.includes(pet)) {
+          const newFavorites = [...favorite, pet];
+          setStore({ favorite: newFavorites });
+          console.log(newFavorites);
+        }
+      },
+      removeFavorites: name => {
+        const store = getStore();
+        const newFavorites = store.favorite.filter(item => item !== name);
+        setStore({ favorite: newFavorites });
       },
 
 

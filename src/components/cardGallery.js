@@ -14,7 +14,7 @@ const CardGallery = (props) => {
         console.log(store.favorite)
         actions.addFavorite(props.pet);
         console.log(store.favorite)
-      };
+    };
 
 
     return (
@@ -28,14 +28,14 @@ const CardGallery = (props) => {
             </div>
             <div className="card-body">
 
-                <div className="row text-center">   
+                <div className="row text-center">
                     <span className='col-6'>{props.pet.gender}</span>
-                    <span className='col-6'>{props.pet.especie}</span>
+                    <span className='col-6'>{props.pet.species}</span>
                     <span className='col-12'>{props.pet.size}</span>
                 </div>
             </div>
             <button id="btn-fav" onClick={handleSubmit}> {fav} </button>
-            
+
         </div>
 
 
