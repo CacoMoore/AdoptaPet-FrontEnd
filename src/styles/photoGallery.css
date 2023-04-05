@@ -1,9 +1,5 @@
 
-/* Ajusta el alto de la imagen para que sea igual en todas*/
-.image-size-for-card {
-    
-   
-}
+
 
 /* poner un margin top en el div father para alejarlo del div header-gallery*/
 .div-father {
@@ -27,15 +23,7 @@
 
 /* Contenedor principal de photoGallery*/
 
-.div-main {
-   
-    
-}
 
-/*Se encutra al final de photoGalery*/
-.div-footer{
-    
-}
 
 /**/
 .div-header {
