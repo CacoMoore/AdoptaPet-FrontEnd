@@ -49,10 +49,6 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       favorites: [],
       favorite: [],
-      favoriteInfo: {
-        pet_id: 0,
-      }
-
     },
     actions: {
       handleChange: (e) => {
@@ -318,8 +314,27 @@ const getState = ({ setStore, getActions, getStore }) => {
           method: "POST",
           body: JSON.stringify(postAnswers)
         }).then(res => res.json())
-          .then(data => console.log(data),
-            getActions().getPost())
+          .then((data) => {
+            alert(data);
+            getActions().getPost();
+          })
+      },
+      getFavoriteUser: () => {
+        const { user_id, token } = getStore();
+        const urlFetch = `http://localhost:8080/favorites/user/${user_id}`;
+        fetch(urlFetch, {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+          }
+        })
+        .then(res => res.json())
+          .then(data => {
+            setStore({
+              favorites: data
+            });
+          })
+          .catch(error => console.log(error));
       },
       getPost: () => {
         fetch("http://localhost:8080/posts/list")

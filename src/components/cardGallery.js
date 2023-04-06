@@ -32,8 +32,8 @@ const CardGallery = (props) => {
             <div className="card-body">
 
                 <div className="row text-center">   
-                    <span className='col-6'>{props.pet.gender}</span>
-                    <span className='col-6'>{props.pet.especie}</span>
+                    <span className='col-12'>{props.pet.gender}</span>
+                    <span className='col-12'>{props.pet.species}</span>
                     <span className='col-12'>{props.pet.size}</span>
                 </div>
             </div>
