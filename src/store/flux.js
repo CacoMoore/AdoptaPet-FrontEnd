@@ -105,8 +105,8 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       handleUserDescription: (e) => {
         e.preventDefault();
-        const { description, token, user_id } = getStore();
-        const descriptionWithUserId = { ...description, user_id };
+        const { description, token, user_id} = getStore();
+        const descriptionWithUserId = { ...description, user_id};
         fetch("http://localhost:8080/users/description/", {
           headers: {
             "Content-Type": "application/json",
