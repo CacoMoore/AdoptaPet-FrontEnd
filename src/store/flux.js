@@ -1,5 +1,3 @@
-
-
 const getState = ({ setStore, getActions, getStore }) => {
   return {
     store: {
@@ -51,6 +49,9 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       favorites: [],
       favorite: [],
+      favoriteInfo: {
+        pet_id: 0,
+      }
 
     },
     actions: {
@@ -118,8 +119,8 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       handleUserDescription: (e) => {
         e.preventDefault();
-        const { description, token, user_id} = getStore();
-        const descriptionWithUserId = { ...description, user_id};
+        const { description, token, user_id } = getStore();
+        const descriptionWithUserId = { ...description, user_id };
         fetch("http://localhost:8080/users/description/", {
           headers: {
             "Content-Type": "application/json",
@@ -205,6 +206,7 @@ const getState = ({ setStore, getActions, getStore }) => {
               },
             });
             getActions().getUserDescription(user_id);
+            getActions().getFavoriteUser(user_id);
           })
           .catch(error => console.log(error));
       },
@@ -297,9 +299,8 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
 
       },
-
       sendForm: (answers) => {
-        return fetch("http://localhost:8080/form", {
+        fetch("http://localhost:8080/form", {
           headers: {
             "Content-Type": "application/json"
           },
@@ -309,19 +310,17 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(data => console.log(data))
 
       },
-
       sendPost: (postAnswers) => {
-        return fetch("http://localhost:8080/posts", {
+        fetch("http://localhost:8080/posts", {
           headers: {
             "Content-Type": "application/json"
           },
           method: "POST",
           body: JSON.stringify(postAnswers)
         }).then(res => res.json())
-          .then(data => console.log(data), 
-          getActions().getPost())
+          .then(data => console.log(data),
+            getActions().getPost())
       },
-
       getPost: () => {
         fetch("http://localhost:8080/posts/list")
           .then((res) => res.json())
@@ -329,8 +328,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error))
       },
       handleDeletePost: (id) => {
-    
-        const { token } = getStore(); 
+        const { token } = getStore();
         fetch(`http://localhost:8080/posts/${id}`,
           {
             headers: {
@@ -341,46 +339,10 @@ const getState = ({ setStore, getActions, getStore }) => {
             method: "DELETE",
           })
           .then(res => res.json())
-          .then(data => { console.log('Post eliminada', data) })
+          .then(data => console.log(data),
+            getActions().getPost())
           .catch(error => console.log(error))
       },
-
-      addFavorite: (pet) => {
-        const { favorite } = getStore();
-        if (!favorite.includes(pet)) {
-          const newFavorites = [...favorite, pet];
-          setStore({ favorite: newFavorites });
-          console.log(newFavorites);
-        }
-      },
-      sendFavorite: () => {
-        fetch('http://localhost:8080/favorites', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            pet_id: 1234,
-            user_id: 5678
-          })
-        }).then(response => {
-          if (response.ok) {
-            console.log('Favorito guardado');
-          }
-        }).catch(error => {
-          console.error('Error guardando favorito', error);
-        });
-      },
-
-
-      removeFavorites: (name) => {
-        const store = getStore();
-        const newFavorites = store.favorite.filter(item => item !== name);
-        setStore({ favorite: newFavorites });
-      },
-
-
-
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())
