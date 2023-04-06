@@ -53,10 +53,10 @@ const User = () => {
                         </Link>
                     </div>
 
-                    <div className="card mb-4 " id="cardFavorites">
+                    <div className="card mb-4 border" id="cardFavorites">
                         <h1>Favoritos</h1>
-                        <div className="row g-0">
-                            <div className="cards row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-center">
+                        <div className="row border">
+                            <div className=" border ">
                                 <Favorites />
                             </div>
                         </div>

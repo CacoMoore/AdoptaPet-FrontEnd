@@ -22,10 +22,7 @@ import AddDescription from './views/addDescription';
 import Adminprofile from './views/adminprofile';
 import Solviewforadmin from './views/solviewforadmin';
 import SinglePet2 from './views/SinglePet2';
-import Favorites from './views/favorite';
 import Register from './views/register';
-
-
 
 
 function App() {

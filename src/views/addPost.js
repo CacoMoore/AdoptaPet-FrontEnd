@@ -33,21 +33,7 @@ const AddPost = () => {
                         id="title"
                         name="title"
                         className="form-control" />
-
                 </div>
-
-                <div className="form-outline m-4">
-                    <label
-                        className="form-label"
-                        htmlFor="date">Fecha publicación</label>
-                    <input {...register('date')}
-                        type="date"
-                        id="date"
-                        name="date"
-                        className="form-control" />
-
-                </div>
-
                 <div className="form-outline m-4">
                     <label
                         className="form-label"
@@ -59,14 +45,7 @@ const AddPost = () => {
                         id="description"
                         name="description"
                         className="form-control" />
-
                 </div>
-                
-                { /*<div class="form-outline m-4">
-                    <label for="formFileSm" class="form-label">Adjuntar foto en JPG</label>
-                    <input {...register('imagePost')}
-                    class="form-control form-control-sm" id="formFileSm" type="file" />
-                </div>*/}
                 <button id="btn-add-news" className="btn btn-ms mt-1" type="submit" value="send">Agregar Noticia</button>
             </form>
         </div>
