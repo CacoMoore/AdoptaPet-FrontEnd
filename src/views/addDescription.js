@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 const AddDescription = () => {
     const { actions } = useContext(Context)
+
+
     return (
         <div
             style={{ borderRadius: '5px', minHeight: '100vh' }}>
@@ -13,10 +15,10 @@ const AddDescription = () => {
 
                 <ul className="nav nav-pills justify-content-center m-1" id="pills-tab" role="tablist">
                     <li className="nav-item" role="presentation">
-                        <button className="btn btn-lg btn-light active m-2" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i class="bi bi-file-person"></i></button>
+                        <button className="btn btn-lg btn-light active m-2" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i class="bi bi-box-arrow-in-left"></i></button>
                     </li>
                     <li className="nav-item" role="presentation">
-                        <button className="btn btn-lg btn-light m-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="bi bi-arrow-clockwise"></i></button>
+                        <button className="btn btn-lg btn-light m-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="bi bi-box-arrow-in-right"></i></button>
                     </li>
                 </ul>
 

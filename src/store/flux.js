@@ -1,7 +1,5 @@
 const getState = ({ setStore, getActions, getStore }) => {
   return {
-
-
     store: {
       user: {
         name: "",
@@ -85,8 +83,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error));
       },
       /* eslint-disable no-restricted-globals */
-      deleteUser: (e, navigate) => {
-        e.preventDefault();
+      deleteUser: (e) => {
         const { user_id, token } = getStore();
         const urlFetch = `http://localhost:8080/users/${user_id}`;
         const confirmed = confirm("¿Está seguro que desea eliminar al usuario?");
@@ -100,7 +97,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
             .then((res) => res.json())
             .then((data) => {
-              navigate("/login");
               console.log(data);
               alert(data);
             })
@@ -109,8 +105,8 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       handleUserDescription: (e) => {
         e.preventDefault();
-        const { description, token, user_id } = getStore();
-        const descriptionWithUserId = { ...description, user_id };
+        const { description, token, user_id} = getStore();
+        const descriptionWithUserId = { ...description, user_id};
         fetch("http://localhost:8080/users/description/", {
           headers: {
             "Content-Type": "application/json",
@@ -143,7 +139,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
         });
       },
-      handleUserRegister: (e) => {
+      handleUserRegister: (e, navigate) => {
         e.preventDefault();
         const { user } = getStore();
         fetch("http://localhost:8080/users", {
@@ -155,7 +151,6 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then(res => res.json())
           .then(data => {
-            alert(JSON.stringify(data));
             setStore({
               user: {
                 name: "",
@@ -167,7 +162,8 @@ const getState = ({ setStore, getActions, getStore }) => {
               }
             });
             console.log(data);
-            alert(data)
+            alert(JSON.stringify(data));
+            navigate("/login");
           })
           .catch(error => {
             alert(error.message);
@@ -227,8 +223,8 @@ const getState = ({ setStore, getActions, getStore }) => {
             });
             alert(JSON.stringify(data));
             console.log(data);
-            navigate("/user");
             getActions().fetchUserData(data.user_id, data.token);
+            navigate("/user");
           })
           .catch(error => console.log(error));
       },
@@ -293,7 +289,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((data) => setStore({ pets: data }))
           .catch((error) => console.log(error))
       },
-
       handlePostPetSearch: (e) => {
         e.preventDefault();
         const { pet } = getStore();
@@ -307,7 +302,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(data => setStore({ pets: data }))
           .catch(error => console.log(error))
       },
-
       handlePostPetDelete: (id) => {
 
         fetch(`http://localhost:8080/pet/${id}`, {
@@ -324,9 +318,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error))
       },
-
       handlePostPetFilter: (e) => {
-
         const { pet } = getStore();
         fetch("http://localhost:8080/pets/search", {
           headers: {
@@ -339,15 +331,9 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch(error => console.log(error))
         setStore({
           pet: {
-
             gender: "",
-
-
             spicies: "",
             size: "",
-
-
-
           },
           addFavorite: (pet) => {
             const { favorite } = getStore();
@@ -362,17 +348,9 @@ const getState = ({ setStore, getActions, getStore }) => {
             const newFavorites = store.favorite.filter(item => item !== name);
             setStore({ favorite: newFavorites });
           }
-
         })
       },
-
-
-
-
     }
-
-
-
   }
 };
 
