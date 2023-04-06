@@ -21,7 +21,7 @@ const CardGallery = (props) => {
 
         <div className="card container-photo-card">
 
-            <img src={props.pet.image} className="card-img-top image-size-for-card" alt="..." />
+            <img src={'http://127.0.0.1:8080/uploads/' + props.pet.img} className="card-img-top image-size-for-card" alt="..." />
 
             <div className='card-header d-flex justify-content-center bg-white fw-bold'>
                 <span>{props.pet.name}</span>

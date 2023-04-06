@@ -19,6 +19,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         description: "",
         species: "",
         size: "",
+        img: null,
         medical_history: "",
         is_adopted: false,
         adress_id: false,
@@ -98,16 +99,34 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
       },
 
+
+
+      handleChangeFilePet: (e) => {
+        let { pet } = getStore();
+        let name = e.target.name;
+        let value = e.target.files[0];
+
+        console.log(value)
+        setStore({
+          pet: {
+            ...pet,
+            [name]: value,
+          },
+        });
+      },
+
+
+
       //Funcion para atrapar el valor pet y asi usarla para para el post
       handleChangePet: (e) => {
         let { pet } = getStore();
         let name = e.target.name;
         let value = e.target.value;
-        let checked = e.target.value ? true : false
+
         setStore({
           pet: {
             ...pet,
-            [name]: name === "is_adopted" ? checked : value,
+            [name]: value,
           },
         });
       },
@@ -309,12 +328,28 @@ const getState = ({ setStore, getActions, getStore }) => {
       handlePostPet: (e) => {
         e.preventDefault();
         const { pet } = getStore();
-        fetch("http://localhost:8080/pets", {
-          headers: {
-            "Content-Type": "application/json"
-          },
+        const formData = new FormData();
+
+        formData.append('name', pet.name)
+        formData.append('gender', pet.gender)
+        formData.append('age', pet.age)
+        formData.append('description', pet.description)
+        formData.append('species', pet.species)
+        formData.append('size', pet.size)
+        formData.append('file', pet.img)
+        formData.append('medical_history', pet.medical_history)
+        formData.append('is_adopted', pet.is_adopted)
+        formData.append('adress_id', pet.adress_id)
+        formData.append('rol_id', pet.rol_id)
+
+
+
+
+
+        fetch("http://127.0.0.1:8080/pets", {
+
           method: "POST",
-          body: JSON.stringify(pet)
+          body: formData
         }).then(res => res.json())
           .then(data => console.log(data))
           .catch(error => console.log(error))
@@ -324,8 +359,9 @@ const getState = ({ setStore, getActions, getStore }) => {
             gender: "",
             age: "",
             description: "",
-            spicies: "",
+            species: "",
             size: "",
+            img: null,
             medical_history: "",
             is_adopted: "",
             adress_id: "",
@@ -358,6 +394,10 @@ const getState = ({ setStore, getActions, getStore }) => {
         }).then(res => res.json())
           .then(data => setStore({ pets: data }))
           .catch(error => console.log(error))
+        setStore({
+          currentPage: 1
+        })
+
       },
 
 
@@ -393,7 +433,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(data => setStore({ pets: data }))
           .catch(error => console.log(error))
         setStore({
-          pet: {
+          PetFilterContainer: {
             gender: "",
             spicies: "",
             size: "",

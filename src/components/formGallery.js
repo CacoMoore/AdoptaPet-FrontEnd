@@ -9,6 +9,8 @@ const FormGallery = () => {
     const { store, actions } = useContext(Context)
 
 
+
+
     return <>
         <div className=" container  w-75 mb-5  form-bg rounded ">
             <form onSubmit={actions.handlePostPetSearch} >
@@ -21,7 +23,7 @@ const FormGallery = () => {
                             onChange={actions.PetFilterContainer}
                             name="size"
                             aria-label="Default select example">
-                            <option value={undefined}>Selecionar</option>
+                            <option value={undefined}  >Selecionar</option>
                             <option value="Grande">Grande</option>
                             <option value="Mediano">Mediano</option>
                             <option value="Pequeño">Pequeño</option>

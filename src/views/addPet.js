@@ -107,7 +107,7 @@ const AddPet = () => {
                     <select
                         id="is_adopted"
                         name="is_adopted"
-                        onFocus={actions.handleChangePet}
+                        onChange={actions.handleChangePet}
                         className="form-control">
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value={true}>Sí</option>
@@ -127,6 +127,21 @@ const AddPet = () => {
                         className="form-label"
                         htmlFor="adress">Comuna de residencia</label>
                 </div>
+
+
+                <div className="form-outline m-4">
+                    <input
+                        type="file"
+                        id="img"
+                        name="img"
+                        className="form-control"
+                        onChange={actions.handleChangeFilePet}
+                    />
+                    <label
+                        className="form-label"
+                        htmlFor="img">Subir imagen</label>
+                </div>
+
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
