@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const Formcomp = () => {
 
-    const { actions } = useContext(Context)
+    const { store, actions } = useContext(Context)
 
     const pawn = <FontAwesomeIcon icon={faPaw} />
    
@@ -17,7 +17,8 @@ const Formcomp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
+        console.log(data)
+        //data.rol_id=store.loginUser.rol_id
         actions.sendForm(data)
         .then(()=>{alert("su formulario fue enviado exitosamente")})
         .catch (()=>{alert("debe completar todos los campos")})                       
@@ -30,7 +31,7 @@ const Formcomp = () => {
                 <div className="col-md-5 col-lg-4 order-md-last">
                     <div className="btn-group-vertical" role="group" aria-label="Vertical button group">
                         <Link to="/info">
-                            <button type="button" className="btn my-3 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Revisa acá las condiciones para adoptar</button>
+                            <button type="butnton" className="btn my-3 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Revisa acá las condiciones para adoptar</button>
                             <button type="button" className="btn my-3 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Quiero Colaborar</button>
                         </Link>
                         <Link to="/photoGallery">
@@ -42,6 +43,9 @@ const Formcomp = () => {
                 <div className="col-md-7 col-lg-8">
                     <h4 className="mb-5 border-bottom">Solicitud de adopción</h4>
                     <form onSubmit={handleSubmit(onSubmit)} className="needs-validation" novalidate="">
+                        {/*<input type="hidden" {...register('user_id', {value:store.loginUser.id} )}></input>
+                        <input type="hidden" {...register('rol_id', {value:store.loginUser.rol_id})}></input>*/}
+                        
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">1. Indica tu nombre, apellido, número de celular y el nombre del animal que te interesa. Por favor cuéntanos por qué buscas adoptar.</label>
                             <textarea className="form-control" id="" rows="3" type="text" {...register('query1', { maxLength: 500 })}></textarea>
