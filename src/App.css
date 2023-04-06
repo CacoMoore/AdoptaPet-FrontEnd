@@ -165,3 +165,8 @@ a:visited {
   margin-left: 2%;
   margin-bottom: 3%;
 }
+
+#cardFavorites{
+  padding-top: 5%;
+  border: none;
+}

@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
 import { useContext } from "react";
 import { Context } from "../store/context";
 
@@ -11,10 +10,14 @@ const CardGallery = (props) => {
     const fav = <FontAwesomeIcon icon={faHeart} />
 
     const handleSubmit = () => {
-        console.log(store.favorite)
-        actions.addFavorite(props.pet);
-        console.log(store.favorite)
-      };
+         
+            console.log(store.favorite)
+            actions.addFavorite(props.pet)
+            console.log(store.favorite)
+
+            alert("La mascota se agrego a tus favoritos!");
+        
+    };
 
 
     return (
@@ -34,6 +37,7 @@ const CardGallery = (props) => {
                     <span className='col-12'>{props.pet.size}</span>
                 </div>
             </div>
+            
             <button id="btn-fav" onClick={handleSubmit}> {fav} </button>
             
         </div>
