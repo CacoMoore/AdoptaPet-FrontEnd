@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaw } from '@fortawesome/free-solid-svg-icons'
+//import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 
 const Solcomp = (props) => {
 
-    const pawn = <FontAwesomeIcon icon={faPaw} />
+    //const pawn = <FontAwesomeIcon icon={faPaw} />
     const trash = <FontAwesomeIcon icon={faTrash} />
 
     return (

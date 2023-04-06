@@ -6,18 +6,24 @@ import CardGallery from "../components/cardGallery";
 
 
 
-
-
 const Favorites = () => {
     const trash = <FontAwesomeIcon icon={faTrash} />   
     const { store, actions } = useContext(Context);
 
+    const sendFavorite = (data) => {
+        console.log(data);
+        actions.sendFavorite(data)
+        .then(() => {alert("Favorito enviado exitosamente")})  
+        .catch (()=>{alert("Favorito no guardado")})                       
+    }
+
+   
     return (
         
             <div className="cards container px-4 py-5" id="custom-cards">
-                <h1>Favoritos</h1>
-                    {store.favorite.length > 0 ? (
-                        store.favorite.map((item, index) => (
+                
+                    {store.favorites.length > 0 ? (
+                        store.favorites.map((item, index) => (
                             <ul className="" style={{ listStyle: "none" }}>
                                 <li
                                     key={index}
@@ -42,5 +48,6 @@ const Favorites = () => {
     )
 
 }
+
 
 export default Favorites;

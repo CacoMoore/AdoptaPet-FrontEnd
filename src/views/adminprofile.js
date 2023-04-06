@@ -28,7 +28,7 @@ const Adminprofile = () => {
                     <Link to="/solviewforadmin">
                         <button type="button" className="btn mb-5 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Ver solicitudes de adopción </button>
                     </Link>
-                    <Link to="/">
+                    <Link to="/addpost">
                         <button type="button" className="btn mb-5 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Agregar post al blog </button>
                     </Link>
                 </div>

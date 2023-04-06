@@ -62,6 +62,21 @@ const NavBar = () => {
                   </Link>
                 ) : null}
               </li>
+<<<<<<< HEAD
+=======
+              <li>
+                {rol_id === 2 ? (
+                  <a href="/"> 
+                    Cerrar sesión</a>
+                ) : null}
+              </li>
+              <li>
+                {rol_id === 1 ? (
+                  <a href="/"> 
+                    Cerrar sesión</a>
+                ) : null}
+              </li>
+>>>>>>> 04858db55a01ad27c621c66505728d880ec43284
             </ul>
           </div>
         </div>

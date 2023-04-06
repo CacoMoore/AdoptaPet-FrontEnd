@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useContext } from "react";
 import { Context } from "../store/context";
 
@@ -42,6 +42,15 @@ const SinglePet2 = (props) => {
         alert('Se elimino satisfactoriamente')
     }
 
+    const handleSubmit = (data) => {
+        if (store.loginUser.rol_id !== "restricted-rol-id") {
+            console.log(store.favorite)
+            data.rol_id=store.loginUser.rol_id
+            actions.addFavorite(props.pet);
+            console.log(store.favorite)
+        }
+    };
+
     const fav = <FontAwesomeIcon icon={faHeart} />
 
     return <div className="  div-main-singlepet">
@@ -66,8 +75,8 @@ const SinglePet2 = (props) => {
                     {/*BOTONES */}
 
                     <div className='d-flex justify-content-center'>
-                        <button type="button" class="btn btn-dark btn-lg mt-5 me-3">Adoptar</button>
-                        <button type="button" class="btn btn-dark btn-lg mt-5 me-3">Favorito</button>
+                       <Link to="/adopform"> <button type="button" class="btn btn-dark btn-lg mt-5 me-3" >Adoptar</button></Link>
+                        <button type="button" class="btn btn-dark btn-lg mt-5 me-3" onClick={handleSubmit}> {fav} </button>
                         <button onClick={() => deletePetId()} type="button" class="btn btn-dark btn-lg mt-5 ">Eliminar</button>
                     </div>
 
