@@ -4,6 +4,7 @@ import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import { Context } from "../store/context";
 import { useContext } from "react";
 
+
 const NavBar = () => {
   const pawn = <FontAwesomeIcon icon={faPaw} />
   const { store } = useContext(Context)
@@ -59,19 +60,6 @@ const NavBar = () => {
                   <Link className="dropdown-item" to="/adminprofile">
                     Administrador
                   </Link>
-                ) : null}
-              </li>
-              <li>
-                {rol_id === 2 ? (
-                  <Link className="dropdown-item" to="/favorites">
-                    Mis favoritos
-                  </Link>
-                ) : null}
-              </li>
-              <li>
-                {rol_id === 2 ? (
-                  <a href="/"> 
-                    Cerrar sesión</a>
                 ) : null}
               </li>
             </ul>
