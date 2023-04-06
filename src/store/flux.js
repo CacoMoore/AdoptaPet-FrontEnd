@@ -337,7 +337,9 @@ const getState = ({ setStore, getActions, getStore }) => {
 
       sendForm: (answers) => {
         const { form, token, user_id } = getStore();
-        const formWithUserId = { ...form, user_id, answers };
+        console.log({ form, user_id, answers })
+        const formWithUserId = { user_id, ...answers };
+        console.log(formWithUserId)
         return fetch("http://localhost:8080/form", {
           headers: {
             "Content-Type": "application/json",
@@ -351,25 +353,16 @@ const getState = ({ setStore, getActions, getStore }) => {
 
       },
 
-      /*sendForm: (answers) => {
-        return fetch("http://localhost:8080/form", {
-          headers: {
-            "Content-Type": "application/json"
-          },
-          method: "POST",
-          body: JSON.stringify(answers)
-        }).then(res => res.json())
-          .then(data => console.log(data))
-          
-      },*/
-      
       getForm: () => {
-        fetch("http://localhost:8080/form/list")
-          .then((res) => res.json())
-          .then((data) => setStore({ forms: data }))
+        return fetch("http://localhost:8080/form/list")
+          .then((res) =>res.json()
+                     
+          )
+          .then(data =>data)   
+          //.then((data) => setStore({ forms: data }))
           .catch((error) => console.log(error))
       },
-      
+
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())

@@ -11,14 +11,11 @@ const Formcomp = () => {
     const { store, actions } = useContext(Context)
 
     const pawn = <FontAwesomeIcon icon={faPaw} />
-   
     
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data)
-        //data.rol_id=store.loginUser.rol_id
         actions.sendForm(data)
         .then(()=>{alert("su formulario fue enviado exitosamente")})
         .catch (()=>{alert("debe completar todos los campos")})                       
@@ -43,9 +40,7 @@ const Formcomp = () => {
                 <div className="col-md-7 col-lg-8">
                     <h4 className="mb-5 border-bottom">Solicitud de adopción</h4>
                     <form onSubmit={handleSubmit(onSubmit)} className="needs-validation" novalidate="">
-                        {/*<input type="hidden" {...register('user_id', {value:store.loginUser.id} )}></input>
-                        <input type="hidden" {...register('rol_id', {value:store.loginUser.rol_id})}></input>*/}
-                        
+                                               
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">1. Indica tu nombre, apellido, número de celular y el nombre del animal que te interesa. Por favor cuéntanos por qué buscas adoptar.</label>
                             <textarea className="form-control" id="" rows="3" type="text" {...register('query1', { maxLength: 500 })}></textarea>

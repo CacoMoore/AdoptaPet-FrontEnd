@@ -3,18 +3,21 @@ import { Context } from "../store/context";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import Solcomp from '../components/solcomp';
+import { useState } from "react";
 
 
 const Adopform = (props) => {
     const pawn = <FontAwesomeIcon icon={faPaw} />
 
-    const { store, actions } = useContext(Context)
+    const { store, actions, setStore } = useContext(Context)
+    const [formresponse, setFormresponse] = useState()
 
     useEffect(() => {
         actions.getForm()
+        .then (data => setFormresponse(data))        
     }, [])
 
-    console.log(store.forms)
+    console.log(formresponse)
 
     return (
         <>
@@ -79,8 +82,8 @@ const Adopform = (props) => {
                         query43="quiero un perrito"
                         query44="quiero un perrito" />
 
-                    {store.forms.length > 0 ? (
-                        store.forms.map(form => {
+                    {formresponse.length > 0 ? (
+                        formresponse.map(form => {
 
                             return <div className="" key={form.id}>
                                 <Solcomp form={form}
