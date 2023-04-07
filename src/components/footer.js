@@ -50,7 +50,9 @@ const Footer = (props) => {
                                     
                                         <Map>
                                         <div id="map"></div>
-                    
+                                        <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC82yqzt6o1_mM4IP3jSMl1f90zsmj-kWc&callback=initMap">
+</script>
                                         </Map>
                                         
                                         <div className="card-body">
