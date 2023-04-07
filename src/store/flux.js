@@ -209,6 +209,7 @@ const getState = ({ setStore, getActions, getStore }) => {
               },
             });
             getActions().getUserDescription(user_id);
+            getActions().getFavoriteUser(user_id);
           })
           .catch(error => console.log(error));
       },
@@ -345,7 +346,8 @@ const getState = ({ setStore, getActions, getStore }) => {
             method: "DELETE",
           })
           .then(res => res.json())
-          .then(data => { console.log('Post eliminada', data) })
+          .then(data => console.log('Post eliminada', data), 
+          getActions().getPost()) 
           .catch(error => console.log(error))
       },
 
@@ -375,6 +377,17 @@ const getState = ({ setStore, getActions, getStore }) => {
           console.error('Error guardando favorito', error);
         });
       },
+      getfavoriteuser: () => {
+        const { user_id, token } = getStore();
+        const urlFetch = `http://localhost:8080/favorites/user/${user_id}`;
+        fetch(urlFetch, {headers: {"Content-Type": "application/json",
+        "Authorization": "Bearer " + token}
+      })
+        .then(res => res.json())
+        .then(data => {setStore({
+          favorites: data});
+        })
+        .catch(error => console.log(error));      },
 
 
       removeFavorites: (name) => {

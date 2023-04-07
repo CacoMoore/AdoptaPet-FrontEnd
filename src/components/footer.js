@@ -1,12 +1,12 @@
 import { Form, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
-
+import Map from "../API/APIMap";
 
 
 const Footer = (props) => {
     const pawn = <FontAwesomeIcon icon={faPaw} />
-    
+
     return (
         <div id="footer">
             <div class="container">
@@ -47,7 +47,12 @@ const Footer = (props) => {
                             <div className="card" id="cardfooter">
                                 <div className="card-body">
                                     <div className="card mb-3">
-                                        <img src={props.map} className="card-img-top" alt="map" />
+                                    
+                                        <Map>
+                                        <div id="map"></div>
+                    
+                                        </Map>
+                                        
                                         <div className="card-body">
                                             <h5 className="card-title">Busca dónde adoptar</h5>
                                             <p className="card-text">Encuentra a tu mascota perfecta</p>

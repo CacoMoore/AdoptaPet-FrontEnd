@@ -3,12 +3,14 @@ import { Context } from "../store/context";
 import { useEffect, useState } from 'react'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-const trash = <FontAwesomeIcon icon={faTrash} /> 
+
 
 const Blog = (props) => {
     const { store, actions } = useContext(Context)
+    const { loginUser } = store;
+    const { rol_id } = loginUser;
 
-    
+    const trash = <FontAwesomeIcon icon={faTrash} />
 
     return (
         <div>
@@ -23,17 +25,22 @@ const Blog = (props) => {
                                 <h3 className="mb-0"> {props.post.title}</h3>
                                 <div className="mb-1 text-body-secondary">{props.post.date}</div>
                                 <p className="mb-auto">{props.post.description}</p>
-                                <button
-                                    type="button"
-                                    className="btn btn-sm btn-outline-dark rounded-circle border-0 mb-2"
-                                    onClick={actions.handleDeletePost()} >{trash}</button>
+                                {rol_id === 1 && (
+                                    <button
+                                        type="button"
+                                        className="btn btn-sm btn-outline-dark rounded-circle border-0 mb-2"
+                                        onClick={() => actions.handleDeletePost(props.post.id)} >{trash}</button>
+                                        
+                                )}
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+
 
     )
 };
