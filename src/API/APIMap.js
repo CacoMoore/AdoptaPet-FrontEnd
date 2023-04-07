@@ -31,7 +31,7 @@ const Map = () => {
           const markerOptions = {
             map: map,
             position: locations[location],
-            icon: './img/custom_pin.png'
+            icon: url='https://cdn3.iconfinder.com/data/icons/bunch-of-stuff/126/slice87-512.png'
           }
           const marker = new window.google.maps.Marker(markerOptions);
           markers.push(marker);
