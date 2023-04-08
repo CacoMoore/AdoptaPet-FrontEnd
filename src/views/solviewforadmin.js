@@ -15,7 +15,7 @@ const Adopform = (props) => {
     useEffect(() => {
         actions.getForm()
             .then(data => setFormresponse(data))
-    }, [])
+    }, [actions])
 
     //console.log(formresponse)
 

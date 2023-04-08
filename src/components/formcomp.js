@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import { useForm } from "react-hook-form";
-import Swal from "sweetalert2";
+
 
 const Formcomp = () => {
 
-    const { store, actions } = useContext(Context)
+    const { actions } = useContext(Context)
 
     const pawn = <FontAwesomeIcon icon={faPaw} />
     
@@ -42,92 +42,106 @@ const Formcomp = () => {
                                                
                         <div className="mb-3">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">1. Indica tu nombre, apellido, número de celular y el nombre del animal que te interesa. Por favor cuéntanos por qué buscas adoptar.</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query1', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query1', { required: true, maxLength: 500 })}></textarea>
                             {errors.query1?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
-
+                            {errors.query1?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">2. ¿Qué mira a la hora de elegir  un animalito para adoptar?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query2', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query2', { required: true, maxLength: 500 })}></textarea>
                             {errors.query2?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query2?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">3. ¿Qué necesidades y gastos cree que tiene un animalito?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query3', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query3', { required: true, maxLength: 500 })}></textarea>
                             {errors.query3?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query3?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">4. ¿Qué alimentación cree que es la adecuada y qué marca de comida usaría?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query4', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query4', { required: true, maxLength: 500 })}></textarea>
                             {errors.query4?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query4?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">5. ¿Qué piensa sobre la esterilización?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query5', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query5', { required: true, maxLength: 500 })}></textarea>
                             {errors.query5?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query5?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">6. ¿Ha tenido mala experiencia con algún animalito? de ser así indique cuál</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query6', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query6', { required: true, maxLength: 500 })}></textarea>
                             {errors.query6?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query6?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">7. ¿Tiene limitaciones con la edad o preferencia de sexo? Indique cuáles si es que las tiene</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query7', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query7', { required: true, maxLength: 500 })}></textarea>
                             {errors.query7?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query7?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">8. ¿Dónde estará  el animal durante el día y donde dormirá?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query8', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query8', { required: true, maxLength: 500 })}></textarea>
                             {errors.query8?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query8?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">9. ¿Ha tenido un animalito? Cuéntenos su experiencia (indicando especie, sexo, raza, edad, cómo llegó, cómo falleció)</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query9', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query9', { required: true, maxLength: 500 })}></textarea>
                             {errors.query9?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query9?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">10. ¿Tiene otros animales actualmente en casa? Cuéntenos algo de ellos: cuántos son, qué relación tiene con ellos, dónde los obtuvo, etc.</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query10', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query10', { required: true, maxLength: 500 })}></textarea>
                             {errors.query10?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query10?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">11. ¿Cuánto tiempo pasaría solo en casa?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query11', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query11', { required: true, maxLength: 500 })}></textarea>
                             {errors.query11?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query11?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">12. ¿Dónde estará el tiempo que este solo?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query12', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query12', { required: true, maxLength: 500 })}></textarea>
                             {errors.query12?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query12?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">13. ¿Qué pasaría si rompe plantas, ropa o zapatos?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query13', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query13', { required: true, maxLength: 500 })}></textarea>
                             {errors.query13?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query13?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">14. ¿Qué opina sobre las familias que tienen dentro de la casa a sus animales y duermen con ellos? </label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query14', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query14', { required: true, maxLength: 500 })}></textarea>
                             {errors.query14?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query14?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">15. ¿Cuánto sería el máximo que gastaría en una emergencia veterinaria? </label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query15', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query15', { required: true, maxLength: 500 })}></textarea>
                             {errors.query15?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query15?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
@@ -146,8 +160,9 @@ const Formcomp = () => {
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">17. Nuestros animales son rescatados de abandono,  muchas veces no se conoce a los padres. En caso de querer adoptar perro, ¿qué pasaría si el tamaño definitivo no era el que usted esperaba cuando sea adulto? </label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query17', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query17', { required: true, maxLength: 500 })}></textarea>
                             {errors.query17?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query17?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
@@ -166,8 +181,9 @@ const Formcomp = () => {
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">19. En caso de que quieras adoptar un perro ¿Cómo serían sus paseos diarios? </label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query19', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query19', { required: true, maxLength: 500 })}></textarea>
                             {errors.query19?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query19?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <p className="fw-semibold border-bottom mt-5"> SI BUSCA ADOPTAR UN GATO Y YA TIENE OTRO EN SU HOGAR... </p>
@@ -217,21 +233,24 @@ const Formcomp = () => {
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">23. Si ya tiene otro  gato en casa, ¿qué enriquecimiento ambiental  le tiene? por ejemplo: rascadores, fuente de agua eléctrica, Juguetes interactivos, etc </label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query23', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query23', { required: true, maxLength: 500 })}></textarea>
                             {errors.query23?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query23?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <p className="fw-semibold mb-4 border-bottom mt-5"> VIVIENDA DESTINADA AL ANIMAL </p>
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">24. Indica el tipo de vivienda y su tamaño </label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query24', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query24', { required: true, maxLength: 500 })}></textarea>
                             {errors.query24?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query24?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">25. ¿Dispone de jardín, patio o terraza? </label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query25', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query25', { required: true, maxLength: 500 })}></textarea>
                             {errors.query25?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query25?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
@@ -264,14 +283,16 @@ const Formcomp = () => {
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">28. ¿Vivienda propia o en arriendo?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query28', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query28', { required: true, maxLength: 500 })}></textarea>
                             {errors.query28?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query28?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">29. ¿Tiene conocimiento el dueño/a de la vivienda o Jefe de hogar de que usted va adoptar a un animal? ¿Está de acuerdo?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query29', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query29', { required: true, maxLength: 500 })}></textarea>
                             {errors.query29?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query29?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
@@ -292,32 +313,38 @@ const Formcomp = () => {
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">31. ¿Quién compone su familia que habita el hogar? Si tiene niños mencionar edades</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query31', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query31', { required: true, maxLength: 500 })}></textarea>
                             {errors.query31?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query31?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
+                            
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">32. ¿Saben todos que adoptaran? ¿Entre quienes tomaron la decisión?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query32', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query32', { required: true, maxLength: 500 })}></textarea>
                             {errors.query32?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query32?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">33. Si es soltero y vives solo, ¿qué harías si a tu pareja no le gusta su animal de compañía?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query33', { maxLength: 500 })}></textarea>
-                            {errors.query33?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query33', { required: true, maxLength: 500 })}></textarea>
+                            {errors.query33?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}}
+                            {errors.query33?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">34. Si vive con padres, ¿qué pasará cuando  se independice?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query34', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query34', { required: true, maxLength: 500 })}></textarea>
                             {errors.query34?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query34?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">35. ¿Qué piensa de la convivencia de bebés con animales? ¿Cree que son compatibles? ¿Por qué?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query35', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query35', { required: true, maxLength: 500 })}></textarea>
                             {errors.query35?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query35?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
@@ -366,26 +393,30 @@ const Formcomp = () => {
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">39. ¿Cuál es su horario de trabajo?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query39', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query39', { required: true, maxLength: 500 })}></textarea>
                             {errors.query39?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query39?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">40. ¿A qué dedica su tiempo libre? (hobbies) </label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query40', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query40', { required: true, maxLength: 500 })}></textarea>
                             {errors.query40?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query40?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">41. ¿Qué suele hacer en las vacaciones de verano?</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query41', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query41', { required: true, maxLength: 500 })}></textarea>
                             {errors.query41?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query41?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">42. Supongamos. Si es extranjero, ¿qué pasaría con el animal si regresa a su país? (O si es chileno, y se fuese a vivir al extranjero)</label>
-                            <textarea className="form-control" id="" rows="3" type="text" {...register('query42', { maxLength: 500 })}></textarea>
+                            <textarea className="form-control" id="" rows="3" type="text" {...register('query42', { required: true, maxLength: 500 })}></textarea>
                             {errors.query42?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                            {errors.query42?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 
                         <div className="mb-4">
