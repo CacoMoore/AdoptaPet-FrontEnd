@@ -1,8 +1,9 @@
 import CardGallery from "../components/cardGallery"
 import FormGallery from "../components/formGallery"
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../store/context";
 import { Link } from "react-router-dom";
+import Pagination from "../components/pagination";
 
 
 const PhotoGallery = () => {
@@ -12,10 +13,13 @@ const PhotoGallery = () => {
         actions.getPets()
     }, [])
 
-    console.log(store.pets)
 
 
 
+
+
+    const lastIndex = store.currentPage * store.petsPerPage
+    const firstIndex = lastIndex - store.petsPerPage
 
     return <div className="div-main ">
 
@@ -36,9 +40,9 @@ const PhotoGallery = () => {
                 <div className="col-md-4 mt-5">
                     <FormGallery />
                 </div>
-                <div className=" col-md-7">
-                    <div className=" py-2 mb-2 ">
-                        <div className="row">
+                <div className=" col-md-7 ">
+                    <div className=" py-2 mb-2 height-div">
+                        <div className="row ">
                             <h1 className="my-5 text-center display-4">Mascotas en adopción</h1>
                             {store.pets.length ? (
                                 store.pets.map(pet => {
@@ -51,10 +55,20 @@ const PhotoGallery = () => {
                                         <Link to={`/pet/${pet.id}`}> Ver más Información
                                         </Link>
                                     </div>
-                                })
+
+                                }).slice(firstIndex, lastIndex)
                             ) : (
                                 <p>No hay animales para adoptar</p>
                             )}
+                            <div className="d-flex justify-content-center">
+
+                                <Pagination
+
+
+
+
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
