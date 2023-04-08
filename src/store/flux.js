@@ -482,7 +482,6 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
       },
     }
-  }
-};
+  };
 
 export default getState;
