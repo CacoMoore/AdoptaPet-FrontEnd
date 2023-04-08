@@ -150,13 +150,11 @@ const BlogHome = (props) => {
             {store.posts.length ? (
                 store.posts.map(post => {
 
-                    return <div className="" key={post.id}>
+                    return <div className="Container border d-block" key={post.id}>
                         <Blog post={post}
                             id={post.id}
                             title={post.title}
-                            date={post.date}
                             description={post.description}
-                            imagePost={post.imagePost}
                             rol_id={post.rol_id}
                         />
                     </div>
@@ -164,15 +162,6 @@ const BlogHome = (props) => {
             ) : (
                 <p>No hay posts para mostrar</p>
             )}
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
         </>
     );
 };

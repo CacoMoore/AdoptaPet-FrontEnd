@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Context } from "../store/context";
 import React, { useContext } from "react";
 import Favorites from "../components/favorite";
@@ -9,7 +9,6 @@ const User = () => {
     const { userDescription, loginUser, user_id, email } = store;
     const { name, last_name, phone, rol_id } = loginUser
     const { description, motivation, style } = userDescription;
-    const navigate = useNavigate();
 
     if (rol_id === 1 || rol_id === 2) {
         return (
@@ -54,10 +53,10 @@ const User = () => {
                         </Link>
                     </div>
 
-                    <div className="card mb-4 " id="cardFavorites">
+                    <div className="card mb-4 border" id="cardFavorites">
                         <h1>Favoritos</h1>
-                        <div className="row g-0">
-                            <div className="cards row row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-center">
+                        <div className="row border">
+                            <div className=" border ">
                                 <Favorites />
                             </div>
                         </div>
@@ -65,7 +64,7 @@ const User = () => {
                     
                     <div className="mt-4">
                         <button
-                            onClick={(e) => actions.deleteUser(e, navigate)}
+                            onClick={actions.deleteUser}
                             type="button" className="btn btn-lg btn-danger w-100">
                             Eliminar perfil
                         </button>

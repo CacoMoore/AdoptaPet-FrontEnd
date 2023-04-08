@@ -1,9 +1,5 @@
-
-
 const getState = ({ setStore, getActions, getStore }) => {
   return {
-
-
     store: {
       user: {
         name: "",
@@ -53,7 +49,6 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       favorites: [],
       favorite: [],
-
     },
     actions: {
       handleChange: (e) => {
@@ -98,8 +93,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error));
       },
       /* eslint-disable no-restricted-globals */
-      deleteUser: (e, navigate) => {
-        e.preventDefault();
+      deleteUser: (e) => {
         const { user_id, token } = getStore();
         const urlFetch = `http://localhost:8080/users/${user_id}`;
         const confirmed = confirm("¿Está seguro que desea eliminar al usuario?");
@@ -113,7 +107,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
             .then((res) => res.json())
             .then((data) => {
-              navigate("/login");
               console.log(data);
               alert(data);
             })
@@ -156,7 +149,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
         });
       },
-      handleUserRegister: (e) => {
+      handleUserRegister: (e, navigate) => {
         e.preventDefault();
         const { user } = getStore();
         fetch("http://localhost:8080/users", {
@@ -168,7 +161,6 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then(res => res.json())
           .then(data => {
-            alert(JSON.stringify(data));
             setStore({
               user: {
                 name: "",
@@ -180,7 +172,8 @@ const getState = ({ setStore, getActions, getStore }) => {
               }
             });
             console.log(data);
-            alert(data)
+            alert(JSON.stringify(data));
+            navigate("/login");
           })
           .catch(error => {
             alert(error.message);
@@ -242,8 +235,8 @@ const getState = ({ setStore, getActions, getStore }) => {
             });
             alert(JSON.stringify(data));
             console.log(data);
-            navigate("/user");
             getActions().fetchUserData(data.user_id, data.token);
+            navigate("/user");
           })
           .catch(error => console.log(error));
       },
@@ -302,9 +295,8 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
 
       },
-
       sendForm: (answers) => {
-        return fetch("http://localhost:8080/form", {
+        fetch("http://localhost:8080/form", {
           headers: {
             "Content-Type": "application/json"
           },
@@ -314,28 +306,48 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(data => console.log(data))
 
       },
-
       sendPost: (postAnswers) => {
-        return fetch("http://localhost:8080/posts", {
+        fetch("http://localhost:8080/posts", {
           headers: {
             "Content-Type": "application/json"
           },
           method: "POST",
           body: JSON.stringify(postAnswers)
         }).then(res => res.json())
-          .then(data => console.log(data), 
-          getActions().getPost())
+          .then((data) => {
+            alert(data);
+            getActions().getPost();
+          })
       },
-
+      getFavoriteUser: () => {
+        const { user_id, token } = getStore();
+        const urlFetch = `http://localhost:8080/favorites/user/${user_id}`;
+        fetch(urlFetch, {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+          }
+        })
+        .then(res => res.json())
+          .then(data => {
+            setStore({
+              favorites: data
+            });
+          })
+          .catch(error => console.log(error));
+      },
       getPost: () => {
         fetch("http://localhost:8080/posts/list")
           .then((res) => res.json())
           .then((data) => setStore({ posts: data }))
           .catch((error) => console.log(error))
+
+       /*   .then(data => console.log(data),
+          getActions().getPost())
+        .catch(error => console.log(error)) */
       },
       handleDeletePost: (id) => {
-    
-        const { token } = getStore(); 
+        const { token } = getStore();
         fetch(`http://localhost:8080/posts/${id}`,
           {
             headers: {
@@ -400,13 +412,14 @@ const getState = ({ setStore, getActions, getStore }) => {
 
 
 
+        
+      },
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())
           .then((data) => setStore({ pets: data }))
           .catch((error) => console.log(error))
       },
-
       handlePostPetSearch: (e) => {
         e.preventDefault();
         const { pet } = getStore();
@@ -420,7 +433,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(data => setStore({ pets: data }))
           .catch(error => console.log(error))
       },
-
       handlePostPetDelete: (id) => {
 
         fetch(`http://localhost:8080/pet/${id}`, {
@@ -437,9 +449,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error))
       },
-
       handlePostPetFilter: (e) => {
-
         const { pet } = getStore();
         fetch("http://localhost:8080/pets/search", {
           headers: {
@@ -452,27 +462,26 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch(error => console.log(error))
         setStore({
           pet: {
-
             gender: "",
-
-
             spicies: "",
             size: "",
-
-
-
           },
-
+          addFavorite: (pet) => {
+            const { favorite } = getStore();
+            if (!favorite.includes(pet)) {
+              const newFavorites = [...favorite, pet];
+              setStore({ favorite: newFavorites });
+              console.log(newFavorites);
+            }
+          },
+          removeFavorites: name => {
+            const store = getStore();
+            const newFavorites = store.favorite.filter(item => item !== name);
+            setStore({ favorite: newFavorites });
+          }
         })
       },
-
-
-
-
     }
-
-
-
   }
 };
 

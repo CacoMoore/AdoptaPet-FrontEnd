@@ -22,7 +22,7 @@ import AddDescription from './views/addDescription';
 import Adminprofile from './views/adminprofile';
 import Solviewforadmin from './views/solviewforadmin';
 import SinglePet2 from './views/SinglePet2';
-
+import Register from './views/register';
 
 
 function App() {
@@ -43,6 +43,7 @@ function App() {
         <Route path="/adminprofile" element={<Adminprofile />} />
         <Route path="/addPet" element={<AddPet />} />
         <Route path="/solviewforadmin" element={<Solviewforadmin />} />
+        <Route path="/register" element={<Register/>}/>
         {/*SECCION DE GALERIA DE FOTOS Y INFORMACION INDIVIDUAL DE CADA PET */}
         <Route path="/photoGallery" element={<PhotoGallery />} />
         <Route path="/pet/:id" element={<SinglePet2 />} />
