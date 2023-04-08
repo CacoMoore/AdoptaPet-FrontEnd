@@ -2,10 +2,12 @@ import { Form, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import Map from "../API/APIMap";
+import { useEffect, useState } from 'react';
 
 
 const Footer = (props) => {
     const pawn = <FontAwesomeIcon icon={faPaw} />
+    
 
     return (
         <div id="footer">
@@ -47,16 +49,15 @@ const Footer = (props) => {
                             <div className="card" id="cardfooter">
                                 <div className="card-body">
                                     <div className="card mb-3">
-                                    
-                                        <Map>
-                                        <div id="map"></div>
-                                        <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC82yqzt6o1_mM4IP3jSMl1f90zsmj-kWc&callback=initMap">
-</script>
+                                 
+                                            <Map>
+            
                                         </Map>
+                                
                                         
+
                                         <div className="card-body">
-                                            <h5 className="card-title">Busca dónde adoptar</h5>
+                                            <h5 className="card-title">Encuéntranos aquí</h5>
                                             <p className="card-text">Encuentra a tu mascota perfecta</p>
                                             <Link to={"/adopform"}>
                                                 <button className="btn" id="btn-footer">Adoptar </button>
