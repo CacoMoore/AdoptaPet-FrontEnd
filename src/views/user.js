@@ -53,12 +53,12 @@ const User = () => {
                         </Link>
                     </div>
 
-                    <div className="card mb-4 border" id="cardFavorites">
+                    <div className="card mb-4" id="cardFavorites">
                         <h1>Favoritos</h1>
-                        <div className="row border">
-                            <div className=" border ">
+                        <div className="row">
+                       
                                 <Favorites />
-                            </div>
+                            
                         </div>
                     </div>
                     

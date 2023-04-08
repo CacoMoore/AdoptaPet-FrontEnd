@@ -3,7 +3,7 @@ import FormGallery from "../components/formGallery"
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../store/context";
 import { Link } from "react-router-dom";
-import Pagination from "../components/pagination";
+
 
 
 const PhotoGallery = () => {
@@ -12,11 +12,6 @@ const PhotoGallery = () => {
     useEffect(() => {
         actions.getPets()
     }, [])
-
-
-
-
-
 
     const lastIndex = store.currentPage * store.petsPerPage
     const firstIndex = lastIndex - store.petsPerPage
@@ -62,12 +57,12 @@ const PhotoGallery = () => {
                             )}
                             <div className="d-flex justify-content-center">
 
-                                <Pagination
+                              { /* <Pagination 
 
 
 
 
-                                />
+                                /> */}
                             </div>
                         </div>
                     </div>
