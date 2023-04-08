@@ -9,7 +9,7 @@ const CardGallery = (props) => {
 
     const fav = <FontAwesomeIcon icon={faHeart} />
 
-    const handleSubmit = () => {
+    const handleSubmit = (data) => {
          
             console.log(store.favorite)
             actions.addFavorite(props.pet)

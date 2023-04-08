@@ -366,8 +366,8 @@ const getState = ({ setStore, getActions, getStore }) => {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            pet_id: 1234,
-            user_id: 5678
+            pet_id: "",
+            user_id: ""
           })
         }).then(response => {
           if (response.ok) {
@@ -379,16 +379,18 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       getfavoriteuser: () => {
         const { user_id, token } = getStore();
-        const urlFetch = `http://localhost:8080/favorites/user/${user_id}`;
-        fetch(urlFetch, {headers: {"Content-Type": "application/json",
+        fetch(`http://localhost:8080/favorites/user/${user_id}`, 
+        {headers: 
+          {"Content-Type": "application/json",
         "Authorization": "Bearer " + token}
       })
         .then(res => res.json())
-        .then(data => {setStore({
+        .then(data => 
+          {setStore({
           favorites: data});
         })
         .catch(error => console.log(error));      },
-
+        
 
       removeFavorites: (name) => {
         const store = getStore();
