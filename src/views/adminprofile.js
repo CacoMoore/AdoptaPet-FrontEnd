@@ -7,7 +7,6 @@ const Adminprofile = () => {
 
     const pawn = <FontAwesomeIcon icon={faPaw} />
 
-
     return (
         <div>
             <div className="container ">
@@ -21,7 +20,7 @@ const Adminprofile = () => {
                     </p>
 
                 </div>
-                <div className="d-flex justify-content-evenly">
+                <div className="d-flex justify-content-evenly">                
                     <Link to="/addPet">
                         <button type="button" className="btn mb-5 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Agregar animales animales a la galeria de adoptables</button>
                     </Link>

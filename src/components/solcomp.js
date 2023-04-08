@@ -16,7 +16,7 @@ const Solcomp = (props) => {
                 <div className="accordion-item">
                     <h2 className="accordion-header">
                         <button className="accordion-button text-light opacity-50  " style={{ backgroundColor: "#353755" }} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
-                            <div><strong>Solicitud de adopción N° {props.id}</strong> &nbsp;Usuario <strong>{props.name} {props.lastname}</strong></div>
+                            <div><strong>Solicitud de adopción N° {props.id}</strong> &nbsp;Usuario <strong>{props.user}</strong></div>
                         </button>
                     </h2>
 
