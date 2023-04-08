@@ -355,11 +355,9 @@ const getState = ({ setStore, getActions, getStore }) => {
 
       getForm: () => {
         return fetch("http://localhost:8080/form/list")
-          .then((res) =>res.json()
-                     
+          .then((res) => res.json()
+
           )
-          .then(data =>data)   
-          //.then((data) => setStore({ forms: data }))
           .catch((error) => console.log(error))
       },
 

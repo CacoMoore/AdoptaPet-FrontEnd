@@ -21,7 +21,6 @@ const Formcomp = () => {
         .catch (()=>{alert("debe completar todos los campos")})                       
     }
     
-
     return (
         <div>
             <div className="row g-5">

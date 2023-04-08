@@ -65,12 +65,12 @@ const InfoOne = () => {
                                 </div>
                             </div>
                             <div className="accordion-item">
-                                <h2 className="accordion-header" id="headingThree">
-                                    <button id="acordionbtn2" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <h2 className="accordion-header" id="headingFour">
+                                    <button id="acordionbtn2" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
                                         ¿Dónde estamos?
                                     </button>
                                 </h2>
-                                <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                     <div className="accordion-body">
                                         En nuestra fundación, no contamos con una casa matriz central. En lugar de eso, cada "oficina" es un hogar temporal para nuestras mascotas en proceso de adopción. Esto significa que nuestras mascotas son atendidas y cuidadas en hogares amorosos, en lugar de en un refugio frío y desconocido. Este enfoque nos permite brindar a nuestras mascotas la atención personalizada que necesitan y merecen, y también nos permite estar presentes en múltiples comunidades para llegar a más personas y mascotas necesitadas. Nuestros voluntarios y cuidadores de hogares temporales trabajan arduamente para brindar a las mascotas un ambiente cálido y amoroso mientras esperan su adopción definitiva. Estamos orgullosos de ser una fundación descentralizada y comprometida con el bienestar de todas nuestras mascotas.
                                     </div>
