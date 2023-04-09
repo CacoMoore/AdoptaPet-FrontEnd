@@ -2,12 +2,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useContext } from "react";
+import { Context } from "../store/context";
 
 
 const Solcomp = (props) => {
 
     //const pawn = <FontAwesomeIcon icon={faPaw} />
     const trash = <FontAwesomeIcon icon={faTrash} />
+    const { actions } = useContext(Context)
 
     return (
         <div className="row my-5">
@@ -164,7 +167,10 @@ const Solcomp = (props) => {
 
             </div>
 
-            <h4 className="col-1 opacity-75" style={{ color: "#353755" }}>{trash}</h4>
+            <button 
+            className="col-1 opacity-75" 
+            style={{ color: "#353755" }}
+            onClick={() => actions.deleteForm(props.form.id)}>{trash}</button>
 
 
 

@@ -361,6 +361,22 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error))
       },
 
+      deleteForm: (id) => {
+        const { token } = getStore();
+        fetch(`http://localhost:8080/form/${id}`,
+          {
+            headers: {
+              "Content-Type":
+                "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            method: "DELETE",
+          })
+          .then(res => res.json())
+          .then(data => getActions().getForm()) 
+          .catch(error => console.log(error))
+      },
+
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())
