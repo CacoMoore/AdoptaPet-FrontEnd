@@ -167,10 +167,12 @@ const Solcomp = (props) => {
 
             </div>
 
-            <button 
-            className="col-1 opacity-75" 
-            style={{ color: "#353755" }}
-            onClick={() => actions.deleteForm(props.form.id)}>{trash}</button>
+            <button
+                className="col-1 btn d-flex align-items-start"
+                style={{ color: "#353755" }}
+                onClick={() => actions.deleteForm(props.form.id)
+                }>
+                {trash}</button>
 
 
 
