@@ -434,22 +434,22 @@ const getState = ({ setStore, getActions, getStore }) => {
 
       //Funcion para traer la informacion de todos los pet funcion get
       sendForm: (answers) => {
-        const { form, token, user_id } = getStore();
-        console.log({ form, user_id, answers })
-        const formWithUserId = { user_id, ...answers };
-        console.log(formWithUserId)
-        return fetch("http://localhost:8080/form", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-          },
-          method: "POST",
-          body: JSON.stringify(formWithUserId)
-        }).then(res => res.json())
-          .then(data => setStore({ forms: data }))
-          .then(data => console.log(data))
+      const { form, token, user_id } = getStore();
+      console.log({ form, user_id, answers })
+      const formWithUserId = { user_id, ...answers };
+      console.log(formWithUserId)
+      return fetch("http://localhost:8080/form", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        method: "POST",
+        body: JSON.stringify(formWithUserId)
+      }).then(res => res.json())
+        .then(data => setStore({ forms: data }))
+        .then(data => console.log(data))
 
-      },
+    },
       sendPost: (postAnswers) => {
         fetch("http://localhost:8080/posts", {
           headers: {
@@ -470,9 +470,9 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((data) => setStore({ posts: data }))
           .catch((error) => console.log(error))
 
-        /*   .then(data => console.log(data),
-           getActions().getPost())
-         .catch(error => console.log(error)) */
+       /*   .then(data => console.log(data),
+          getActions().getPost())
+        .catch(error => console.log(error)) */
       },
       handleDeletePost: (id) => {
         const { token } = getStore();
@@ -486,8 +486,8 @@ const getState = ({ setStore, getActions, getStore }) => {
             method: "DELETE",
           })
           .then(res => res.json())
-          .then(data => console.log('Post eliminada', data),
-            getActions().getPost())
+          .then(data => console.log('Post eliminada', data), 
+          getActions().getPost()) 
           .catch(error => console.log(error))
       },
 
@@ -519,23 +519,18 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       getfavoriteuser: () => {
         const { user_id, token } = getStore();
-        fetch(`http://localhost:8080/favorites/user/${user_id}`,
-          {
-            headers:
-            {
-              "Content-Type": "application/json",
-              "Authorization": "Bearer " + token
-            }
-          })
-          .then(res => res.json())
-          .then(data => {
-            setStore({
-              favorites: data
-            });
-          })
-          .catch(error => console.log(error));
-      },
-
+        fetch(`http://localhost:8080/favorites/user/${user_id}`, 
+        {headers: 
+          {"Content-Type": "application/json",
+        "Authorization": "Bearer " + token}
+      })
+        .then(res => res.json())
+        .then(data => 
+          {setStore({
+          favorites: data});
+        })
+        .catch(error => console.log(error));      },
+        
 
       removeFavorites: (name) => {
         const store = getStore();

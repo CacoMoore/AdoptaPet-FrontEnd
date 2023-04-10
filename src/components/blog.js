@@ -13,7 +13,7 @@ const Blog = (props) => {
 
     return (
 
-        <div className="row mb-2">
+        <div className="row mb-2 justify-content-center">
             <div className="col-md-6 ">
                 <div className="card mb-3" >
                     <div className="row g-0">
@@ -32,7 +32,7 @@ const Blog = (props) => {
                                     <button
                                         type="button"
                                         className="btn btn-sm btn-outline-dark rounded-circle border-0 mb-2"
-                                        onClick={() => actions.handleDeletePost(props.post.id)} >{trash} "hacer doble click"</button>
+                                        onClick={() => actions.handleDeletePost(props.post.id)} >{trash} </button>
 
                                 )}
 

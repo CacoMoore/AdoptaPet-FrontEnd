@@ -14,11 +14,6 @@ const PhotoGallery = () => {
         actions.getPets()
     }, [])
 
-
-
-
-
-
     const lastIndex = store.currentPage * store.petsPerPage
     const firstIndex = lastIndex - store.petsPerPage
 

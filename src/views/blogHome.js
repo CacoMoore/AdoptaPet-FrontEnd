@@ -20,14 +20,14 @@ const BlogHome = (props) => {
                     <p className="lead mb-0"><a href="/#" className="text-black fw-bold">Continue reading...</a></p>
                 </div>
             </div>
-            <div className="row mb-2">
+            <div className="row mb-2 d-flex justify-content-center">
                 <div className="col-md-6">
                     <div className="card mb-3" >
                         <div className="row g-0">
                             <div className="col-md-4">
                                 <img src="https://conecta.tec.mx/sites/default/files/styles/header_full/public/2021-06/adoptar-perro.jpg?itok=BSPwpz4C" className="img-fluid rounded-start" alt="..." />
                             </div>
-                            <div className="col-md-8">
+                            <div className="col-md-8 ">
                                 <div className="card-body">
                                     <h3 className="mb-0">Jornadas de adopción</h3>
                                     <div className="mb-1 text-body-secondary">2023</div>
