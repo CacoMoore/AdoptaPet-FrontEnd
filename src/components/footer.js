@@ -1,4 +1,4 @@
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import Map from "../API/APIMap";
@@ -48,7 +48,7 @@ const Footer = (props) => {
                             <div className="card" id="cardfooter">
                                 <div className="card-body">
                                     <div className="row card mb-3">
-                                            <Map />
+                                        <Map />
                                         <div className="card-body">
                                             <h5 className="card-title">Encuéntranos aquí</h5>
                                             <p className="card-text">Encuentra a tu mascota perfecta</p>
