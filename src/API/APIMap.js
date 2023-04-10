@@ -1,21 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React from 'react'
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
-const Map = () => {
-    const [maps, setmaps] = useState([])
-
-    const getMaps = () => [
-        fetch("")
-        .then(res => res.json())
-        .then(data => setmaps(data))
-        .catch(err => console.log(err))
-    ];
-    useEffect(() => {
-        getMaps();
-        console.log(maps);
-    }, [])
-
-    return(  
-        <></>
-    )
+const containerStyle = {
+ width: '100%',
+ height: '400px'
 };
-export default Map;
+
+const center = {
+ lat: -33.437043,
+ lng: -70.634648,
+};
+
+function MyMap() {
+ const { isLoaded } = useJsApiLoader({
+  id: 'google-map-script',
+  googleMapsApiKey: "AIzaSyC82yqzt6o1_mM4IP3jSMl1f90zsmj-kWc"
+ })
+
+ const [map, setMap] = React.useState(null)
+
+ const onLoad = React.useCallback(function callback(map) {
+  const bounds = new window.google.maps.LatLngBounds();
+  map.fitBounds(bounds);
+  setMap(map)
+ }, [])
+
+ const onUnmount = React.useCallback(function callback(map) {
+  setMap(null)
+ }, [])
+
+ const marker = new window.google.maps.Marker({
+    position: center,
+    title:"AdopaPet!"
+});
+
+marker.setMap(map);
+
+
+ return isLoaded ? (
+  <GoogleMap
+   mapContainerStyle={containerStyle}
+   center={center}
+   zoom={16}
+   onLoad={onLoad}
+   onUnmount={onUnmount}
+  >
+   
+   <>
+   </>
+  </GoogleMap>
+ ) : <></>
+}
+
+export default React.memo(MyMap);
