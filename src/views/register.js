@@ -13,7 +13,7 @@ const Register = () => {
                 style={{ borderRadius: '5px' }}
                 className="border shadow-lg m-4">
                 <div className="m-4">
-                    <h1>Regístrate aquí...</h1>
+                    <h1>Regístrate aquí....</h1>
                     <form onSubmit={(e) => actions.handleUserRegister(e, navigate)}>
                         <div className="row d-flex justify-content-around p-2">
                             <div className="form-outline mb-4 col-6">
@@ -89,7 +89,7 @@ const Register = () => {
 
                         <div className="text-center">
                             <button type="submit" className="btn btn-lg text-light"
-                            style={{backgroundColor: "#5BD3C7"}}>Enviar</button>
+                                style={{ backgroundColor: "#5BD3C7" }}>Enviar</button>
                         </div>
                         <div className="text-center pt-4">
                             <p>¿Ya eres miembro? <Link to="/Login">Ingresa</Link></p>
