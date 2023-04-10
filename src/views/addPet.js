@@ -21,7 +21,9 @@ const AddPet = () => {
                         name="name"
                         onChange={actions.handleChangePet}
                         className="form-control"
-                        maxLength={50} />
+                        maxLength={50}
+
+                    />
                     <label
                         className="form-label"
                         htmlFor="name">Nombre</label>
