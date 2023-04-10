@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import BlogHome from "./blogHome";
+import Blog from "./blog";
 import Jumbotron from "../components/jumbotron";
 import { Context } from "../store/context";
 
@@ -15,7 +15,7 @@ const Home = () => {
         <div>
                 {store.favorite}
             <Jumbotron></Jumbotron>
-            <BlogHome></BlogHome>
+            <Blog></Blog>
             
             
         </div>

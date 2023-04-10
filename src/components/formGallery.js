@@ -39,7 +39,7 @@ const FormGallery = () => {
                             onChange={actions.PetFilterContainer}
                             name="species"
                             aria-label="Default select example"
-                            value={store.PetFilterContainer.spicies || ''}
+                            value={store.PetFilterContainer.species || ''}
                         >
                             <option value=''>Selecionar</option>
                             <option value="Perro">Perro</option>

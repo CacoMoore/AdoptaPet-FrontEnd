@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Context } from "../store/context";
 import React, { useContext } from "react";
-import Favorites from "../components/favorite";
+import Favorites from "./favorite";
 
 
 const User = () => {
@@ -52,16 +52,7 @@ const User = () => {
                             Adopta Aquí
                         </Link>
                     </div>
-
-                    <div className="card mb-4" id="cardFavorites">
-                        <h1>Favoritos</h1>
-                        <div className="row">
-                       
-                                <Favorites />
-                            
-                        </div>
-                    </div>
-                    
+                    <Favorites/>
                     <div className="mt-4">
                         <button
                             onClick={actions.deleteUser}

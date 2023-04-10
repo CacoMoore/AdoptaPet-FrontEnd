@@ -33,7 +33,7 @@ const Adminprofile = () => {
                             className="btn fw-semibold text-start rounded shadow" 
                             style={{ backgroundColor: "#5BD3C7" }}>{pawn} Ver solicitudes de adopción </button>
                     </Link>
-                    <Link to="/addpost">
+                    <Link to="/">
                         <button 
                             type="button" 
                             className="btn fw-semibold text-start rounded shadow" 
