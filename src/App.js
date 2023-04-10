@@ -1,15 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import injectContext from "./store/context";
+import injectContext from "./store/context";   
 import Home from './views/home';
 import NavBar from './components/navbar';
 import Footer from './components/footer';
 import './styles/photoGallery.css'
 import './styles/singlePet.css'
-import SinglePet from './views/singlePet';
+import SinglePet from './views/PetEdit';
 import PhotoGallery from './views/photoGallery';
 import Login from './views/login';
-import Register from './views/register';
 import RecoverPass from './views/recoverPass';
 import AddPet from './views/addPet';
 import Info from './views/info';
@@ -23,6 +22,9 @@ import AddDescription from './views/addDescription';
 import Adminprofile from './views/adminprofile';
 import Solviewforadmin from './views/solviewforadmin';
 import SinglePet2 from './views/SinglePet2';
+import Register from './views/register';
+
+
 
 
 
@@ -33,7 +35,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/recoverPass" element={<RecoverPass />} />
         <Route path="/addPet" element={<AddPet />} />
         <Route path="/addPost" element={<AddPost />} />
@@ -45,10 +46,11 @@ function App() {
         <Route path="/adminprofile" element={<Adminprofile />} />
         <Route path="/addPet" element={<AddPet />} />
         <Route path="/solviewforadmin" element={<Solviewforadmin />} />
-        
+        <Route path="/register" element={<Register />} />
         {/*SECCION DE GALERIA DE FOTOS Y INFORMACION INDIVIDUAL DE CADA PET */}
         <Route path="/photoGallery" element={<PhotoGallery />} />
         <Route path="/pet/:id" element={<SinglePet2 />} />
+        <Route path="/pex/:id" element={<SinglePet />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -1,18 +1,38 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../store/context";
+import { useParams } from "react-router-dom";
 
 const AddPet = () => {
 
-    const { actions } = useContext(Context)
+    const { store, actions } = useContext(Context)
 
+    const { id } = useParams()
+
+
+    useEffect(() => {
+
+
+        actions.getPet(id)
+
+    }, [])
+
+    const { petGet } = store
+
+
+    console.log('====================>', store.petGet)
+    console.log('xxxxxxxxxxxxxx', store.petGet[id])
+    //console.log('Aca va el codigo necesario', store.pets.filter(key => ))
 
 
     return (
         <div
             style={{ borderRadius: '5px', minHeight: '100vh' }}
             className="container mt-4">
-            <h1>Agregar mascota</h1>
-            <form onSubmit={actions.handlePostPet} style={{ borderRadius: '5px' }}
+            <h1>Editar mascota</h1>
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                actions.handlePutPet(id);
+            }} style={{ borderRadius: '5px' }}
                 className="border border-dark shadow-lg m-4 p-2">
                 <div className="form-outline m-4">
                     <input
@@ -21,7 +41,9 @@ const AddPet = () => {
                         name="name"
                         onChange={actions.handleChangePet}
                         className="form-control"
-                        maxLength={50} />
+                        maxLength={50}
+                        defaultValue={petGet.name}
+                    />
                     <label
                         className="form-label"
                         htmlFor="name">Nombre</label>
@@ -31,7 +53,9 @@ const AddPet = () => {
                         id="gender"
                         name="gender"
                         onChange={actions.handleChangePet}
-                        className="form-control">
+                        className="form-control"
+                        defaultValue={petGet.gender}
+                    >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
@@ -46,7 +70,9 @@ const AddPet = () => {
                         id="age"
                         name="age"
                         onChange={actions.handleChangePet}
-                        className="form-control" />
+                        className="form-control"
+                        defaultValue={petGet.age}
+                    />
                     <label
                         className="form-label"
                         htmlFor="age">Edad</label>
@@ -56,7 +82,9 @@ const AddPet = () => {
                         id="spicies"
                         name="species"
                         onChange={actions.handleChangePet}
-                        className="form-control">
+                        className="form-control"
+                        defaultValue={petGet.species}
+                    >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Perro">Perro</option>
                         <option value="Gato">Gato</option>
@@ -71,7 +99,9 @@ const AddPet = () => {
                         id="size"
                         name="size"
                         onChange={actions.handleChangePet}
-                        className="form-control">
+                        className="form-control"
+                        defaultValue={petGet.size}
+                    >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Pequeño">Pequeño</option>
                         <option value="Mediano">Mediano</option>
@@ -87,7 +117,9 @@ const AddPet = () => {
                         id="description"
                         onChange={actions.handleChangePet}
                         name="description"
-                        className="form-control" />
+                        className="form-control"
+                        defaultValue={petGet.description}
+                    />
                     <label
                         className="form-label"
                         htmlFor="description">Descripción</label>
@@ -98,7 +130,9 @@ const AddPet = () => {
                         id="medical"
                         onChange={actions.handleChangePet}
                         name="medical_history"
-                        className="form-control" />
+                        className="form-control"
+                        defaultValue={petGet.medical_history}
+                    />
                     <label
                         className="form-label"
                         htmlFor="medical">Historial médico</label>
@@ -108,7 +142,9 @@ const AddPet = () => {
                         id="is_adopted"
                         name="is_adopted"
                         onChange={actions.handleChangePet}
-                        className="form-control">
+                        className="form-control"
+                        defaultValue={petGet.is_adopted}
+                    >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value={true}>Sí</option>
                         <option value={false}>No</option>
@@ -122,7 +158,9 @@ const AddPet = () => {
                         type="text"
                         id="adress"
                         name="adress_id"
-                        className="form-control" />
+                        className="form-control"
+                        defaultValue={petGet.adress_id}
+                    />
                     <label
                         className="form-label"
                         htmlFor="adress">Comuna de residencia</label>
@@ -136,6 +174,7 @@ const AddPet = () => {
                         name="img"
                         className="form-control"
                         onChange={actions.handleChangeFilePet}
+
                     />
                     <label
                         className="form-label"

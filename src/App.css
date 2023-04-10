@@ -32,91 +32,145 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-body{
-  background: #E0E4EE ;
-  color: #353755;
-}
-#navbar{
-background-color: #5BD3C7 ;
-color: #353755;
-}
-#logo{
-  color: #353755;
-}
-a:link, a:visited{
-  text-decoration: none;
-}
-#btn-navbar{
-color: #353755;
-box-shadow: #0B0C15;
-}
-#footer{
-background-color: #5BD3C7;
-}
-#cardfooter{
+body {
   background: #E0E4EE;
   color: #353755;
 }
-#btn-footer{
+
+#navbar {
+  background-color: #5BD3C7;
+  color: #353755;
+}
+
+#logo {
+  color: #353755;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #0B0C15;
+  color: #353755;
+  box-shadow: #0B0C15;
+}
+
+#btn-navbar {
+  color: #353755;
+  box-shadow: #0B0C15;
+}
+
+#footer {
+  background-color: #5BD3C7;
+}
+
+#cardfooter {
+  background: #E0E4EE;
+  color: #353755;
+}
+
+#btn-footer {
   background-color: #353755;
   color: #FFFFFF;
 }
 
 /* css footer*/
 .list-group {
- padding-top: 2.2%;
+  padding-top: 2.2%;
 }
 
-#rrss1{
-  display:flex;
+#rrss1 {
+  display: flex;
   justify-content: center;
   padding-top: none;
   background-color: #E0E4EE;
 }
+
 .fcc-btn {
   color: #353755;
 }
+
 #rrss {
-  
+
   list-style: none;
   width: 20%;
 }
 
-#footer{
+#footer {
   padding: 3%;
   display: flex;
 }
 
-#cardfooter{
+#cardfooter {
   border-color: transparent;
 }
-#contact-info{
+
+#contact-info {
   border-color: transparent;
   background-color: #E0E4EE;
 }
+
 /*css footer*/
-
-
 
 /*CSS acordeon*/
 
-#btn-collapsed{
+#btn-collapsed {
   color: #353755;
   background-color: #E8EAF1;
 }
-#acordionbtn2{
+
+#acordionbtn2 {
   background-color: #E8EAF1;
   color: #353755;
 }
-#accordion{
+
+#accordion {
   background-color: #E8EAF1;
 }
-#acordeon1{
+
+#acordeon1 {
   background-color: #E8EAF1;
   color: #353755;
+}
+
+#btn-fav {
+  background-color: #E0E4EE;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#btn-fav:hover {
+  background-color: #353755;
+}
+
+/* BLOG */
+
+#btn-date-adoption{
+  background-color: #353755;
+  color: #FFFFFF;
+  margin-top: 5%;
+}
+#btn-add-news{
+  background-color: #353755;
+  color: #FFFFFF;
+  margin-left: 2%;
+  margin-bottom: 3%;
+}
+
+#cardFavorites{
+  padding-top: 5%;
+  border: none;
+}
+
+#postHome{
+  border: none;
 }

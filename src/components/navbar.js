@@ -4,6 +4,7 @@ import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import { Context } from "../store/context";
 import { useContext } from "react";
 
+
 const NavBar = () => {
   const pawn = <FontAwesomeIcon icon={faPaw} />
   const { store } = useContext(Context)

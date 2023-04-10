@@ -11,20 +11,16 @@ const SinglePet = (props) => {
 
     const [information, setInformation] = useState()
     useEffect(() => {
-        const getPet = async () => {
+        const getPet = async (id) => {
             const data = await fetch(`http://localhost:8080/pet/${id}`)
-
             try {
                 const pet = await data.json()
                 setInformation(pet)
             } catch (error) {
                 console.log('error en la api', error)
             }
-
-
         }
-
-        getPet()
+        getPet(id)
         console.log(id)
     }, [id])
 
@@ -36,106 +32,85 @@ const SinglePet = (props) => {
                 <div className='col-md-12 text-center column-mt'>
                     <h1>Adoptar</h1>
                 </div>
-
                 {/*CARD */}
-
                 <div className='col-md-6 column-mt'>
                     <div class="card ">
                         <img src='http://c.files.bbci.co.uk/48DD/production/_107435681_perro1.jpg' alt='' />
                         <div class="card-img-overlay">
                             <h5 class="card-title text-dark text-end">{fav}</h5>
-
                         </div>
-
                     </div>
-
                     {/*BOTONES */}
-
                     <div className='d-flex justify-content-center'>
                         <button type="button" class="btn btn-dark btn-lg mt-5 me-3">Adoptar</button>
                         <button type="button" class="btn btn-dark btn-lg mt-5 me-3">Favorito</button>
                         <button type="button" class="btn btn-dark btn-lg mt-5 ">Editar</button>
+                        <button type="button" class="btn btn-dark btn-lg mt-5 ">Borrar</button>
                     </div>
-
                 </div>
-
                 {/*INFORMACION */}
-
                 <div className="col-md-6 ps-5">
-
                     <form className='column-mt'>
                         <h1 class='text-center mb-5'>Información</h1>
                         <div className="mb-3 ">
                             <label htmlFor='nombre' className="fs-4">
                                 Nombre:
                             </label>
-
                             <input
                                 id='nombre'
                                 type='text'
                                 placeholder=""
                                 className="ms-3 lebel-singlePet bg-white fs-5 fw-lighter"
-
                             ></input>
                         </div>
                         <div className="mb-3">
                             <label htmlFor='edad' className="fs-4">
                                 Edad:
                             </label>
-
                             <input
                                 id='edad'
                                 type='text'
                                 placeholder=""
                                 className="ms-3 lebel-singlePet fs-5 fw-lighter"
-
                             />
                         </div>
                         <div className="mb-3">
                             <label htmlFor='especie' className="fs-4">
                                 Especie:
                             </label>
-
                             <input
                                 id='especie'
                                 type='text'
                                 placeholder=""
                                 className="ms-3 lebel-singlePet fs-5 fw-lighter"
-
                             />
                         </div>
                         <div className="mb-3">
                             <label htmlFor='sexo' className="fs-4">
                                 Sexo:
                             </label>
-
                             <input
                                 id='sexo'
                                 type='text'
                                 placeholder=""
                                 className="ms-3 lebel-singlePet fs-5 fw-lighter"
-
                             />
                         </div>
                         <div className="mb-3">
                             <label htmlFor='Tamano' className="fs-4">
                                 Tamaño:
                             </label>
-
                             <input
                                 id='tamano'
                                 type='text'
                                 placeholder=""
                                 className="ms-3 lebel-singlePet fs-5 fw-lighter"
-
                             />
                         </div>
-
                         <div className="mb-3">
                             <label htmlFor='edad' className="fs-4">
                                 Edad:
                             </label>
-
                             <input
                                 id='edad'
                                 type='text'
@@ -144,18 +119,15 @@ const SinglePet = (props) => {
 
                             />
                         </div>
-
                         <div className="mb-5">
                             <label htmlFor='cambiar' className="fs-4">
                                 Cambiar - Agregar imagen:
                             </label>
-
                             <input
                                 id='tamano'
                                 type='file'
                                 placeholder=""
                                 className="ms-3 lebel-singlePet fs-5 fw-lighter"
-
                             />
                         </div>
 
@@ -165,17 +137,12 @@ const SinglePet = (props) => {
                             <label htmlFor='historia' className="fs-4">
                                 Historial Medico
                             </label>
-
                             <textarea
                                 id="historia"
                                 className="  textarea-SinglePet fs-5 fw-lighter "
                                 placeholder=""
-
                             />
-
-
                         </div>
-
                         <div className="d-flex flex-column">
                             <label htmlFor='historia' className="fs-4">
                                 descripción
@@ -187,15 +154,10 @@ const SinglePet = (props) => {
                                 placeholder=""
 
                             />
-
-
                         </div>
-
                     </form>
                 </div>
-
             </div>
-
         </div>
     </div>
 

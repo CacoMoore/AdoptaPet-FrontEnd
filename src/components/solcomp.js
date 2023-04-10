@@ -1,13 +1,16 @@
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaw } from '@fortawesome/free-solid-svg-icons'
+//import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useContext } from "react";
+import { Context } from "../store/context";
 
 
 const Solcomp = (props) => {
 
-    const pawn = <FontAwesomeIcon icon={faPaw} />
+    //const pawn = <FontAwesomeIcon icon={faPaw} />
     const trash = <FontAwesomeIcon icon={faTrash} />
+    const { actions } = useContext(Context)
 
     return (
         <div className="row my-5">
@@ -16,7 +19,7 @@ const Solcomp = (props) => {
                 <div className="accordion-item">
                     <h2 className="accordion-header">
                         <button className="accordion-button text-light opacity-50  " style={{ backgroundColor: "#353755" }} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
-                            <div><strong>Solicitud de adopción N° {props.id}</strong> &nbsp;Usuario <strong>{props.name} {props.lastname}</strong></div>
+                            <div><strong>Solicitud de adopción N° {props.id}</strong> &nbsp;Usuario <strong>{props.user}</strong></div>
                         </button>
                     </h2>
 
@@ -164,7 +167,12 @@ const Solcomp = (props) => {
 
             </div>
 
-            <h4 className="col-1 opacity-75" style={{ color: "#353755" }}>{trash}</h4>
+            <button
+                className="col-1 btn d-flex align-items-start"
+                style={{ color: "#353755" }}
+                onClick={() => actions.deleteForm(props.form.id)
+                }>
+                {trash}</button>
 
 
 

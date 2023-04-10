@@ -1,7 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
-
-
 import { useContext } from "react";
 import { Context } from "../store/context";
 
@@ -11,34 +9,40 @@ const CardGallery = (props) => {
 
     const fav = <FontAwesomeIcon icon={faHeart} />
 
+    const handleSubmit = () => {
+         
+            console.log(store.favorite)
+            actions.addFavorite(props.pet)
+            console.log(store.favorite)
+
+            alert("La mascota se agrego a tus favoritos!");
+        
+    };
+
 
     return (
 
+        <div className="card container-photo-card  ">
 
-        <div className="card   container-photo-card">
-
-            <img src={props.imgGallery} className="card-img-top image-size-for-card" alt="..." />
+            <img src={'http://127.0.0.1:8080/uploads/' + props.pet.img} className="card-img-top image-size-for-card height-card" alt="..." />
 
             <div className='card-header d-flex justify-content-center bg-white fw-bold'>
-                <span>{props.nombreGallery}</span>
-                <span className='ms-2'>{fav}
-                </span>
+                <span>{props.pet.name}</span>
             </div>
-            <div className="card-body">
+            <div className="card-body ">
 
-                <span className="text-card">
-
-                </span>
                 <div className="row text-center">
-                    <span className='col-6'>{props.sexoGallery}</span>
-
-                    <span className='col-6'>{props.especieGallery}</span>
-                    <span className='col-12'>{props.tamanoGallery}</span>
-
+                    <span className='col-6'>{props.pet.gender}</span>
+                    <span className='col-6'>{props.pet.species}</span>
+                    <span className='col-12'>{props.pet.size}</span>
                 </div>
-
             </div>
+            
+            <button id="btn-fav" onClick={handleSubmit}> {fav} </button>
+
         </div>
+
+
     )
 }
 

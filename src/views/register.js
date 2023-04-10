@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/context";
 
 const Register = () => {
     const { actions } = useContext(Context)
+    const navigate = useNavigate();
     return (
         <div
             style={{ borderRadius: '5px', minHeight: '100vh' }}
@@ -12,8 +13,8 @@ const Register = () => {
                 style={{ borderRadius: '5px' }}
                 className="border shadow-lg m-4">
                 <div className="m-4">
-                    <h1>Registro</h1>
-                    <form onSubmit={actions.handleUserRegister}>
+                    <h1>Regístrate aquí...</h1>
+                    <form onSubmit={(e) => actions.handleUserRegister(e, navigate)}>
                         <div className="row d-flex justify-content-around p-2">
                             <div className="form-outline mb-4 col-6">
                                 <input
@@ -23,6 +24,7 @@ const Register = () => {
                                     name="name"
                                     className="form-control"
                                     maxLength={50}
+                                    required
                                     placeholder="Máximo 50 caracteres" />
                                 <label
                                     className="form-label"
@@ -36,6 +38,7 @@ const Register = () => {
                                     name="last_name"
                                     className="form-control"
                                     maxLength={50}
+                                    required
                                     placeholder="Máximo 50 caracteres" />
                                 <label
                                     className="form-label"
@@ -51,6 +54,7 @@ const Register = () => {
                                     name="email"
                                     className="form-control"
                                     maxLength={50}
+                                    required
                                     placeholder="Máximo 50 caracteres" />
                                 <label
                                     className="form-label"
@@ -63,7 +67,7 @@ const Register = () => {
                                     id="phone"
                                     name="phone"
                                     className="form-control"
-                                    placeholder="Ej: 963410066" />
+                                    placeholder="Ej: 988887777" />
                                 <label
                                     className="form-label"
                                     htmlFor="email">Teléfono</label>
@@ -75,6 +79,7 @@ const Register = () => {
                                     id="password"
                                     name="password"
                                     className="form-control"
+                                    required
                                     maxLength={10} />
                                 <label
                                     className="form-label"
