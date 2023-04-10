@@ -1,12 +1,4 @@
-import { useParams } from "react-router-dom";
-
-
-
 const getState = ({ setStore, getActions, getStore }) => {
-
-
-
-
   return {
     store: {
       user: {
@@ -100,6 +92,16 @@ const getState = ({ setStore, getActions, getStore }) => {
         motivation: "",
         style: "",
       },
+      posts: [],
+      post: {
+        id: "",
+        title: "",
+        date: "",
+        description: "",
+        /*imagePost: "",*/
+        rol_id: "",
+      },
+      favorites: [],
       favorite: [],
       currentPage: 1,
       petsPerPage: 9,
@@ -115,8 +117,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
         });
       },
-
-
       //funcion para paginacion siguiente pagina
       handleCurrentPageNext: (e) => {
         let { currentPage } = getStore();
@@ -124,8 +124,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           currentPage: (currentPage + 1)
         })
       },
-
-
       // Funcion para paginacion para devolverme a lpa ag anterior
       handleCurrentPagePrevius: (e) => {
         let { currentPage } = getStore();
@@ -133,15 +131,12 @@ const getState = ({ setStore, getActions, getStore }) => {
           currentPage: (currentPage - 1)
         })
       },
-
-
       onSpecificPage: (e) => {
 
         setStore({
           currentPage: e
         })
       },
-
       //Funcion para atrapar el valor PetFilterContainer y asi poder usarla en el filtro de busqueda
       PetFilterContainer: (e) => {
         let { PetFilterContainer } = getStore();
@@ -154,9 +149,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           }
         })
       },
-
-
-
       handleChangeFilePet: (e) => {
         let { pet } = getStore();
         let name = e.target.name;
@@ -170,9 +162,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
         });
       },
-
-
-
       //Funcion para atrapar el valor pet y asi usarla para para el post
       handleChangePet: (e) => {
         let { pet } = getStore();
@@ -316,6 +305,7 @@ const getState = ({ setStore, getActions, getStore }) => {
               },
             });
             getActions().getUserDescription(user_id);
+            getActions().getFavoriteUser(user_id);
           })
           .catch(error => console.log(error));
       },
@@ -331,6 +321,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then(res => res.json())
           .then(data => {
+            console.log(data)
             setStore({
               loginUser: data,
               token: data.token,
@@ -378,8 +369,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error));
       },
-
-
       //Para subir la informacion de la pet
       handlePostPet: (e) => {
         e.preventDefault();
@@ -427,9 +416,6 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
 
       },
-
-
-
       //Funcion para traer la informacion de todos los pet funcion get
       sendForm: (answers) => {
         const { form, token, user_id } = getStore();
@@ -448,7 +434,19 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(data => console.log(data))
 
       },
-
+      sendPost: (postAnswers) => {
+        fetch("http://localhost:8080/posts", {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify(postAnswers)
+        }).then(res => res.json())
+          .then((data) => {
+            alert(data);
+            getActions().getPost();
+          })
+      },
       getPost: () => {
         fetch("http://localhost:8080/posts/list")
           .then((res) => res.json())
@@ -475,7 +473,6 @@ const getState = ({ setStore, getActions, getStore }) => {
             getActions().getPost())
           .catch(error => console.log(error))
       },
-
       addFavorite: (pet) => {
         const { favorite } = getStore();
         if (!favorite.includes(pet)) {
@@ -502,7 +499,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           console.error('Error guardando favorito', error);
         });
       },
-      getfavoriteuser: () => {
+      getFavoriteUser: () => {
         const { user_id, token } = getStore();
         fetch(`http://localhost:8080/favorites/user/${user_id}`,
           {
@@ -520,14 +517,11 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error));
       },
-
-
       removeFavorites: (name) => {
         const store = getStore();
         const newFavorites = store.favorite.filter(item => item !== name);
         setStore({ favorite: newFavorites });
       },
-
       getForm: () => {
         return fetch("http://localhost:8080/form/list")
           .then((res) => res.json()
@@ -535,7 +529,13 @@ const getState = ({ setStore, getActions, getStore }) => {
           )
           .catch((error) => console.log(error))
       },
+      getForm: () => {
+        return fetch("http://localhost:8080/form/list")
+          .then((res) => res.json()
 
+          )
+          .catch((error) => console.log(error))
+      },
       deleteForm: (id) => {
         const { token } = getStore();
         fetch(`http://localhost:8080/form/${id}`,
@@ -551,157 +551,118 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(data => getActions().getForm())
           .catch(error => console.log(error))
       },
-
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())
           .then((data) => setStore({ pets: data }))
           .catch((error) => console.log(error))
       },
+      //Funcion para filtrar se trae todos los pet que coincidan con el valor del filtro
+      handlePostPetSearch: (e) => {
+        e.preventDefault();
+        const { PetFilterContainer } = getStore();
+        fetch("http://localhost:8080/pets/search", {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify(PetFilterContainer)
+        }).then(res => res.json())
+          .then(data => setStore({ pets: data }))
+          .catch(error => console.log(error))
+        setStore({
+          currentPage: 1
+        })
+
+      },
+      getPet: (id) => {
+        fetch(`http://localhost:8080/pet/${id}`)
+          .then((res) => res.json())
+          .then((data) => setStore({ petGet: data }))
+          .catch((error) => console.log(error))
+      },
+      handlePutPet: (id) => {
+        const { pet } = getStore();
+        const formData = new FormData();
+
+        // Fetch old data of the pet
+        fetch(`http://127.0.0.1:8080/pet/${id}`)
+          .then((res) => res.json())
+          .then((data) => {
+
+            formData.set('name', pet.name || data.name);
+            formData.set('gender', pet.gender || data.gender);
+            formData.set('age', pet.age || data.age);
+            formData.set('description', pet.description || data.description);
+            formData.set('species', pet.species || data.species);
+            formData.set('size', pet.size || data.size);
+            formData.set('medical_history', pet.medical_history || data.medical_history);
+            formData.set('is_adopted', pet.is_adopted === undefined ? data.is_adopted : pet.is_adopted);
+            formData.set('adress_id', pet.adress_id || data.adress_id);
+            formData.set('rol_id', pet.rol_id || data.rol_id);
 
 
-    },
+            if (pet.img && pet.img !== data.img) {
+              formData.set('file', pet.img);
+            }
 
 
-
-
-
-
-
-
-    //Funcion para filtrar se trae todos los pet que coincidan con el valor del filtro
-    handlePostPetSearch: (e) => {
-      e.preventDefault();
-      const { PetFilterContainer } = getStore();
-      fetch("http://localhost:8080/pets/search", {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        method: "POST",
-        body: JSON.stringify(PetFilterContainer)
-      }).then(res => res.json())
-        .then(data => setStore({ pets: data }))
-        .catch(error => console.log(error))
-      setStore({
-        currentPage: 1
-      })
-
-    },
-
-
-    getPet: (id) => {
-      fetch(`http://localhost:8080/pet/${id}`)
-        .then((res) => res.json())
-        .then((data) => setStore({ petGet: data }))
-        .catch((error) => console.log(error))
-    },
-
-
-
-
-
-    handlePutPet: (id) => {
-      const { pet } = getStore();
-      const formData = new FormData();
-
-      // Fetch old data of the pet
-      fetch(`http://127.0.0.1:8080/pet/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-
-          formData.set('name', pet.name || data.name);
-          formData.set('gender', pet.gender || data.gender);
-          formData.set('age', pet.age || data.age);
-          formData.set('description', pet.description || data.description);
-          formData.set('species', pet.species || data.species);
-          formData.set('size', pet.size || data.size);
-          formData.set('medical_history', pet.medical_history || data.medical_history);
-          formData.set('is_adopted', pet.is_adopted === undefined ? data.is_adopted : pet.is_adopted);
-          formData.set('adress_id', pet.adress_id || data.adress_id);
-          formData.set('rol_id', pet.rol_id || data.rol_id);
-
-
-          if (pet.img && pet.img !== data.img) {
-            formData.set('file', pet.img);
-          }
-
-
-          fetch(`http://127.0.0.1:8080/pet/${id}`, {
-            method: 'PUT',
-            body: formData,
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              setStore({ petGet: data });
+            fetch(`http://127.0.0.1:8080/pet/${id}`, {
+              method: 'PUT',
+              body: formData,
             })
-            .catch((error) => {
-              console.log(error);
-            });
+              .then((res) => res.json())
+              .then((data) => {
+                setStore({ petGet: data });
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+      // Se elimina la pet atraves de su id
+      handlePostPetDelete: (id) => {
+
+        fetch(`http://localhost:8080/pet/${id}`, {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "DELETE",
+
+        }).then(res => res.json())
+          .then(data => {
+            console.log('Respuesta mascota eliminada', data)
+            setStore({ petsDelete: data })
+
+          })
+          .catch(error => console.log(error))
+      },
+      //Se resetea el valor del filtro
+      handlePostPetRestore: (e) => {
+
+        const { PetFilterContainer } = getStore();
+        fetch("http://localhost:8080/pets/search", {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify(PetFilterContainer)
+        }).then(res => res.json())
+          .then(data => setStore({ pets: data }))
+          .catch(error => console.log(error))
+        setStore({
+          PetFilterContainer: {
+            gender: "",
+            spicies: "",
+            size: "",
+          },
         })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-
-
-
-    // Se elimina la pet atraves de su id
-    handlePostPetDelete: (id) => {
-
-      fetch(`http://localhost:8080/pet/${id}`, {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        method: "DELETE",
-
-      }).then(res => res.json())
-        .then(data => {
-          console.log('Respuesta mascota eliminada', data)
-          setStore({ petsDelete: data })
-
-        })
-        .catch(error => console.log(error))
-    },
-
-    //Se resetea el valor del filtro
-    handlePostPetRestore: (e) => {
-
-      const { PetFilterContainer } = getStore();
-      fetch("http://localhost:8080/pets/search", {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        method: "POST",
-        body: JSON.stringify(PetFilterContainer)
-      }).then(res => res.json())
-        .then(data => setStore({ pets: data }))
-        .catch(error => console.log(error))
-      setStore({
-        PetFilterContainer: {
-          gender: "",
-          spicies: "",
-          size: "",
-        },
-
-
-        addFavorite: (pet) => {
-          const { favorite } = getStore();
-          if (!favorite.includes(pet)) {
-            const newFavorites = [...favorite, pet];
-            setStore({ favorite: newFavorites });
-            console.log(newFavorites);
-          }
-        },
-
-        removeFavorites: name => {
-          const store = getStore();
-          const newFavorites = store.favorite.filter(item => item !== name);
-          setStore({ favorite: newFavorites });
-        }
-      })
+      },
     },
   }
-}
-
+};
 
 export default getState;
