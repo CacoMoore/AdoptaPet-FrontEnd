@@ -24,6 +24,52 @@ const getState = ({ setStore, getActions, getStore }) => {
         adress_id: false,
         rol_id: 1,
       },
+      form: {
+        query1: "",
+        query2: "",
+        query3: "",
+        query4: "",
+        query5: "",
+        query6: "",
+        query7: "",
+        query8: "",
+        query9: "",
+        query10: "",
+        query11: "",
+        query12: "",
+        query13: "",
+        query14: "",
+        query15: "",
+        query16: "",
+        query17: "",
+        query18: "",
+        query19: "",
+        query20: "",
+        query21: "",
+        query22: "",
+        query23: "",
+        query24: "",
+        query25: "",
+        query26: "",
+        query27: "",
+        query28: "",
+        query29: "",
+        query30: "",
+        query31: "",
+        query32: "",
+        query33: "",
+        query34: "",
+        query35: "",
+        query36: "",
+        query37: "",
+        query38: "",
+        query39: "",
+        query40: "",
+        query41: "",
+        query42: "",
+        query43: "",
+        query44: "",
+      },
       userDescription: [],
       userInfo: {
         name: "",
@@ -39,6 +85,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         style: "",
       },
       favorite: [],
+      forms: [],
     },
     actions: {
       handleChange: (e) => {
@@ -283,6 +330,49 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
 
       },
+
+      sendForm: (answers) => {
+        const { form, token, user_id } = getStore();
+        console.log({ form, user_id, answers })
+        const formWithUserId = { user_id, ...answers };
+        console.log(formWithUserId)
+        return fetch("http://localhost:8080/form", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+          method: "POST",
+          body: JSON.stringify(formWithUserId)
+        }).then(res => res.json())
+          .then(data => setStore({ forms: data }))
+          .then(data => console.log(data))
+
+      },
+
+      getForm: () => {
+        return fetch("http://localhost:8080/form/list")
+          .then((res) => res.json()
+
+          )
+          .catch((error) => console.log(error))
+      },
+
+      deleteForm: (id) => {
+        const { token } = getStore();
+        fetch(`http://localhost:8080/form/${id}`,
+          {
+            headers: {
+              "Content-Type":
+                "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            method: "DELETE",
+          })
+          .then(res => res.json())
+          .then(data => getActions().getForm()) 
+          .catch(error => console.log(error))
+      },
+
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())
@@ -355,4 +445,3 @@ const getState = ({ setStore, getActions, getStore }) => {
 };
 
 export default getState;
-
