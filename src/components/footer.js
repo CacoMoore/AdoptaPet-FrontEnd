@@ -6,7 +6,7 @@ import { faPaw } from '@fortawesome/free-solid-svg-icons'
 
 const Footer = (props) => {
     const pawn = <FontAwesomeIcon icon={faPaw} />
-    
+
     return (
         <div id="footer">
             <div class="container">
