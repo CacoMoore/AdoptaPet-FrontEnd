@@ -538,10 +538,6 @@ const getState = ({ setStore, getActions, getStore }) => {
         setStore({ favorite: newFavorites });
       },
 
-
-
-    },
-
       getForm: () => {
         return fetch("http://localhost:8080/form/list")
           .then((res) => res.json()
@@ -572,6 +568,15 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((data) => setStore({ pets: data }))
           .catch((error) => console.log(error))
       },
+
+
+    },
+
+      
+
+      
+
+      
 
 
       //Funcion para filtrar se trae todos los pet que coincidan con el valor del filtro
