@@ -32,7 +32,7 @@ const Blog = (props) => {
                                     <button
                                         type="button"
                                         className="btn btn-sm btn-outline-dark rounded-circle border-0 mb-2"
-                                        onClick={() => actions.handleDeletePost(props.post.id)} >{trash}</button>
+                                        onClick={() => actions.handleDeletePost(props.post.id)} >{trash} "hacer doble click"</button>
 
                                 )}
 
