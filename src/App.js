@@ -6,7 +6,7 @@ import NavBar from './components/navbar';
 import Footer from './components/footer';
 import './styles/photoGallery.css'
 import './styles/singlePet.css'
-import SinglePet from './views/singlePet';
+import SinglePet from './views/PetEdit';
 import PhotoGallery from './views/photoGallery';
 import Login from './views/login';
 import RecoverPass from './views/recoverPass';
@@ -24,6 +24,7 @@ import Solviewforadmin from './views/solviewforadmin';
 import SinglePet2 from './views/SinglePet2';
 import Favorites from './views/favorite';
 import Register from './views/register';
+
 
 
 
@@ -46,10 +47,11 @@ function App() {
         <Route path="/adminprofile" element={<Adminprofile />} />
         <Route path="/addPet" element={<AddPet />} />
         <Route path="/solviewforadmin" element={<Solviewforadmin />} />
-        <Route path="/register" element={<Register/>}/>
+        <Route path="/register" element={<Register />} />
         {/*SECCION DE GALERIA DE FOTOS Y INFORMACION INDIVIDUAL DE CADA PET */}
         <Route path="/photoGallery" element={<PhotoGallery />} />
         <Route path="/pet/:id" element={<SinglePet2 />} />
+        <Route path="/pex/:id" element={<SinglePet />} />
       </Routes>
       <Footer />
     </BrowserRouter>
