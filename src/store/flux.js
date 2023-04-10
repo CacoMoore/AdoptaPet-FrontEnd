@@ -538,10 +538,6 @@ const getState = ({ setStore, getActions, getStore }) => {
         setStore({ favorite: newFavorites });
       },
 
-
-
-    },
-
       getForm: () => {
         return fetch("http://localhost:8080/form/list")
           .then((res) => res.json()
@@ -687,5 +683,6 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
     }
   };
+}
 
 export default getState;
