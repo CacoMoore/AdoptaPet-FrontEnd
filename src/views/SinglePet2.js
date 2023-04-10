@@ -7,7 +7,7 @@ import { Context } from "../store/context";
 
 
 
-const SinglePet2 = () => {
+const SinglePet2 = (props) => {
 
 
 
@@ -38,6 +38,15 @@ const SinglePet2 = () => {
 
 
 
+
+    const handleSubmit = (data) => {
+        if (store.loginUser.rol_id !== "restricted-rol-id") {
+            console.log(store.favorite)
+            data.rol_id=store.loginUser.rol_id
+            actions.addFavorite(props.pet);
+            console.log(store.favorite)
+        }
+    };
 
     const fav = <FontAwesomeIcon icon={faHeart} />
 

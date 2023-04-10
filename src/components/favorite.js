@@ -6,18 +6,26 @@ import CardGallery from "../components/cardGallery";
 
 
 
-
-
 const Favorites = () => {
-    const trash = <FontAwesomeIcon icon={faTrash} />   
+    const trash = <FontAwesomeIcon icon={faTrash} />
     const { store, actions } = useContext(Context);
 
+    const sendFavorite = (data) => {
+        console.log(data);
+        actions.sendFavorite(data)
+            .then(() => { alert("Favorito enviado exitosamente") })
+            .catch(() => { alert("Favorito no guardado") })
+    }
+
+
     return (
-        
-            <div className="cards container px-4 py-5" id="custom-cards">
-                <h1>Favoritos</h1>
-                    {store.favorite.length > 0 ? (
-                        store.favorite.map((item, index) => (
+
+        /*<div className="cards container px-4 py-5" id="custom-cards">*/
+        <div class="row" >
+            <div class="col-sm-6 mb-3 mb-sm-0" >
+                <div class="card-body">
+                    {store.favorites.length > 0 ? (
+                        store.favorites.map((item, index) => (
                             <ul className="" style={{ listStyle: "none" }}>
                                 <li
                                     key={index}
@@ -27,20 +35,25 @@ const Favorites = () => {
                                         className="btn btn-sm btn-outline-dark rounded-circle border-0 mb-2"
                                         onClick={() => actions.removeFavorite(item)}>{trash}</button>
                                     <CardGallery pet={item} />
-                                    
+
                                 </li>
 
 
                             </ul>
+
                         ))
                     ) : (
                         <li className="dropdown-item-text text-center text-secondary"> Vacío </li>
 
                     )}
+                </div>
             </div>
-        
+        </div>
+
+
     )
 
 }
+
 
 export default Favorites;
