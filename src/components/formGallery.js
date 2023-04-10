@@ -22,8 +22,10 @@ const FormGallery = () => {
                         <select className="form-select"
                             onChange={actions.PetFilterContainer}
                             name="size"
-                            aria-label="Default select example">
-                            <option value={undefined}  >Selecionar</option>
+                            aria-label="Default select example"
+                            value={store.PetFilterContainer.size || ''}
+                        >
+                            <option value=''  >Selecionar</option>
                             <option value="Grande">Grande</option>
                             <option value="Mediano">Mediano</option>
                             <option value="Pequeño">Pequeño</option>
@@ -36,8 +38,10 @@ const FormGallery = () => {
                         <select className="form-select"
                             onChange={actions.PetFilterContainer}
                             name="species"
-                            aria-label="Default select example">
-                            <option value={undefined}>Selecionar</option>
+                            aria-label="Default select example"
+                            value={store.PetFilterContainer.spicies || ''}
+                        >
+                            <option value=''>Selecionar</option>
                             <option value="Perro">Perro</option>
                             <option value="Gato">Gato</option>
 
@@ -49,8 +53,10 @@ const FormGallery = () => {
                         <select className="form-select"
                             onChange={actions.PetFilterContainer}
                             name="gender"
-                            aria-label="Default select example">
-                            <option value={undefined}>Selecionar</option>
+                            aria-label="Default select example"
+                            value={store.PetFilterContainer.gender || ''}
+                        >
+                            <option value=''>Selecionar</option>
                             <option value="Femenino">Femenino</option>
                             <option value="Masculino">Masculino</option>
 

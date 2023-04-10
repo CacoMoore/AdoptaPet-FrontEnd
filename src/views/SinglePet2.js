@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useContext } from "react";
 import { Context } from "../store/context";
 
 
 
-const SinglePet2 = (props) => {
+const SinglePet2 = () => {
 
 
 
@@ -16,31 +16,28 @@ const SinglePet2 = (props) => {
 
 
     const { id } = useParams()
-    console.log(id)
-    const [information, setInformation] = useState()
+
+
     useEffect(() => {
-        const getPet = async () => {
-            const data = await fetch(`http://localhost:8080/pet/${id}`)
-
-            try {
-                const pet = await data.json()
-                setInformation(pet)
-            } catch (error) {
-                console.log('error en la api', error)
-            }
 
 
-        }
+        actions.getPet(id)
 
-        getPet()
-        console.log(id)
-    }, [id])
+    }, [id, actions])
+
+    const { petGet } = store
 
 
     const deletePetId = () => {
         actions.handlePostPetDelete(id)
         alert('Se elimino satisfactoriamente')
     }
+    const { loginUser } = store;
+    const { rol_id } = loginUser
+
+
+
+
 
     const fav = <FontAwesomeIcon icon={faHeart} />
 
@@ -53,9 +50,9 @@ const SinglePet2 = (props) => {
 
                 {/*CARD */}
 
-                <div className='col-md-6 column-mt'>
-                    <div class="card ">
-                        <img src='http://c.files.bbci.co.uk/48DD/production/_107435681_perro1.jpg' alt='' />
+                <div className='col-md-6 column-mt '>
+                    <div class="card height-img-singlePet">
+                        <img src={'http://127.0.0.1:8080/uploads/' + petGet.img} alt='' />
                         <div class="card-img-overlay">
                             <h5 class="card-title text-dark text-end">{fav}</h5>
 
@@ -68,7 +65,15 @@ const SinglePet2 = (props) => {
                     <div className='d-flex justify-content-center'>
                         <button type="button" class="btn btn-dark btn-lg mt-5 me-3">Adoptar</button>
                         <button type="button" class="btn btn-dark btn-lg mt-5 me-3">Favorito</button>
-                        <button onClick={() => deletePetId()} type="button" class="btn btn-dark btn-lg mt-5 ">Eliminar</button>
+
+                        {rol_id === 1 ? (
+                            <>
+
+                                <button onClick={() => deletePetId()} type="button" class="btn btn-dark btn-lg mt-5 me-3">Eliminar</button>
+                                <Link to={`/pex/${id}`}><button type="button" class="btn btn-dark btn-lg mt-5 ">Editar</button></Link>
+                            </>
+                        ) : null}
+
                     </div>
 
                 </div>
@@ -88,7 +93,7 @@ const SinglePet2 = (props) => {
 
                             className="ms-3  fs-5"
 
-                        >{information?.name}</span>
+                        >{petGet.name}</span>
                     </div>
                     <div className="mb-3 ">
                         <span className="fs-4">
@@ -99,7 +104,7 @@ const SinglePet2 = (props) => {
 
                             className="ms-3  fs-5"
 
-                        >{information?.gender}</span>
+                        >{petGet.gender}</span>
                     </div>
                     <div className="mb-3 ">
                         <span className="fs-4">
@@ -110,7 +115,7 @@ const SinglePet2 = (props) => {
 
                             className="ms-3  fs-5"
 
-                        >{information?.age}</span>
+                        >{petGet.age}</span>
                     </div>
                     <div className="mb-3 ">
                         <span className="fs-4">
@@ -121,7 +126,7 @@ const SinglePet2 = (props) => {
 
                             className="ms-3  fs-5"
 
-                        >{information?.species}</span>
+                        >{petGet.species}</span>
                     </div>
                     <div className="mb-3 ">
                         <span className="fs-4">
@@ -132,7 +137,7 @@ const SinglePet2 = (props) => {
 
                             className="ms-3  fs-5"
 
-                        >{information?.size}</span>
+                        >{petGet.size}</span>
                     </div>
                     <div className="mb-3 ">
                         <span className="fs-4">
@@ -143,7 +148,7 @@ const SinglePet2 = (props) => {
 
                             className="ms-3  fs-5"
 
-                        >{information?.medical_history}</span>
+                        >{petGet.medical_history}</span>
                     </div>
 
                     <div className="mb-3 ">
@@ -155,10 +160,10 @@ const SinglePet2 = (props) => {
 
                             className="ms-3  fs-5"
 
-                        >{information?.description}</span>
+                        >{petGet.description}</span>
                     </div>
 
-                    {/*TEXTAREA */}
+                    {/**/}
 
                     <div className="mb-3 ">
                         <span className="fs-4">
@@ -169,9 +174,8 @@ const SinglePet2 = (props) => {
 
                             className="ms-3  fs-5"
 
-                        >{information?.is_adopted === true ? 'Sin adoptar' : 'Ya adoptado'}</span>
+                        >{petGet.is_adopted === true ? 'Sin adoptar' : 'Ya adoptado'}</span>
                     </div>
-
 
 
                 </div>

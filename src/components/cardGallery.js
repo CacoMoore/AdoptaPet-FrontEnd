@@ -19,14 +19,14 @@ const CardGallery = (props) => {
 
     return (
 
-        <div className="card container-photo-card">
+        <div className="card container-photo-card  ">
 
-            <img src={'http://127.0.0.1:8080/uploads/' + props.pet.img} className="card-img-top image-size-for-card" alt="..." />
+            <img src={'http://127.0.0.1:8080/uploads/' + props.pet.img} className="card-img-top image-size-for-card height-card" alt="..." />
 
             <div className='card-header d-flex justify-content-center bg-white fw-bold'>
                 <span>{props.pet.name}</span>
             </div>
-            <div className="card-body">
+            <div className="card-body ">
 
                 <div className="row text-center">
                     <span className='col-6'>{props.pet.gender}</span>

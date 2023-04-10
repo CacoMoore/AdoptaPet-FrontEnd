@@ -1,4 +1,12 @@
+import { useParams } from "react-router-dom";
+
+
+
 const getState = ({ setStore, getActions, getStore }) => {
+
+
+
+
   return {
     store: {
       user: {
@@ -32,6 +40,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         phone: 0,
       },
       pets: [],
+      petGet: [],
       petsDelete: '',
       PetFilterContainer: {
         gender: "",
@@ -372,7 +381,9 @@ const getState = ({ setStore, getActions, getStore }) => {
 
       },
 
-      //Funcion para traer la informacion de cada pet funcion get
+
+
+      //Funcion para traer la informacion de todos los pet funcion get
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())
@@ -399,6 +410,62 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
 
       },
+
+
+      getPet: (id) => {
+        fetch(`http://localhost:8080/pet/${id}`)
+          .then((res) => res.json())
+          .then((data) => setStore({ petGet: data }))
+          .catch((error) => console.log(error))
+      },
+
+
+
+
+
+      handlePutPet: (id) => {
+        const { pet } = getStore();
+        const formData = new FormData();
+
+        // Fetch old data of the pet
+        fetch(`http://127.0.0.1:8080/pet/${id}`)
+          .then((res) => res.json())
+          .then((data) => {
+
+            formData.set('name', pet.name || data.name);
+            formData.set('gender', pet.gender || data.gender);
+            formData.set('age', pet.age || data.age);
+            formData.set('description', pet.description || data.description);
+            formData.set('species', pet.species || data.species);
+            formData.set('size', pet.size || data.size);
+            formData.set('medical_history', pet.medical_history || data.medical_history);
+            formData.set('is_adopted', pet.is_adopted === undefined ? data.is_adopted : pet.is_adopted);
+            formData.set('adress_id', pet.adress_id || data.adress_id);
+            formData.set('rol_id', pet.rol_id || data.rol_id);
+
+
+            if (pet.img && pet.img !== data.img) {
+              formData.set('file', pet.img);
+            }
+
+
+            fetch(`http://127.0.0.1:8080/pet/${id}`, {
+              method: 'PUT',
+              body: formData,
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                setStore({ petGet: data });
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      },
+
 
 
       // Se elimina la pet atraves de su id
