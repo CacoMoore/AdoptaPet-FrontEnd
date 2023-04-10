@@ -329,7 +329,7 @@ const Formcomp = () => {
                         <div className="mb-4">
                             <label htmlFor="exampleFormControlTextarea1" className="form-label fw-semibold">33. Si es soltero y vives solo, ¿qué harías si a tu pareja no le gusta su animal de compañía?</label>
                             <textarea className="form-control" id="" rows="3" type="text" {...register('query33', { required: true, maxLength: 500 })}></textarea>
-                            {errors.query33?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}}
+                            {errors.query33?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
                             {errors.query33?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
                         </div>
 

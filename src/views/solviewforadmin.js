@@ -34,7 +34,7 @@ const Adopform = (props) => {
                 </div>
 
                 <div >
-                    {/*component example*/}
+                    {/*component example
                     <Solcomp
                         id="1"
                         query1="quiero un perrito"
@@ -80,7 +80,7 @@ const Adopform = (props) => {
                         query41="quiero un perrito"
                         query42="quiero un perrito"
                         query43="quiero un perrito"
-                        query44="quiero un perrito" />
+                        query44="quiero un perrito" />*/}
 
 
                     {formresponse?.length > 0 ? (

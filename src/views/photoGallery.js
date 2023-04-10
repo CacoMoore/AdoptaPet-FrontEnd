@@ -3,11 +3,12 @@ import FormGallery from "../components/formGallery"
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../store/context";
 import { Link } from "react-router-dom";
-
+import Pagination from "../components/pagination";
 
 
 const PhotoGallery = () => {
     const { store, actions } = useContext(Context)
+
 
     useEffect(() => {
         actions.getPets()
@@ -35,7 +36,7 @@ const PhotoGallery = () => {
                 <div className="col-md-4 mt-5">
                     <FormGallery />
                 </div>
-                <div className=" col-md-7 ">
+                <div className=" col-md-7  ">
                     <div className=" py-2 mb-2 height-div">
                         <div className="row ">
                             <h1 className="my-5 text-center display-4">Mascotas en adopción</h1>
@@ -49,6 +50,7 @@ const PhotoGallery = () => {
                                         />
                                         <Link to={`/pet/${pet.id}`}> Ver más Información
                                         </Link>
+
                                     </div>
 
                                 }).slice(firstIndex, lastIndex)
@@ -57,12 +59,12 @@ const PhotoGallery = () => {
                             )}
                             <div className="d-flex justify-content-center">
 
-                              { /* <Pagination 
+                                <Pagination
 
 
 
 
-                                /> */}
+                                />
                             </div>
                         </div>
                     </div>

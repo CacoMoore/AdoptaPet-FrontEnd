@@ -9,7 +9,7 @@ const Adminprofile = () => {
 
     return (
         <div>
-            <div className="container ">
+            <div className="container">
                 <div className="py-5 text-center">
                     <p className="fs-1">{pawn}</p>
                     <h2>Portal del administrador</h2>
@@ -20,15 +20,24 @@ const Adminprofile = () => {
                     </p>
 
                 </div>
-                <div className="d-flex justify-content-evenly">                
+                <div className="row py-5 d-grid gap-2 d-md-block d-flex justify-content-center">                
                     <Link to="/addPet">
-                        <button type="button" className="btn mb-5 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Agregar animales animales a la galeria de adoptables</button>
+                        <button 
+                            type="button" 
+                            className="btn fw-semibold text-start rounded shadow" 
+                            style={{ backgroundColor: "#5BD3C7" }}>{pawn} Agregar animales a la galería</button>
                     </Link>
                     <Link to="/solviewforadmin">
-                        <button type="button" className="btn mb-5 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Ver solicitudes de adopción </button>
+                        <button 
+                            type="button" 
+                            className="btn fw-semibold text-start rounded shadow" 
+                            style={{ backgroundColor: "#5BD3C7" }}>{pawn} Ver solicitudes de adopción </button>
                     </Link>
                     <Link to="/addpost">
-                        <button type="button" className="btn mb-5 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Agregar post al blog </button>
+                        <button 
+                            type="button" 
+                            className="btn fw-semibold text-start rounded shadow" 
+                            style={{ backgroundColor: "#5BD3C7" }}>{pawn} Agregar post al blog </button>
                     </Link>
                 </div>
 
