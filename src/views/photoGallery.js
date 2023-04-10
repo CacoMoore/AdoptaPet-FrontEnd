@@ -24,7 +24,7 @@ const PhotoGallery = () => {
         <div className=" div-header p-5">
             <h1 className=" text-center">Galeria de mascotas</h1>
             <p className="text-center fs-5 fw-lighter">
-                En estas sección se muestran los animalitos que buscan un hogar. Debido a la gran cantidad de mascotas callejaras en Chile, es imposible rescatar a todos los perros y gatos que se encuentran viviendo en la calle. Pero un pequeño porcentaje aquí mostrados puede tener la posibilidad de encontrar un nuevo hogar.
+                En estas sección se muestran los animalitos que buscan un hogar. Debido a la gran cantidad de mascotas callejar en Chile, es imposible rescatar a todos los perros y gatos que se encuentran viviendo en la calle. Pero un pequeño porcentaje aquí mostrados puede tener la posibilidad de encontrar un nuevo hogar.
                 <br />
                 <br />
                 "El abandono de perros es un problema nacional. Desde 2018 se estima que hay más de 300 mil animales callejeros en Chile, contando a perros y gatos. (subsecretaría de desarrollo regional y administrativo)"

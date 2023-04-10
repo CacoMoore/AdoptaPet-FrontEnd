@@ -90,7 +90,7 @@ const getState = ({ setStore, getActions, getStore }) => {
       petsDelete: '',
       PetFilterContainer: {
         gender: "",
-        species: "",
+        spicies: "",
         size: "",
 
       },
@@ -680,7 +680,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         setStore({
           PetFilterContainer: {
             gender: "",
-            species: "",
+            spicies: "",
             size: "",
           },
         })
