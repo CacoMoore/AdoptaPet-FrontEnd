@@ -12,6 +12,7 @@ const getState = ({ setStore, getActions, getStore }) => {
       token: "",
       user_id: 0,
       email: "",
+      pet_id: 0,
       pet: {
         name: "",
         gender: "",
@@ -102,7 +103,6 @@ const getState = ({ setStore, getActions, getStore }) => {
         rol_id: "",
       },
       favorites: [],
-      favorite: [],
       currentPage: 1,
       petsPerPage: 9,
       forms: [],
@@ -473,31 +473,24 @@ const getState = ({ setStore, getActions, getStore }) => {
             getActions().getPost())
           .catch(error => console.log(error))
       },
-      addFavorite: (pet) => {
-        const { favorite } = getStore();
-        if (!favorite.includes(pet)) {
-          const newFavorites = [...favorite, pet];
-          setStore({ favorite: newFavorites });
-          console.log(newFavorites);
-        }
-      },
-      sendFavorite: () => {
-        fetch('http://localhost:8080/favorites', {
-          method: 'POST',
+      addFavorite: (e) => {
+        e.preventDefault();
+        const { user_id, pet_id, token } = getStore();
+        const info = { pet_id, user_id };
+        fetch(`http://localhost:8080/favorites`, {
           headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
           },
-          body: JSON.stringify({
-            pet_id: "",
-            user_id: ""
+          method: "POST",
+          body: JSON.stringify(info),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            alert(data);
+            getActions().fetchUserData(user_id, data.token);
           })
-        }).then(response => {
-          if (response.ok) {
-            console.log('Favorito guardado');
-          }
-        }).catch(error => {
-          console.error('Error guardando favorito', error);
-        });
+          .catch((error) => console.log(error));
       },
       getFavoriteUser: () => {
         const { user_id, token } = getStore();
@@ -516,18 +509,6 @@ const getState = ({ setStore, getActions, getStore }) => {
             });
           })
           .catch(error => console.log(error));
-      },
-      removeFavorites: (name) => {
-        const store = getStore();
-        const newFavorites = store.favorite.filter(item => item !== name);
-        setStore({ favorite: newFavorites });
-      },
-      getForm: () => {
-        return fetch("http://localhost:8080/form/list")
-          .then((res) => res.json()
-
-          )
-          .catch((error) => console.log(error))
       },
       getForm: () => {
         return fetch("http://localhost:8080/form/list")
@@ -578,7 +559,10 @@ const getState = ({ setStore, getActions, getStore }) => {
       getPet: (id) => {
         fetch(`http://localhost:8080/pet/${id}`)
           .then((res) => res.json())
-          .then((data) => setStore({ petGet: data }))
+          .then((data) => setStore({ 
+            petGet: data,
+            pet_id: data.id
+           }))
           .catch((error) => console.log(error))
       },
       handlePutPet: (id) => {
