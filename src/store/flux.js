@@ -1,12 +1,4 @@
-import { useParams } from "react-router-dom";
-
-
-
 const getState = ({ setStore, getActions, getStore }) => {
-
-
-
-
   return {
     store: {
       user: {
@@ -20,6 +12,7 @@ const getState = ({ setStore, getActions, getStore }) => {
       token: "",
       user_id: 0,
       email: "",
+      pet_id: 0,
       pet: {
         name: "",
         gender: "",
@@ -110,7 +103,6 @@ const getState = ({ setStore, getActions, getStore }) => {
         rol_id: "",
       },
       favorites: [],
-      favorite: [],
       currentPage: 1,
       petsPerPage: 9,
       forms: [],
@@ -125,7 +117,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
         });
       },
-
       //funcion para paginacion siguiente pagina
       handleCurrentPageNext: (e) => {
         let { currentPage } = getStore();
@@ -133,7 +124,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           currentPage: (currentPage + 1)
         })
       },
-
       // Funcion para paginacion para devolverme a lpa ag anterior
       handleCurrentPagePrevius: (e) => {
         let { currentPage } = getStore();
@@ -141,14 +131,12 @@ const getState = ({ setStore, getActions, getStore }) => {
           currentPage: (currentPage - 1)
         })
       },
-
       onSpecificPage: (e) => {
 
         setStore({
           currentPage: e
         })
       },
-
       //Funcion para atrapar el valor PetFilterContainer y asi poder usarla en el filtro de busqueda
       PetFilterContainer: (e) => {
         let { PetFilterContainer } = getStore();
@@ -161,7 +149,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           }
         })
       },
-
       handleChangeFilePet: (e) => {
         let { pet } = getStore();
         let name = e.target.name;
@@ -175,7 +162,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
         });
       },
-
       //Funcion para atrapar el valor pet y asi usarla para para el post
       handleChangePet: (e) => {
         let { pet } = getStore();
@@ -383,7 +369,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error));
       },
-
       //Para subir la informacion de la pet
       handlePostPet: (e) => {
         e.preventDefault();
@@ -431,25 +416,24 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
 
       },
-
       //Funcion para traer la informacion de todos los pet funcion get
       sendForm: (answers) => {
-      const { form, token, user_id } = getStore();
-      console.log({ form, user_id, answers })
-      const formWithUserId = { user_id, ...answers };
-      console.log(formWithUserId)
-      return fetch("http://localhost:8080/form", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-        method: "POST",
-        body: JSON.stringify(formWithUserId)
-      }).then(res => res.json())
-        .then(data => setStore({ forms: data }))
-        .then(data => console.log(data))
+        const { form, token, user_id } = getStore();
+        console.log({ form, user_id, answers })
+        const formWithUserId = { user_id, ...answers };
+        console.log(formWithUserId)
+        return fetch("http://localhost:8080/form", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+          method: "POST",
+          body: JSON.stringify(formWithUserId)
+        }).then(res => res.json())
+          .then(data => setStore({ forms: data }))
+          .then(data => console.log(data))
 
-    },
+      },
       sendPost: (postAnswers) => {
         fetch("http://localhost:8080/posts", {
           headers: {
@@ -463,16 +447,15 @@ const getState = ({ setStore, getActions, getStore }) => {
             getActions().getPost();
           })
       },
-
       getPost: () => {
         fetch("http://localhost:8080/posts/list")
           .then((res) => res.json())
           .then((data) => setStore({ posts: data }))
           .catch((error) => console.log(error))
 
-       /*   .then(data => console.log(data),
-          getActions().getPost())
-        .catch(error => console.log(error)) */
+        /*   .then(data => console.log(data),
+           getActions().getPost())
+         .catch(error => console.log(error)) */
       },
       handleDeletePost: (id) => {
         const { token } = getStore();
@@ -486,58 +469,72 @@ const getState = ({ setStore, getActions, getStore }) => {
             method: "DELETE",
           })
           .then(res => res.json())
-          .then(data => console.log('Post eliminada', data), 
-          getActions().getPost()) 
+          .then(data => console.log('Post eliminada', data),
+            getActions().getPost())
           .catch(error => console.log(error))
       },
-
-      addFavorite: (pet) => {
-        const { favorite } = getStore();
-        if (!favorite.includes(pet)) {
-          const newFavorites = [...favorite, pet];
-          setStore({ favorite: newFavorites });
-          console.log(newFavorites);
-        }
-      },
-      sendFavorite: () => {
-        fetch('http://localhost:8080/favorites', {
-          method: 'POST',
+      addFavorite: (e) => {
+        e.preventDefault();
+        const { user_id, pet_id, token } = getStore();
+        const info = { pet_id, user_id };
+        fetch(`http://localhost:8080/favorites`, {
           headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
           },
-          body: JSON.stringify({
-            pet_id: "",
-            user_id: ""
-          })
-        }).then(response => {
-          if (response.ok) {
-            console.log('Favorito guardado');
-          }
-        }).catch(error => {
-          console.error('Error guardando favorito', error);
-        });
-      },
-      getfavoriteuser: () => {
-        const { user_id, token } = getStore();
-        fetch(`http://localhost:8080/favorites/user/${user_id}`, 
-        {headers: 
-          {"Content-Type": "application/json",
-        "Authorization": "Bearer " + token}
-      })
-        .then(res => res.json())
-        .then(data => 
-          {setStore({
-          favorites: data});
+          method: "POST",
+          body: JSON.stringify(info),
         })
-        .catch(error => console.log(error));      },
-        
-
-      removeFavorites: (name) => {
-        const store = getStore();
-        const newFavorites = store.favorite.filter(item => item !== name);
-        setStore({ favorite: newFavorites });
+          .then((res) => res.json())
+          .then((data) => {
+            alert(data);
+            getActions().fetchUserData(user_id, data.token);
+          })
+          .catch((error) => console.log(error));
       },
-
+      getFavoriteUser: () => {
+        const { user_id, token } = getStore();
+        fetch(`http://localhost:8080/favorites/user/${user_id}`,
+          {
+            headers:
+            {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + token
+            }
+          })
+          .then(res => res.json())
+          .then(data => {
+            setStore({
+              favorites: data
+            });
+          })
+          .catch(error => console.log(error));
+      },
+      handlePet: (pet_id) => {
+        setStore({ pet_id: pet_id });
+        alert("¡Se eliminará el elemento seleccionado!");
+        getActions().deleteFavorite();
+        
+    },
+    
+      deleteFavorite: () => {
+        const {user_id, token, pet_id} = getStore();
+        fetch(`http://localhost:8080/favorites/${user_id}/${pet_id}`,
+        {
+          headers:
+          {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+          },
+          method: "DELETE",
+        })
+        .then(res => res.json())
+          .then(data => {
+            alert(data);
+            getActions().getFavoriteUser();
+          })
+          .catch(error => console.log(error));
+      },
       getForm: () => {
         return fetch("http://localhost:8080/form/list")
           .then((res) => res.json()
@@ -545,7 +542,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           )
           .catch((error) => console.log(error))
       },
-
       deleteForm: (id) => {
         const { token } = getStore();
         fetch(`http://localhost:8080/form/${id}`,
@@ -561,15 +557,12 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(data => getActions().getForm())
           .catch(error => console.log(error))
       },
-
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())
           .then((data) => setStore({ pets: data }))
           .catch((error) => console.log(error))
       },
-
-
       //Funcion para filtrar se trae todos los pet que coincidan con el valor del filtro
       handlePostPetSearch: (e) => {
         e.preventDefault();
@@ -588,16 +581,15 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
 
       },
-
-
       getPet: (id) => {
         fetch(`http://localhost:8080/pet/${id}`)
           .then((res) => res.json())
-          .then((data) => setStore({ petGet: data }))
+          .then((data) => setStore({ 
+            petGet: data,
+            pet_id: data.id
+           }))
           .catch((error) => console.log(error))
       },
-
-
       handlePutPet: (id) => {
         const { pet } = getStore();
         const formData = new FormData();
@@ -640,8 +632,6 @@ const getState = ({ setStore, getActions, getStore }) => {
             console.log(error);
           });
       },
-
-
       // Se elimina la pet atraves de su id
       handlePostPetDelete: (id) => {
 
@@ -659,7 +649,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error))
       },
-
       //Se resetea el valor del filtro
       handlePostPetRestore: (e) => {
 
@@ -681,8 +670,8 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
         })
       },
-    }
-  };
-}
+    },
+  }
+};
 
 export default getState;

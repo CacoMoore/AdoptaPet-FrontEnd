@@ -41,7 +41,7 @@ marker.setMap(map);
   <GoogleMap
    mapContainerStyle={containerStyle}
    center={center}
-   zoom={18}
+   zoom={17}
    onLoad={onLoad}
    onUnmount={onUnmount}
   >

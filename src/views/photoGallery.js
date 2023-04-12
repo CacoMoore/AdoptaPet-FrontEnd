@@ -36,35 +36,28 @@ const PhotoGallery = () => {
                 <div className="col-md-4 mt-5">
                     <FormGallery />
                 </div>
-                <div className=" col-md-7  ">
-                    <div className=" py-2 mb-2 height-div">
+                <div className=" col-md-7 ">
+                    <div className="py-2 mb-2 height-div">
                         <div className="row ">
                             <h1 className="my-5 text-center display-4">Mascotas en adopción</h1>
                             {store.pets.length ? (
                                 store.pets.map(pet => {
-
-                                    return <div className=" col-lg-4 col-md-12 mb-5" key={pet.id}>
-                                        <CardGallery pet={pet}
-
-                                        /*  imgGallery="https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg" */
-                                        />
-                                        <Link to={`/pet/${pet.id}`}> Ver más Información
-                                        </Link>
-
+                                    return <div 
+                                    style={{ borderRadius: '5px' }}
+                                    className=" col-lg-4 col-md-12 mb-5 border p-2" key={pet.id}>
+                                        <CardGallery pet={pet}/>
+                                        <div className="text-center border"> 
+                                        <Link 
+                                        style={{backgroundColor: "#353755"}}
+                                        className="btn btn-lg text-light w-100"
+                                        to={`/pet/${pet.id}`}> Ver más sobre {pet.name} </Link></div>
                                     </div>
-
                                 }).slice(firstIndex, lastIndex)
                             ) : (
-                                <p>No hay animales para adoptar</p>
+                                <p>No hay mascotas para mostrar</p>
                             )}
                             <div className="d-flex justify-content-center">
-
-                                <Pagination
-
-
-
-
-                                />
+                                <Pagination />
                             </div>
                         </div>
                     </div>
@@ -72,7 +65,7 @@ const PhotoGallery = () => {
             </div>
         </div>
         <div className="container p-5 mb-5 text-center d-flex justify-content-center div-footer rounded shadow-lg">
-            <p className="fs-5 fw-lighter border  p-2 w-50 bg-white rounded shadow ">Para lograr evitar el abandono de perros se necesita de <br /> una participación integral en donde se una la ciudadanía, <br />las instituciones o asociaciones de protección animal y las <br />autoridades.</p>
+            <p className="fs-5 fw-lighter p-2 w-50 bg-white rounded">Para lograr evitar el abandono de perros se necesita de <br /> una participación integral en donde se una la ciudadanía, <br />las instituciones o asociaciones de protección animal y las <br />autoridades.</p>
         </div>
     </div>
 }

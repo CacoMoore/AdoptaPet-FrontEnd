@@ -10,49 +10,33 @@ const Favorites = () => {
     const trash = <FontAwesomeIcon icon={faTrash} />
     const { store, actions } = useContext(Context);
 
-    const sendFavorite = (data) => {
-        console.log(data);
-        actions.sendFavorite(data)
-            .then(() => { alert("Favorito enviado exitosamente") })
-            .catch(() => { alert("Favorito no guardado") })
-    }
-
-
     return (
 
-        /*<div className="cards container px-4 py-5" id="custom-cards">*/
-        <div class="row" >
-            <div class="col-sm-6 mb-3 mb-sm-0" >
-                <div class="card-body">
+
+            <div className="container d-flex" >
+                <div className="row">
                     {store.favorites.length > 0 ? (
                         store.favorites.map((item, index) => (
-                            <ul className="" style={{ listStyle: "none" }}>
-                                <li
-                                    key={index}
-                                    className=" text-dark">
+                            <div className="col-4 p-2" style={{ listStyle: "none" }}>
+                                <div key={index} className="p-2 text-dark shadow-lg">
+                                    <CardGallery pet={item} />
                                     <button
                                         type="button"
-                                        className="btn btn-sm btn-outline-dark rounded-circle border-0 mb-2"
-                                        onClick={() => actions.removeFavorite(item)}>{trash}</button>
-                                    <CardGallery pet={item} />
-
-                                </li>
-
-
-                            </ul>
-
+                                        className="btn btn-lg btn-danger w-100"
+                                        onClick={() => actions.handlePet(item.id)}
+                                    >
+                                        {trash}
+                                    </button>
+                                </div>
+                            </div>
                         ))
                     ) : (
                         <li className="dropdown-item-text text-center text-secondary"> Vacío </li>
-
                     )}
                 </div>
             </div>
-        </div>
-
 
     )
-
 }
 
 
