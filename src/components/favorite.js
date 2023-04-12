@@ -17,7 +17,7 @@ const Favorites = () => {
                 <div className="row">
                     {store.favorites.length > 0 ? (
                         store.favorites.map((item, index) => (
-                            <div className="col-4" style={{ listStyle: "none" }}>
+                            <div className="col-4 p-2" style={{ listStyle: "none" }}>
                                 <div key={index} className="p-2 text-dark shadow-lg">
                                     <CardGallery pet={item} />
                                     <button

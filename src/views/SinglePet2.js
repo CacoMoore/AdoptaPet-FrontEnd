@@ -41,10 +41,13 @@ const SinglePet2 = (props) => {
                     {/*BOTONES */}
 
                     <div className='d-flex justify-content-center'>
-                        <button type="button" class="btn btn-dark btn-lg mt-5 me-3">Adoptar</button>
-                        <button 
-                        onClick={actions.addFavorite}
-                        type="button" class="btn btn-dark btn-lg mt-5 me-3">Favorito</button>
+                        <Link
+                            style={{ backgroundColor: "#353755" }}
+                            to="/adopform" type="button" class="btn btn-lg text-light mt-5 me-3">Adoptar</Link>
+                        <button
+                            onClick={actions.addFavorite}
+                            type="button"
+                            class="btn btn-lg bg-danger text-light mt-5 me-3">Favorito</button>
 
                         {rol_id === 1 ? (
                             <>
