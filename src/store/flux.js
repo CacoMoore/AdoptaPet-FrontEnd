@@ -510,6 +510,31 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch(error => console.log(error));
       },
+      handlePet: (pet_id) => {
+        setStore({ pet_id: pet_id });
+        alert("¡Se eliminará el elemento seleccionado!");
+        getActions().deleteFavorite();
+        
+    },
+    
+      deleteFavorite: () => {
+        const {user_id, token, pet_id} = getStore();
+        fetch(`http://localhost:8080/favorites/${user_id}/${pet_id}`,
+        {
+          headers:
+          {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+          },
+          method: "DELETE",
+        })
+        .then(res => res.json())
+          .then(data => {
+            alert(data);
+            getActions().getFavoriteUser();
+          })
+          .catch(error => console.log(error));
+      },
       getForm: () => {
         return fetch("http://localhost:8080/form/list")
           .then((res) => res.json()

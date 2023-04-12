@@ -53,15 +53,16 @@ const User = () => {
                         </Link>
                     </div>
 
-                    <div className="card mb-4" id="cardFavorites">
+                    <div className="container p-4">
                         <h1>Favoritos</h1>
-                        <div className="row">
-                       
+                        <div className="d-flex justify-content-center">
+                            <div className="">
                                 <Favorites />
-                            
+                            </div>
                         </div>
                     </div>
-                    
+
+
                     <div className="mt-4">
                         <button
                             onClick={actions.deleteUser}

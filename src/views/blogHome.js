@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Context } from "../store/context";
 import { useEffect } from 'react'
 import Blog from "../components/blog";
+import { Link } from "react-router-dom";
 
 
 const BlogHome = (props) => {
@@ -13,18 +14,22 @@ const BlogHome = (props) => {
 
     return (
         <>
-            <div className="p-4 p-md-5 mb-4 rounded">
+            <div className="p-4 p-md-5 mb-4 rounded ">
                 <div className="col-md-6 px-0">
-                    <h1 className="display-4 fst-italic">Noticias de nuestra comunidad</h1>
-                    <p className="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-                    <p className="lead mb-0"><a href="/#" className="text-black fw-bold">Continue reading...</a></p>
+                    <h1 className="display-4 fst-italic">Galería de adopción</h1>
+                    <p className="lead my-3">¡Conoce a nuestros adorables amigos peludos en busca de hogar! Visita nuestra galería de mascotas de adopción y enamórate de sus miradas tiernas y personalidades únicas. ¡Adopta a tu próximo mejor amigo y bríndale el amor y cuidado que se merece!</p>
+                    <p className="lead mb-0"><Link to="/photoGallery" className="text-black fw-bold">Haz clic aquí para ver la galería completa.</Link></p>
                 </div>
             </div>
-            <div className="row mb-2">
-                <div className="col-md-6">
-                    <div className="card mb-3" >
-                        <div className="row g-0">
-                            <div className="col-md-4">
+
+            <div className="container d-flex justify-content-around p-4 mt-4">
+                <h1>Información relevante...</h1>
+            </div>
+            <div className="container d-flex justify-content-around p-4 shadow-lg ">
+                <div className="col-md-10">
+                    <div className="card" >
+                        <div className="row g-0 p-2">
+                            <div className="col-md-4 d-flex">
                                 <img src="https://conecta.tec.mx/sites/default/files/styles/header_full/public/2021-06/adoptar-perro.jpg?itok=BSPwpz4C" className="img-fluid rounded-start" alt="..." />
                             </div>
                             <div className="col-md-8">
@@ -147,21 +152,25 @@ const BlogHome = (props) => {
                 </div>
             </div>
 
-            {store.posts.length ? (
-                store.posts.map(post => {
+            <div className="container d-flex justify-content-around p-4 mt-4">
+                <h1>Las Últimas Noticias...</h1>
+            </div>
+            <div className="container p-4 shadow-lg mb-4">
+                {store.posts.length ? (
+                    store.posts.map(post => {
 
-                    return <div className="Container d-block" key={post.id}>
-                        <Blog post={post}
-                            id={post.id}
-                            title={post.title}
-                            description={post.description}
-                            rol_id={post.rol_id}
-                        />
-                    </div>
-                })
-            ) : (
-                <p>No hay posts para mostrar</p>
-            )}
+                        return <div className="row mt-4" key={post.id}>
+                            <Blog post={post}
+                                title={post.title}
+                                description={post.description}
+                                rol_id={post.rol_id}
+                            />
+                        </div>
+                    })
+                ) : (
+                    <h4 className="text-center p-4 border">No hay posts para mostrar</h4>
+                )}
+            </div>
         </>
     );
 };
