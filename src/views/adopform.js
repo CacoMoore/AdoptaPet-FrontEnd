@@ -22,7 +22,7 @@ const Adopform = () => {
                             La información entregada en este formulario es de carácter privada entre el postulante y fundación.
                         </p>
                         <p className="lead"><strong>IMPORTANTE</strong></p>
-                        <p className="lead">Revisa previamente en el apartado de información las <Link to="/info" ><strong>condiciones de adopción</strong> </Link> antes de rellenar el formulario. Podermos preguntar por su cumplimiento a la hora de concretar la adopción.</p>
+                        <p className="lead">Revisa previamente en el apartado de información las <Link to="/info" ><strong>condiciones de adopción</strong> </Link> antes de rellenar el formulario. Podremos preguntar por su cumplimiento a la hora de concretar la adopción.</p>
                     </div>
     
                     <Formcomp></Formcomp>

@@ -26,7 +26,8 @@ const SinglePet = (props) => {
 
     const fav = <FontAwesomeIcon icon={faHeart} />
 
-    return <div className="  div-main-singlepet">
+    return
+    <div className="div-main-singlepet">
         <div className='container-fluid '>
             <div className='row d-flex  row-singlePet'>
                 <div className='col-md-12 text-center column-mt'>
