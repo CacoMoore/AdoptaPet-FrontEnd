@@ -159,7 +159,8 @@ const BlogHome = (props) => {
                 {store.posts.length ? (
                     store.posts.map(post => {
 
-                        return <div className="row mt-4" key={post.id}>
+                        return <div className="row mt-4 "
+                         key={post.id}>
                             <Blog post={post}
                                 title={post.title}
                                 description={post.description}
