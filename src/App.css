@@ -174,3 +174,10 @@ a:visited {
 #postHome{
   border: none;
 }
+
+#btn-trash-blog{
+  font-size: 25px;
+  margin-left: 90%;
+  margin-bottom: none;
+ 
+}

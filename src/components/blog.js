@@ -20,20 +20,20 @@ const Blog = (props) => {
                         <div className="col-md-4 d-flex">
                             <img /*props.blogimage*/ src="https://www.purina-latam.com/sites/default/files/styles/social_share_large/public/purina-gatos%20en%20adopcion-que-es-mejor-gatitos-bebes-o-gatos-adultos.jpg?itok=IqRKD1Zt" className="img-fluid rounded-start p-2" alt="..." />
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-8 container">
                             <div className="card-body">
                                 <h3 className="mb-0"> {props.post.title}</h3>
                                 <div className="mb-1 text-body-secondary">{props.post.date}</div>
                                 <p className="mb-auto">{props.post.description}</p>
-                                {rol_id === 1 && (
-                                    <button
-                                        type="button"
-                                        className="btn btn-sm btn-outline-dark rounded-circle border-0 mb-2"
-                                        onClick={() => actions.handleDeletePost(props.post.id)} >{trash} </button>
-
-                                )}
 
                             </div>
+                            {rol_id === 1 && (
+                                    <button id="btn-trash-blog"
+                                        type="button"
+                                        className="btn justify-content-end"
+                                        onClick={() => actions.handleDeletePost(props.post.id)} ><i class="bi bi-trash3"></i> </button>
+
+                                )}
                         </div>
                     </div>
                 </div>
