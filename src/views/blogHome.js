@@ -167,6 +167,7 @@ const BlogHome = (props) => {
                                 rol_id={post.rol_id}
                             />
                         </div>
+                    
                     })
                 ) : (
                     <h4 className="text-center p-4 border">No hay posts para mostrar</h4>

@@ -181,3 +181,11 @@ a:visited {
   margin-bottom: none;
  
 }
+#btn-dislike{
+  font-size: 22px;
+}
+#btn-dislike:hover{
+  font-size: 25px;
+  background-color: lightgray;
+
+}

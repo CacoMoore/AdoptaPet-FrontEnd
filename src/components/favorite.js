@@ -21,11 +21,12 @@ const Favorites = () => {
                                 <div key={index} className="p-2 text-dark shadow-lg">
                                     <CardGallery pet={item} />
                                     <button
+                                    id="btn-dislike"
                                         type="button"
-                                        className="btn btn-lg btn-danger w-100"
+                                        className="btn btn w-100"
                                         onClick={() => actions.handlePet(item.id)}
                                     >
-                                        {trash}
+                                       <i class="bi bi-heartbreak"></i>
                                     </button>
                                 </div>
                             </div>
