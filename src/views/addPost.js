@@ -1,19 +1,30 @@
 import { useContext } from "react";
 import { Context } from "../store/context";
 import { useForm } from "react-hook-form";
+import { useRef } from "react";
+import { useState } from "react";
 
 
 const AddPost = () => {
     const { actions, store } = useContext(Context)
 
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
+    const [formValues, setFormValues] = useState({
+        title: "",
+        date: "",
+        description: ""
+    });
 
     const onSubmit = (data) => {
         console.log(data)
         data.rol_id=store.loginUser.rol_id
         actions.sendPost(data)
-            .then(() => { alert("Post enviado exitosamente") })
-            .catch(() => { alert("Error") })
+            .then(() => { alert("Post enviado exitosamente")
+            setFormValues(data);
+            reset();
+        })
+            .catch(() => { alert("debe completar todos los campos")})
     }
   
     return (
@@ -27,35 +38,44 @@ const AddPost = () => {
                     <label
                         className="form-label"
                         htmlFor="title">Título</label>
-                    <input {...register('title')}
+                    <input {...register('title', {required: true})}
                         placeholder="Título de la noticia"
                         type="text"
                         id="title"
                         name="title"
-                        className="form-control" />
+                        className="form-control"
+                        ddefaultValue={formValues.title} />
+                        {errors.title?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
+    
                 </div>
                 <div className="form-outline m-4">
                     <label
                         className="form-label"
                         htmlFor="date">Fecha publicación</label>
-                        <input {...register('date')}
+                        <input {...register('date', {required: true})}
                             type="date"
                             id="date"
                             name="date"
-                            className="form-control" />
+                            className="form-control"
+                            defaultValue={formValues.date} />
+                            {errors.date?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
     
                     </div>
                 <div className="form-outline m-4">
                     <label
                         className="form-label"
                         htmlFor="description">Descripción</label>
-                    <input {...register('description')}
+                    <input {...register('description', {required: true, maxLength: 500})}
 
                         placeholder="Descripción de la noticia"
                         type="text"
                         id="description"
                         name="description"
-                        className="form-control" />
+                        className="form-control"
+                        defaultValue={formValues.description} />
+                        {errors.description?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                        {errors.description?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
+                        
                 </div>
 
 { /*<div class="form-outline m-4">
