@@ -18,11 +18,17 @@ function MyMap() {
  })
 
  const [map, setMap] = React.useState(null)
+ const [mapCenter, setMapCenter] = React.useState(center);
+
 
  const onLoad = React.useCallback(function callback(map) {
   const bounds = new window.google.maps.LatLngBounds();
   map.fitBounds(bounds);
   setMap(map)
+  setMapCenter({
+    lat: map.getCenter().lat(),
+    lng: map.getCenter().lng(),
+});
  }, [])
 
  const onUnmount = React.useCallback(function callback(map) {
@@ -40,7 +46,7 @@ marker.setMap(map);
  return isLoaded ? (
   <GoogleMap
    mapContainerStyle={containerStyle}
-   center={center}
+   center={mapCenter}
    zoom={17}
    onLoad={onLoad}
    onUnmount={onUnmount}
