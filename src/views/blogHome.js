@@ -9,7 +9,7 @@ const BlogHome = (props) => {
 
   useEffect(() => {
     actions.getPost();
-  }, []);
+  }, [actions]);
 
   return (
     <>

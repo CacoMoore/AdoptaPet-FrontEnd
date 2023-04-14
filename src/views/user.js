@@ -9,6 +9,8 @@ const User = () => {
   const { name, last_name, phone, rol_id } = loginUser;
   const { description, motivation, style } = userDescription;
 
+ 
+
   if (rol_id === 1 || rol_id === 2) {
     return (
       <div

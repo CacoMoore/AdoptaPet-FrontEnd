@@ -352,7 +352,7 @@ const getState = ({ setStore, getActions, getStore }) => {
             });
             console.log(data);
             getActions().fetchUserData(data.user_id, data.token);
-            navigate("/user");
+            navigate("/");
           })
           .catch((error) => {
             alert(error.message);
@@ -508,22 +508,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((data) => {
             alert(data);
             getActions().fetchUserData(user_id, data.token);
-          })
-          .catch((error) => console.log(error));
-      },
-      getFavoriteUser: () => {
-        const { user_id, token } = getStore();
-        fetch(`http://localhost:8080/favorites/user/${user_id}`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            setStore({
-              favorites: data,
-            });
           })
           .catch((error) => console.log(error));
       },

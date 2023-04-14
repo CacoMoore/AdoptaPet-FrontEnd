@@ -16,9 +16,11 @@ const NavBar = () => {
           <Link to="/">
             <h3 id="logo">AdoptaPet {pawn}</h3>
           </Link>
+
           <div className="dropdown">
             <button
-              className="btn dropdown-toggle"
+              className="btn text-light border border-dark shadow-lg dropdown-toggle"
+              style={{ backgroundColor: "#353755" }}
               id="btn-navbar"
               type="button"
               data-bs-toggle="dropdown"
@@ -60,6 +62,42 @@ const NavBar = () => {
                 ) : null}
               </li>
             </ul>
+          </div>
+
+          <div>
+            {rol_id === 1 && (
+              <Link
+                id="selector"
+                to="/adminprofile"
+                style={{ backgroundColor: "#353755" }}
+                className="btn text-light border border-dark shadow-lg"
+                type="button"
+              >
+                Administrador
+              </Link>
+            )}
+            {rol_id === 2 && (
+              <Link
+                id="selector"
+                to="/user"
+                style={{ backgroundColor: "#353755" }}
+                className="btn text-light border border-dark shadow-lg"
+                type="button"
+              >
+                Mi cuenta
+              </Link>
+            )}
+            {rol_id !== 1 && rol_id !== 2 && (
+              <Link
+                id="selector"
+                to="/login"
+                style={{ backgroundColor: "#353755" }}
+                className="btn text-light border border-dark shadow-lg"
+                type="button"
+              >
+                Iniciar Sesión
+              </Link>
+            )}
           </div>
         </div>
       </nav>
