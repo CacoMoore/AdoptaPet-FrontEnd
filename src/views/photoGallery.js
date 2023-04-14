@@ -1,6 +1,6 @@
 import CardGallery from "../components/cardGallery";
 import FormGallery from "../components/formGallery";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../store/context";
 import { Link } from "react-router-dom";
 import Pagination from "../components/pagination";
@@ -10,7 +10,7 @@ const PhotoGallery = () => {
 
   useEffect(() => {
     actions.getPets();
-  }, []);
+  }, [actions]);
 
   const lastIndex = store.currentPage * store.petsPerPage;
   const firstIndex = lastIndex - store.petsPerPage;
@@ -60,8 +60,7 @@ const PhotoGallery = () => {
                               className="btn btn-lg text-light w-100"
                               to={`/pet/${pet.id}`}
                             >
-                              {" "}
-                              Ver más sobre {pet.name}{" "}
+                              Ver más sobre {pet.name}
                             </Link>
                           </div>
                         </div>
