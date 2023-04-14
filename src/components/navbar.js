@@ -1,19 +1,16 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaw } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { Context } from "../store/context";
 import { useContext } from "react";
 
-
 const NavBar = () => {
-  const pawn = <FontAwesomeIcon icon={faPaw} />
-  const { store } = useContext(Context)
+  const pawn = <FontAwesomeIcon icon={faPaw} />;
+  const { store } = useContext(Context);
   const { loginUser } = store;
-  const { rol_id } = loginUser
+  const { rol_id } = loginUser;
   return (
-    <div 
-    className="row sticky-top"
-    id="navbar">
+    <div className="row sticky-top" id="navbar">
       <nav className="navbar navbar-expand-lg bg ">
         <div className="container">
           <Link to="/">
