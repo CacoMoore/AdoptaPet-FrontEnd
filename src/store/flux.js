@@ -208,10 +208,18 @@ const getState = ({ setStore, getActions, getStore }) => {
             },
             method: "DELETE",
           })
-            .then((res) => res.json())
+            .then((res) => {
+              if (res.status === 204) {
+                alert("El usuario ha sido eliminado exitosamente");
+              } else {
+                return res.json();
+              }
+            })
             .then((data) => {
-              console.log(data);
-              alert(data);
+              if (data) {
+                console.log(data);
+                alert(data);
+              }
             })
             .catch((error) => console.log(error));
         }
@@ -319,7 +327,13 @@ const getState = ({ setStore, getActions, getStore }) => {
           method: "POST",
           body: JSON.stringify(user)
         })
-          .then(res => res.json())
+          .then(res => {
+            if (res.status === 200) {
+              return res.json();
+            } else if (res.status === 400) {
+              throw new Error("Usuario o contraseña incorrectos");
+            }
+          })
           .then(data => {
             console.log(data)
             setStore({
@@ -336,12 +350,14 @@ const getState = ({ setStore, getActions, getStore }) => {
                 rol_id: 2,
               },
             });
-            alert(JSON.stringify(data));
             console.log(data);
             getActions().fetchUserData(data.user_id, data.token);
             navigate("/user");
           })
-          .catch(error => console.log(error));
+          .catch(error => {
+            alert(error.message);
+            console.log(error);
+          });
       },
       handleChangeDescription: (e) => {
         let { description } = getStore();
@@ -468,9 +484,19 @@ const getState = ({ setStore, getActions, getStore }) => {
             },
             method: "DELETE",
           })
-          .then(res => res.json())
-          .then(data => console.log('Post eliminada', data),
-            getActions().getPost())
+          .then(res => {
+            if (res.status === 204) {
+              alert("El post ha sido eliminado exitosamente");
+            } else {
+              return res.json();
+            }
+          })
+          .then(data => {
+            if (data) {
+              console.log('Post eliminado', data);
+              getActions().getPost();
+            }
+          })
           .catch(error => console.log(error))
       },
       addFavorite: (e) => {
@@ -515,8 +541,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         alert("¡Se eliminará el elemento seleccionado!");
         getActions().deleteFavorite();
         
-    },
-    
+      },
       deleteFavorite: () => {
         const {user_id, token, pet_id} = getStore();
         fetch(`http://localhost:8080/favorites/${user_id}/${pet_id}`,
@@ -528,13 +553,22 @@ const getState = ({ setStore, getActions, getStore }) => {
           },
           method: "DELETE",
         })
-        .then(res => res.json())
-          .then(data => {
+        .then(res => {
+          if (res.status === 204) {
+            alert("La mascota ha sido eliminada de favoritos exitosamente");
+          } else {
+            return res.json();
+          }
+        })
+        .then(data => {
+          if (data) {
             alert(data);
-            getActions().getFavoriteUser();
-          })
-          .catch(error => console.log(error));
+            getActions().fetchUserData();
+          }
+        })
+        .catch(error => console.log(error));
       },
+      
       getForm: () => {
         return fetch("http://localhost:8080/form/list")
           .then((res) => res.json()
