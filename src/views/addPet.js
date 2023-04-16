@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Context } from "../store/context";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
+
 
 const AddPet = () => {
     const { store, actions } = useContext(Context);
@@ -9,7 +11,12 @@ const AddPet = () => {
 
     const postPet = (e) => {
         actions.handlePostPet(e)
-        alert('Mascota agregada con éxito');
+        Swal.fire({
+            icon: 'success',
+            title: 'Agregar',
+            text: 'Mascota agregada con éxito'
+
+        });
         e.target.reset();
     }
 

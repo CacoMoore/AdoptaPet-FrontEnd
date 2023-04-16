@@ -8,6 +8,7 @@ import { Link, useParams } from "react-router-dom"
 import { useContext } from "react";
 import { Context } from "../store/context";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const SinglePet2 = (props) => {
 
@@ -20,9 +21,28 @@ const SinglePet2 = (props) => {
     const navigate = useNavigate();
 
     const deletePetId = () => {
-        actions.handlePostPetDelete(id)
-        alert('Se elimino satisfactoriamente')
-        navigate('/photoGallery')
+
+        Swal.fire({
+            title: 'Advertencia',
+            text: 'Está seguro que desea eliminar esta mascota?',
+            icon: 'Error',
+            showDenyButton: true,
+            denyButtonText: 'no',
+            confirmButtonText: 'Sí',
+        }).then(response => {
+            if (response.isConfirmed) {
+                Swal.fire('Éxito', 'La mascota se elimino satisfactoriamente', 'success')
+                actions.handlePostPetDelete(id)
+                navigate('/photoGallery')
+            } else if (response.isDenied) {
+                Swal.fire('Información', 'La mascota no se elimino', 'info')
+            } else {
+                Swal.fire('Error', 'Ocurrió algo no esperado', 'info')
+            }
+        })
+
+
+
     }
     const { loginUser } = store;
     const { rol_id } = loginUser

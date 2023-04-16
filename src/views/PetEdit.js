@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { Context } from "../store/context";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2';
 
 const AddPet = () => {
     const { store, actions } = useContext(Context);
@@ -22,7 +22,14 @@ const AddPet = () => {
     const putPet = (e) => {
         e.preventDefault();
         actions.handlePutPet(id);
-        alert('Mascota editada con exito')
+
+
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Editar',
+            text: 'Mascota editada con exito'
+        })
         navigate(`/pet/${id}`)
     }
 
