@@ -23,7 +23,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         img: null,
         medical_history: "",
         is_adopted: 'no',
-        adress_id: false,
+        adress_id: '',
         rol_id: 1,
       },
       form: {
@@ -386,7 +386,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error));
       },
       //Para subir la informacion de la pet
-      handlePostPet: (e) => {
+      handlePostPet: (e,) => {
         e.preventDefault();
         const { pet } = getStore();
         const formData = new FormData();
@@ -408,7 +408,11 @@ const getState = ({ setStore, getActions, getStore }) => {
           body: formData,
         })
           .then((res) => res.json())
-          .then((data) => console.log(data))
+          .then((data) => {
+            console.log(data);
+
+
+          })
           .catch((error) => console.log(error));
         setStore({
           pet: {
@@ -480,6 +484,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((res) => {
             if (res.status === 204) {
               alert("El post ha sido eliminado exitosamente");
+
             } else {
               return res.json();
             }
@@ -638,17 +643,24 @@ const getState = ({ setStore, getActions, getStore }) => {
           });
       },
       // Se elimina la pet atraves de su id
-      handlePostPetDelete: (id) => {
+      handlePostPetDelete: (id, navigate) => {
         fetch(`http://localhost:8080/pet/${id}`, {
           headers: {
             "Content-Type": "application/json",
           },
           method: "DELETE",
         })
-          .then((res) => res.json())
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            } else {
+              throw new Error('La respuesta del servidor no fue exitosa');
+            }
+          })
           .then((data) => {
             console.log("Respuesta mascota eliminada", data);
             setStore({ petsDelete: data });
+            navigate("/")
           })
           .catch((error) => console.log(error));
       },

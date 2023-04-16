@@ -1,19 +1,24 @@
 import { useContext } from "react";
 import { Context } from "../store/context";
+import { useNavigate } from "react-router-dom";
 
 const AddPet = () => {
-    const { actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
 
+    const navigate = useNavigate();
 
-
-
+    const postPet = (e) => {
+        actions.handlePostPet(e)
+        alert('Mascota agregada con éxito');
+        e.target.reset();
+    }
 
     return (
         <div
             style={{ borderRadius: '5px', minHeight: '100vh' }}
             className="container mt-4">
             <h1 className="text-center">Agregar mascota</h1>
-            <form onSubmit={actions.handlePostPet} style={{ borderRadius: '5px' }}
+            <form onSubmit={(e) => postPet(e)} style={{ borderRadius: '5px' }}
                 className="border  shadow-lg m-4 p-2">
                 <div className="form-outline m-4">
                     <input
@@ -22,7 +27,9 @@ const AddPet = () => {
                         name="name"
                         onChange={actions.handleChangePet}
                         className="form-control"
-                        maxLength={50} />
+                        maxLength={50}
+
+                    />
                     <label
                         className="form-label"
                         htmlFor="name">Nombre</label>
@@ -32,7 +39,9 @@ const AddPet = () => {
                         id="gender"
                         name="gender"
                         onChange={actions.handleChangePet}
-                        className="form-control">
+                        className="form-control"
+
+                    >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
@@ -47,7 +56,9 @@ const AddPet = () => {
                         id="age"
                         name="age"
                         onChange={actions.handleChangePet}
-                        className="form-control" />
+                        className="form-control"
+
+                    />
                     <label
                         className="form-label"
                         htmlFor="age">Edad</label>
@@ -57,7 +68,9 @@ const AddPet = () => {
                         id="spicies"
                         name="species"
                         onChange={actions.handleChangePet}
-                        className="form-control">
+                        className="form-control"
+
+                    >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Perro">Perro</option>
                         <option value="Gato">Gato</option>
@@ -72,7 +85,9 @@ const AddPet = () => {
                         id="size"
                         name="size"
                         onChange={actions.handleChangePet}
-                        className="form-control">
+                        className="form-control"
+
+                    >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Pequeño">Pequeño</option>
                         <option value="Mediano">Mediano</option>
@@ -88,7 +103,9 @@ const AddPet = () => {
                         id="description"
                         onChange={actions.handleChangePet}
                         name="description"
-                        className="form-control" />
+                        className="form-control"
+
+                    />
                     <label
                         className="form-label"
                         htmlFor="description">Descripción</label>
@@ -99,7 +116,9 @@ const AddPet = () => {
                         id="medical"
                         onChange={actions.handleChangePet}
                         name="medical_history"
-                        className="form-control" />
+                        className="form-control"
+
+                    />
                     <label
                         className="form-label"
                         htmlFor="medical">Historial médico</label>
@@ -109,7 +128,9 @@ const AddPet = () => {
                         id="is_adopted"
                         name="is_adopted"
                         onChange={actions.handleChangePet}
-                        className="form-control">
+                        className="form-control"
+
+                    >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value={'si'}>Sí</option>
                         <option value={'no'}>No</option>
@@ -123,7 +144,9 @@ const AddPet = () => {
                         type="text"
                         id="adress"
                         name="adress_id"
-                        className="form-control" />
+                        className="form-control"
+
+                    />
                     <label
                         className="form-label"
                         htmlFor="adress">Comuna de residencia</label>
@@ -137,6 +160,7 @@ const AddPet = () => {
                         name="img"
                         className="form-control"
                         onChange={actions.handleChangeFilePet}
+
                     />
                     <label
                         className="form-label"

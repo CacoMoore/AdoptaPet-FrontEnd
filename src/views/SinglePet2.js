@@ -7,6 +7,7 @@ import { useEffect } from 'react'
 import { Link, useParams } from "react-router-dom"
 import { useContext } from "react";
 import { Context } from "../store/context";
+import { useNavigate } from "react-router-dom";
 
 const SinglePet2 = (props) => {
 
@@ -16,9 +17,12 @@ const SinglePet2 = (props) => {
         actions.getPet(id)
     }, [])
     const { pet } = store
+    const navigate = useNavigate();
+
     const deletePetId = () => {
         actions.handlePostPetDelete(id)
         alert('Se elimino satisfactoriamente')
+        navigate('/photoGallery')
     }
     const { loginUser } = store;
     const { rol_id } = loginUser
@@ -129,7 +133,7 @@ const SinglePet2 = (props) => {
 
                                 {rol_id === 1 ? (
                                     <>
-                                        <button onClick={() => deletePetId()} type="button" className="btn btn-dark btn-lg mt-5 me-3" style={{ backgroundColor: "#353755" }}>Eliminar</button>
+                                        <button onClick={(e) => deletePetId()} type="button" className="btn btn-dark btn-lg mt-5 me-3" style={{ backgroundColor: "#353755" }}>Eliminar</button>
                                         <Link to={`/pex/${id}`}><button type="button" className="btn btn-dark btn-lg mt-5 " style={{ backgroundColor: "#353755" }}>Editar</button></Link>
                                     </>
                                 ) : null}

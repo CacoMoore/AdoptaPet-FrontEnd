@@ -1,6 +1,8 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../store/context";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const AddPet = () => {
     const { store, actions } = useContext(Context);
@@ -11,11 +13,18 @@ const AddPet = () => {
         actions.getPet(id);
     }, []);
 
-    const { petGet } = store;
+    const { pet } = store;
 
-    console.log("====================>", store.petGet);
-    console.log("xxxxxxxxxxxxxx", store.petGet[id]);
+    console.log("====================>", store.pet);
+    console.log("xxxxxxxxxxxxxx", store.pet[id]);
     //console.log('Aca va el codigo necesario', store.pets.filter(key => ))
+    const navigate = useNavigate();
+    const putPet = (e) => {
+        e.preventDefault();
+        actions.handlePutPet(id);
+        alert('Mascota editada con exito')
+        navigate(`/pet/${id}`)
+    }
 
     return (
         <div
@@ -25,8 +34,7 @@ const AddPet = () => {
             <h1 className="text-center">Editar mascota</h1>
             <form
                 onSubmit={(e) => {
-                    e.preventDefault();
-                    actions.handlePutPet(id);
+                    putPet(e)
                 }}
                 style={{ borderRadius: "5px" }}
                 className="border shadow-lg m-4 p-2"
@@ -39,7 +47,7 @@ const AddPet = () => {
                         onChange={actions.handleChangePet}
                         className="form-control"
                         maxLength={50}
-                        defaultValue={petGet.name}
+                        value={pet.name}
                     />
                     <label className="form-label" htmlFor="name">
                         Nombre
@@ -51,7 +59,7 @@ const AddPet = () => {
                         name="gender"
                         onChange={actions.handleChangePet}
                         className="form-control"
-                        defaultValue={petGet.gender}
+                        value={pet.gender}
                     >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Masculino">Masculino</option>
@@ -68,7 +76,7 @@ const AddPet = () => {
                         name="age"
                         onChange={actions.handleChangePet}
                         className="form-control"
-                        defaultValue={petGet.age}
+                        value={pet.age}
                     />
                     <label className="form-label" htmlFor="age">
                         Edad
@@ -80,7 +88,7 @@ const AddPet = () => {
                         name="species"
                         onChange={actions.handleChangePet}
                         className="form-control"
-                        defaultValue={petGet.species}
+                        value={pet.species}
                     >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Perro">Perro</option>
@@ -97,7 +105,7 @@ const AddPet = () => {
                         name="size"
                         onChange={actions.handleChangePet}
                         className="form-control"
-                        defaultValue={petGet.size}
+                        value={pet.size}
                     >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value="Pequeño">Pequeño</option>
@@ -115,7 +123,7 @@ const AddPet = () => {
                         onChange={actions.handleChangePet}
                         name="description"
                         className="form-control"
-                        defaultValue={petGet.description}
+                        value={pet.description}
                     />
                     <label className="form-label" htmlFor="description">
                         Descripción
@@ -128,7 +136,7 @@ const AddPet = () => {
                         onChange={actions.handleChangePet}
                         name="medical_history"
                         className="form-control"
-                        defaultValue={petGet.medical_history}
+                        value={pet.medical_history}
                     />
                     <label className="form-label" htmlFor="medical">
                         Historial médico
@@ -140,7 +148,7 @@ const AddPet = () => {
                         name="is_adopted"
                         onChange={actions.handleChangePet}
                         className="form-control"
-                        defaultValue={petGet.is_adopted}
+                        value={pet.is_adopted}
                     >
                         <option value="Selecciona una opción">Selecciona una opción</option>
                         <option value={true}>Sí</option>
@@ -156,7 +164,7 @@ const AddPet = () => {
                         id="adress"
                         name="adress_id"
                         className="form-control"
-                        defaultValue={petGet.adress_id}
+                        value={pet.adress_id}
                     />
                     <label className="form-label" htmlFor="adress">
                         Comuna de residencia
