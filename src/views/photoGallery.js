@@ -1,35 +1,39 @@
-import CardGallery from "../components/cardGallery"
-import FormGallery from "../components/formGallery"
+import CardGallery from "../components/cardGallery";
+import FormGallery from "../components/formGallery";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../store/context";
 import { Link } from "react-router-dom";
 import Pagination from "../components/pagination";
-
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faPaw } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const PhotoGallery = () => {
-    const { store, actions } = useContext(Context)
-
+    const { store, actions } = useContext(Context);
 
     useEffect(() => {
-        actions.getPets()
-    }, [])
+        actions.getPets();
+    }, []);
 
-    const lastIndex = store.currentPage * store.petsPerPage
-    const firstIndex = lastIndex - store.petsPerPage
+    const lastIndex = store.currentPage * store.petsPerPage;
+    const firstIndex = lastIndex - store.petsPerPage;
 
-    return <div className="div-main ">
+
+    const fav = <FontAwesomeIcon icon={faHeart} />
+    const pawn = <FontAwesomeIcon icon={faPaw} />
+
+
+    return (<div className="div-main ">
 
         <div className="  header-gallery ">
         </div>
-        <div className=" div-header p-5">
-            <h1 className=" text-center">Galeria de mascotas</h1>
-            <p className="text-center fs-5 fw-lighter">
-                En estas sección se muestran los animalitos que buscan un hogar. Debido a la gran cantidad de mascotas callejar en Chile, es imposible rescatar a todos los perros y gatos que se encuentran viviendo en la calle. Pero un pequeño porcentaje aquí mostrados puede tener la posibilidad de encontrar un nuevo hogar.
-                <br />
-                <br />
-                "El abandono de perros es un problema nacional. Desde 2018 se estima que hay más de 300 mil animales callejeros en Chile, contando a perros y gatos. (subsecretaría de desarrollo regional y administrativo)"
-
-            </p>
+        <div className='col-md-12 text-center'>
+            <div className="py-5 text-center">
+                <p className="fs-1">{pawn}</p>
+                <h2>Galeria De Mascotas </h2>
+                <p className="lead">Aquí encontrarás la galeria de todas las mascotas que se encuentran en adopción.</p>
+                <p className="lead">La <a href="https://www.bcn.cl/leychile/navegar?idNorma=1106037"><strong>Ley 21020</strong> </a> , sobre Tenencia Responsable de Mascotas y Animales de Compañía, más conocida como “Ley Cholito”, determina las obligaciones y los derechos de las personas responsables de mascotas o animales de compañía, entendidos como domésticos, de cualquier especie al aceptar tenerlos bajo su resguardo; lo que implica el cumplimiento de normas de salud, higiene y seguridad pública.</p>
+            </div>
         </div>
         <div className="div-father">
             <div className="row d-flex flex-row-reverse">
@@ -43,19 +47,27 @@ const PhotoGallery = () => {
                             {store.pets.length ? (
                                 store.pets.map(pet => {
 
-                                    return <div className=" col-lg-4 col-md-12 mb-5" key={pet.id}>
-                                        <CardGallery pet={pet}
-
-                                        /*  imgGallery="https://ichef.bbci.co.uk/news/976/cpsprodpb/17638/production/_124800859_gettyimages-817514614.jpg" */
-                                        />
-                                        <Link to={`/pet/${pet.id}`}> Ver más Información
-                                        </Link>
-
+                                    return <div
+                                        style={{ borderRadius: "5px" }}
+                                        className=" col-lg-4 col-md-12 mb-5 border p-2"
+                                        key={pet.id}
+                                    >
+                                        <CardGallery pet={pet} />
+                                        <div className="text-center border">
+                                            <Link
+                                                style={{ backgroundColor: "#353755" }}
+                                                className="btn btn-md text-light w-100"
+                                                to={`/pet/${pet.id}`}
+                                            >
+                                                {" "}
+                                                Ver más sobre {pet.name}{" "}{pawn}
+                                            </Link>
+                                        </div>
                                     </div>
 
                                 }).slice(firstIndex, lastIndex)
                             ) : (
-                                <p>No hay animales para adoptar</p>
+                                <p className="text-center display-6">No hay animales para adoptar</p>
                             )}
                             <div className="d-flex justify-content-center">
 
@@ -67,14 +79,16 @@ const PhotoGallery = () => {
                                 />
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <div className="container p-5 mb-5 text-center d-flex justify-content-center div-footer rounded shadow-lg">
+        <div className="container p-5 mb-5 text-center d-flex justify-content-center div-footer ">
             <p className="fs-5 fw-lighter border  p-2 w-50 bg-white rounded shadow ">Para lograr evitar el abandono de perros se necesita de <br /> una participación integral en donde se una la ciudadanía, <br />las instituciones o asociaciones de protección animal y las <br />autoridades.</p>
         </div>
     </div>
-}
+    );
+};
 
-export default PhotoGallery
+export default PhotoGallery;

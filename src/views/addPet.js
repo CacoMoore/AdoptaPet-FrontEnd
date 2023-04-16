@@ -2,8 +2,9 @@ import { useContext } from "react";
 import { Context } from "../store/context";
 
 const AddPet = () => {
+    const { actions } = useContext(Context);
 
-    const { actions } = useContext(Context)
+
 
 
 
@@ -11,9 +12,9 @@ const AddPet = () => {
         <div
             style={{ borderRadius: '5px', minHeight: '100vh' }}
             className="container mt-4">
-            <h1>Agregar mascota</h1>
+            <h1 className="text-center">Agregar mascota</h1>
             <form onSubmit={actions.handlePostPet} style={{ borderRadius: '5px' }}
-                className="border border-dark shadow-lg m-4 p-2">
+                className="border  shadow-lg m-4 p-2">
                 <div className="form-outline m-4">
                     <input
                         type="text"
@@ -141,10 +142,13 @@ const AddPet = () => {
                         className="form-label"
                         htmlFor="img">Subir imagen</label>
                 </div>
+                <div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-lg text-light" style={{ backgroundColor: "#353755" }}>Agregar</button>
+                </div>
             </form>
+
         </div>
-    )
-}
+    );
+};
 export default AddPet;

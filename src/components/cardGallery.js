@@ -5,18 +5,19 @@ import { Context } from "../store/context";
 
 const CardGallery = (props) => {
 
+
     const { store, actions } = useContext(Context)
 
     const fav = <FontAwesomeIcon icon={faHeart} />
 
     const handleSubmit = () => {
-         
-            console.log(store.favorite)
-            actions.addFavorite(props.pet)
-            console.log(store.favorite)
 
-            alert("La mascota se agrego a tus favoritos!");
-        
+        console.log(store.favorite)
+        actions.addFavorite(props.pet)
+        console.log(store.favorite)
+
+        alert("La mascota se agrego a tus favoritos!");
+
     };
 
 
@@ -31,14 +32,14 @@ const CardGallery = (props) => {
             </div>
             <div className="card-body ">
 
-                <div className="row text-center">
-                    <span className='col-6'>{props.pet.gender}</span>
-                    <span className='col-6'>{props.pet.species}</span>
-                    <span className='col-12'>{props.pet.size}</span>
+                <div className="row">
+                    <span className="col-12">Género: {props.pet.gender}</span>
+                    <span className="col-12">Especie: {props.pet.species}</span>
+                    <span className="col-12">Tamaño: {props.pet.size}</span>
                 </div>
             </div>
-            
-            <button id="btn-fav" onClick={handleSubmit}> {fav} </button>
+
+
 
         </div>
 
@@ -46,4 +47,4 @@ const CardGallery = (props) => {
     )
 }
 
-export default CardGallery
+export default CardGallery;

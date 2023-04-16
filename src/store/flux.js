@@ -80,12 +80,11 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       pets: [],
       petGet: [],
-      petsDelete: '',
+      petsDelete: "",
       PetFilterContainer: {
         gender: "",
         spicies: "",
         size: "",
-
       },
       loginUser: [],
       description: {
@@ -109,7 +108,7 @@ const getState = ({ setStore, getActions, getStore }) => {
     },
     actions: {
       handleChange: (e) => {
-        let { user, } = getStore();
+        let { user } = getStore();
         setStore({
           user: {
             ...user,
@@ -121,21 +120,20 @@ const getState = ({ setStore, getActions, getStore }) => {
       handleCurrentPageNext: (e) => {
         let { currentPage } = getStore();
         setStore({
-          currentPage: (currentPage + 1)
-        })
+          currentPage: currentPage + 1,
+        });
       },
       // Funcion para paginacion para devolverme a lpa ag anterior
       handleCurrentPagePrevius: (e) => {
         let { currentPage } = getStore();
         setStore({
-          currentPage: (currentPage - 1)
-        })
+          currentPage: currentPage - 1,
+        });
       },
       onSpecificPage: (e) => {
-
         setStore({
-          currentPage: e
-        })
+          currentPage: e,
+        });
       },
       //Funcion para atrapar el valor PetFilterContainer y asi poder usarla en el filtro de busqueda
       PetFilterContainer: (e) => {
@@ -145,16 +143,16 @@ const getState = ({ setStore, getActions, getStore }) => {
         setStore({
           PetFilterContainer: {
             ...PetFilterContainer,
-            [name]: value
-          }
-        })
+            [name]: value,
+          },
+        });
       },
       handleChangeFilePet: (e) => {
         let { pet } = getStore();
         let name = e.target.name;
         let value = e.target.files[0];
 
-        console.log(value)
+        console.log(value);
         setStore({
           pet: {
             ...pet,
@@ -199,7 +197,9 @@ const getState = ({ setStore, getActions, getStore }) => {
       deleteUser: (e) => {
         const { user_id, token } = getStore();
         const urlFetch = `http://localhost:8080/users/${user_id}`;
-        const confirmed = confirm("¿Está seguro que desea eliminar al usuario?");
+        const confirmed = confirm(
+          "¿Está seguro que desea eliminar al usuario?"
+        );
         if (confirmed) {
           fetch(urlFetch, {
             headers: {
@@ -208,10 +208,18 @@ const getState = ({ setStore, getActions, getStore }) => {
             },
             method: "DELETE",
           })
-            .then((res) => res.json())
+            .then((res) => {
+              if (res.status === 204) {
+                alert("El usuario ha sido eliminado exitosamente");
+              } else {
+                return res.json();
+              }
+            })
             .then((data) => {
-              console.log(data);
-              alert(data);
+              if (data) {
+                console.log(data);
+                alert(data);
+              }
             })
             .catch((error) => console.log(error));
         }
@@ -257,13 +265,13 @@ const getState = ({ setStore, getActions, getStore }) => {
         const { user } = getStore();
         fetch("http://localhost:8080/users", {
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           method: "POST",
-          body: JSON.stringify(user)
+          body: JSON.stringify(user),
         })
-          .then(res => res.json())
-          .then(data => {
+          .then((res) => res.json())
+          .then((data) => {
             setStore({
               user: {
                 name: "",
@@ -272,13 +280,13 @@ const getState = ({ setStore, getActions, getStore }) => {
                 phone: "",
                 password: "",
                 rol_id: 2,
-              }
+              },
             });
             console.log(data);
             alert(JSON.stringify(data));
             navigate("/login");
           })
-          .catch(error => {
+          .catch((error) => {
             alert(error.message);
             console.log(error);
           });
@@ -287,12 +295,12 @@ const getState = ({ setStore, getActions, getStore }) => {
         fetch(`http://localhost:8080/users/${user_id}`, {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
           },
           method: "GET",
         })
-          .then(res => res.json())
-          .then(data => {
+          .then((res) => res.json())
+          .then((data) => {
             setStore({
               loginUser: data,
               user: {
@@ -307,21 +315,27 @@ const getState = ({ setStore, getActions, getStore }) => {
             getActions().getUserDescription(user_id);
             getActions().getFavoriteUser(user_id);
           })
-          .catch(error => console.log(error));
+          .catch((error) => console.log(error));
       },
       handleUserLogin: (e, navigate) => {
         e.preventDefault();
         const { user } = getStore();
         fetch("http://localhost:8080/login", {
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           method: "POST",
-          body: JSON.stringify(user)
+          body: JSON.stringify(user),
         })
-          .then(res => res.json())
-          .then(data => {
-            console.log(data)
+          .then((res) => {
+            if (res.status === 200) {
+              return res.json();
+            } else if (res.status === 400) {
+              throw new Error("Usuario o contraseña incorrectos");
+            }
+          })
+          .then((data) => {
+            console.log(data);
             setStore({
               loginUser: data,
               token: data.token,
@@ -336,12 +350,14 @@ const getState = ({ setStore, getActions, getStore }) => {
                 rol_id: 2,
               },
             });
-            alert(JSON.stringify(data));
             console.log(data);
             getActions().fetchUserData(data.user_id, data.token);
-            navigate("/user");
+            navigate("/");
           })
-          .catch(error => console.log(error));
+          .catch((error) => {
+            alert(error.message);
+            console.log(error);
+          });
       },
       handleChangeDescription: (e) => {
         let { description } = getStore();
@@ -358,16 +374,16 @@ const getState = ({ setStore, getActions, getStore }) => {
         fetch(urlFetch, {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
-          }
+            Authorization: "Bearer " + token,
+          },
         })
-          .then(res => res.json())
-          .then(data => {
+          .then((res) => res.json())
+          .then((data) => {
             setStore({
-              userDescription: data
+              userDescription: data,
             });
           })
-          .catch(error => console.log(error));
+          .catch((error) => console.log(error));
       },
       //Para subir la informacion de la pet
       handlePostPet: (e) => {
@@ -375,29 +391,25 @@ const getState = ({ setStore, getActions, getStore }) => {
         const { pet } = getStore();
         const formData = new FormData();
 
-        formData.append('name', pet.name)
-        formData.append('gender', pet.gender)
-        formData.append('age', pet.age)
-        formData.append('description', pet.description)
-        formData.append('species', pet.species)
-        formData.append('size', pet.size)
-        formData.append('file', pet.img)
-        formData.append('medical_history', pet.medical_history)
-        formData.append('is_adopted', pet.is_adopted)
-        formData.append('adress_id', pet.adress_id)
-        formData.append('rol_id', pet.rol_id)
-
-
-
-
+        formData.append("name", pet.name);
+        formData.append("gender", pet.gender);
+        formData.append("age", pet.age);
+        formData.append("description", pet.description);
+        formData.append("species", pet.species);
+        formData.append("size", pet.size);
+        formData.append("file", pet.img);
+        formData.append("medical_history", pet.medical_history);
+        formData.append("is_adopted", pet.is_adopted);
+        formData.append("adress_id", pet.adress_id);
+        formData.append("rol_id", pet.rol_id);
 
         fetch("http://127.0.0.1:8080/pets", {
-
           method: "POST",
-          body: formData
-        }).then(res => res.json())
-          .then(data => console.log(data))
-          .catch(error => console.log(error))
+          body: formData,
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data))
+          .catch((error) => console.log(error));
         setStore({
           pet: {
             name: "",
@@ -412,46 +424,45 @@ const getState = ({ setStore, getActions, getStore }) => {
             adress_id: "",
             rol_id: "",
           },
-
-        })
-
+        });
       },
       //Funcion para traer la informacion de todos los pet funcion get
       sendForm: (answers) => {
         const { form, token, user_id } = getStore();
-        console.log({ form, user_id, answers })
+        console.log({ form, user_id, answers });
         const formWithUserId = { user_id, ...answers };
-        console.log(formWithUserId)
+        console.log(formWithUserId);
         return fetch("http://localhost:8080/form", {
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,
           },
           method: "POST",
-          body: JSON.stringify(formWithUserId)
-        }).then(res => res.json())
-          .then(data => setStore({ forms: data }))
-          .then(data => console.log(data))
-
+          body: JSON.stringify(formWithUserId),
+        })
+          .then((res) => res.json())
+          .then((data) => setStore({ forms: data }))
+          .then((data) => console.log(data));
       },
       sendPost: (postAnswers) => {
         fetch("http://localhost:8080/posts", {
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           method: "POST",
-          body: JSON.stringify(postAnswers)
-        }).then(res => res.json())
+          body: JSON.stringify(postAnswers),
+        })
+          .then((res) => res.json())
           .then((data) => {
             alert(data);
             getActions().getPost();
-          })
+          });
       },
       getPost: () => {
         fetch("http://localhost:8080/posts/list")
           .then((res) => res.json())
           .then((data) => setStore({ posts: data }))
-          .catch((error) => console.log(error))
+          .catch((error) => console.log(error));
 
         /*   .then(data => console.log(data),
            getActions().getPost())
@@ -459,19 +470,27 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       handleDeletePost: (id) => {
         const { token } = getStore();
-        fetch(`http://localhost:8080/posts/${id}`,
-          {
-            headers: {
-              "Content-Type":
-                "application/json",
-              "Authorization": `Bearer ${token}`
-            },
-            method: "DELETE",
+        fetch(`http://localhost:8080/posts/${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          method: "DELETE",
+        })
+          .then((res) => {
+            if (res.status === 204) {
+              alert("El post ha sido eliminado exitosamente");
+            } else {
+              return res.json();
+            }
           })
-          .then(res => res.json())
-          .then(data => console.log('Post eliminada', data),
-            getActions().getPost())
-          .catch(error => console.log(error))
+          .then((data) => {
+            if (data) {
+              console.log("Post eliminado", data);
+              getActions().getPost();
+            }
+          })
+          .catch((error) => console.log(error));
       },
       addFavorite: (e) => {
         e.preventDefault();
@@ -492,76 +511,59 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
           .catch((error) => console.log(error));
       },
-      getFavoriteUser: () => {
-        const { user_id, token } = getStore();
-        fetch(`http://localhost:8080/favorites/user/${user_id}`,
-          {
-            headers:
-            {
-              "Content-Type": "application/json",
-              "Authorization": "Bearer " + token
-            }
-          })
-          .then(res => res.json())
-          .then(data => {
-            setStore({
-              favorites: data
-            });
-          })
-          .catch(error => console.log(error));
-      },
       handlePet: (pet_id) => {
         setStore({ pet_id: pet_id });
         alert("¡Se eliminará el elemento seleccionado!");
         getActions().deleteFavorite();
-        
-    },
-    
+      },
       deleteFavorite: () => {
-        const {user_id, token, pet_id} = getStore();
-        fetch(`http://localhost:8080/favorites/${user_id}/${pet_id}`,
-        {
-          headers:
-          {
+        const { user_id, token, pet_id } = getStore();
+        fetch(`http://localhost:8080/favorites/${user_id}/${pet_id}`, {
+          headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + token
+            Authorization: "Bearer " + token,
           },
           method: "DELETE",
         })
-        .then(res => res.json())
-          .then(data => {
-            alert(data);
-            getActions().getFavoriteUser();
+          .then((res) => {
+            if (res.status === 204) {
+              alert("La mascota ha sido eliminada de favoritos exitosamente");
+            } else {
+              return res.json();
+            }
           })
-          .catch(error => console.log(error));
+          .then((data) => {
+            if (data) {
+              alert(data);
+              getActions().fetchUserData();
+            }
+          })
+          .catch((error) => console.log(error));
       },
+
       getForm: () => {
         return fetch("http://localhost:8080/form/list")
-          .then((res) => res.json()
-
-          )
-          .catch((error) => console.log(error))
+          .then((res) => res.json())
+          .catch((error) => console.log(error));
       },
       deleteForm: (id) => {
         const { token } = getStore();
-        fetch(`http://localhost:8080/form/${id}`,
-          {
-            headers: {
-              "Content-Type":
-                "application/json",
-              "Authorization": `Bearer ${token}`
-            },
-            method: "DELETE",
-          })
-          .then(res => res.json())
-          .then(data => getActions().getForm())
-          .catch(error => console.log(error))
+        fetch(`http://localhost:8080/form/${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => getActions().getForm())
+          .catch((error) => console.log(error));
       },
       getPets: () => {
         fetch("http://localhost:8080/pets/list")
           .then((res) => res.json())
           .then((data) => setStore({ pets: data }))
-          .catch((error) => console.log(error))
+          .catch((error) => console.log(error));
       },
       //Funcion para filtrar se trae todos los pet que coincidan con el valor del filtro
       handlePostPetSearch: (e) => {
@@ -569,25 +571,25 @@ const getState = ({ setStore, getActions, getStore }) => {
         const { PetFilterContainer } = getStore();
         fetch("http://localhost:8080/pets/search", {
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           method: "POST",
-          body: JSON.stringify(PetFilterContainer)
-        }).then(res => res.json())
-          .then(data => setStore({ pets: data }))
-          .catch(error => console.log(error))
-        setStore({
-          currentPage: 1
+          body: JSON.stringify(PetFilterContainer),
         })
-
+          .then((res) => res.json())
+          .then((data) => setStore({ pets: data }))
+          .catch((error) => console.log(error));
+        setStore({
+          currentPage: 1,
+        });
       },
       getPet: (id) => {
         fetch(`http://localhost:8080/pet/${id}`)
           .then((res) => res.json())
-          .then((data) => setStore({ 
+          .then((data) => setStore({
             pet: data,
             pet_id: data.id
-           }))
+          }))
           .catch((error) => console.log(error))
       },
       handlePutPet: (id) => {
@@ -598,26 +600,29 @@ const getState = ({ setStore, getActions, getStore }) => {
         fetch(`http://127.0.0.1:8080/pet/${id}`)
           .then((res) => res.json())
           .then((data) => {
-
-            formData.set('name', pet.name || data.name);
-            formData.set('gender', pet.gender || data.gender);
-            formData.set('age', pet.age || data.age);
-            formData.set('description', pet.description || data.description);
-            formData.set('species', pet.species || data.species);
-            formData.set('size', pet.size || data.size);
-            formData.set('medical_history', pet.medical_history || data.medical_history);
-            formData.set('is_adopted', pet.is_adopted === undefined ? data.is_adopted : pet.is_adopted);
-            formData.set('adress_id', pet.adress_id || data.adress_id);
-            formData.set('rol_id', pet.rol_id || data.rol_id);
-
+            formData.set("name", pet.name || data.name);
+            formData.set("gender", pet.gender || data.gender);
+            formData.set("age", pet.age || data.age);
+            formData.set("description", pet.description || data.description);
+            formData.set("species", pet.species || data.species);
+            formData.set("size", pet.size || data.size);
+            formData.set(
+              "medical_history",
+              pet.medical_history || data.medical_history
+            );
+            formData.set(
+              "is_adopted",
+              pet.is_adopted === undefined ? data.is_adopted : pet.is_adopted
+            );
+            formData.set("adress_id", pet.adress_id || data.adress_id);
+            formData.set("rol_id", pet.rol_id || data.rol_id);
 
             if (pet.img && pet.img !== data.img) {
-              formData.set('file', pet.img);
+              formData.set("file", pet.img);
             }
 
-
             fetch(`http://127.0.0.1:8080/pet/${id}`, {
-              method: 'PUT',
+              method: "PUT",
               body: formData,
             })
               .then((res) => res.json())
@@ -634,44 +639,42 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       // Se elimina la pet atraves de su id
       handlePostPetDelete: (id) => {
-
         fetch(`http://localhost:8080/pet/${id}`, {
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           method: "DELETE",
-
-        }).then(res => res.json())
-          .then(data => {
-            console.log('Respuesta mascota eliminada', data)
-            setStore({ petsDelete: data })
-
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("Respuesta mascota eliminada", data);
+            setStore({ petsDelete: data });
           })
-          .catch(error => console.log(error))
+          .catch((error) => console.log(error));
       },
       //Se resetea el valor del filtro
       handlePostPetRestore: (e) => {
-
         const { PetFilterContainer } = getStore();
         fetch("http://localhost:8080/pets/search", {
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           method: "POST",
-          body: JSON.stringify(PetFilterContainer)
-        }).then(res => res.json())
-          .then(data => setStore({ pets: data }))
-          .catch(error => console.log(error))
+          body: JSON.stringify(PetFilterContainer),
+        })
+          .then((res) => res.json())
+          .then((data) => setStore({ pets: data }))
+          .catch((error) => console.log(error));
         setStore({
           PetFilterContainer: {
             gender: "",
             spicies: "",
             size: "",
           },
-        })
+        });
       },
     },
-  }
+  };
 };
 
 export default getState;

@@ -24,10 +24,6 @@ import Solviewforadmin from './views/solviewforadmin';
 import SinglePet2 from './views/SinglePet2';
 import Register from './views/register';
 
-
-
-
-
 function App() {
   return (
     <BrowserRouter>
