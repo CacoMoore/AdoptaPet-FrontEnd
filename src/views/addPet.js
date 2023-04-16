@@ -110,8 +110,8 @@ const AddPet = () => {
                         onChange={actions.handleChangePet}
                         className="form-control">
                         <option value="Selecciona una opción">Selecciona una opción</option>
-                        <option value={true}>Sí</option>
-                        <option value={false}>No</option>
+                        <option value={'si'}>Sí</option>
+                        <option value={'no'}>No</option>
                     </select>
                     <label
                         className="form-label"

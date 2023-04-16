@@ -22,7 +22,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         size: "",
         img: null,
         medical_history: "",
-        is_adopted: false,
+        is_adopted: 'no',
         adress_id: false,
         rol_id: 1,
       },
@@ -585,7 +585,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         fetch(`http://localhost:8080/pet/${id}`)
           .then((res) => res.json())
           .then((data) => setStore({ 
-            petGet: data,
+            pet: data,
             pet_id: data.id
            }))
           .catch((error) => console.log(error))
@@ -622,7 +622,7 @@ const getState = ({ setStore, getActions, getStore }) => {
             })
               .then((res) => res.json())
               .then((data) => {
-                setStore({ petGet: data });
+                setStore({ pet: data });
               })
               .catch((error) => {
                 console.log(error);
