@@ -1,32 +1,33 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../store/context";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import { useState } from "react";
 
+const defaultValues = {
+    title: "",
+    date: "",
+    description: ""
+}
 
 const AddPost = () => {
     const { actions, store } = useContext(Context)
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const [formValues, setFormValues] = useState({
-        title: "",
-        date: "",
-        description: ""
-    });
+    const [formValues] = useState(defaultValues);
 
     const onSubmit = (data) => {
+        reset()
         console.log(data)
-        data.rol_id=store.loginUser.rol_id
+        data.rol_id = store.loginUser.rol_id
         actions.sendPost(data)
-            .then(() => { alert("Post enviado exitosamente")
-            setFormValues(data);
-            reset();
-        })
-            .catch(() => { alert("debe completar todos los campos")})
+            .then(() => {
+                alert("Post enviado exitosamente")
+            })
+            .catch(() => { alert("debe completar todos los campos") })
     }
-  
+
     return (
         <div
             style={{ borderRadius: '5px', minHeight: '100vh' }}
@@ -38,34 +39,34 @@ const AddPost = () => {
                     <label
                         className="form-label"
                         htmlFor="title">Título</label>
-                    <input {...register('title', {required: true})}
+                    <input {...register('title', { required: true })}
                         placeholder="Título de la noticia"
                         type="text"
                         id="title"
                         name="title"
                         className="form-control"
                         ddefaultValue={formValues.title} />
-                        {errors.title?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
-    
+                    {errors.title?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
+
                 </div>
                 <div className="form-outline m-4">
                     <label
                         className="form-label"
                         htmlFor="date">Fecha publicación</label>
-                        <input {...register('date', {required: true})}
-                            type="date"
-                            id="date"
-                            name="date"
-                            className="form-control"
-                            defaultValue={formValues.date} />
-                            {errors.date?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
-    
-                    </div>
+                    <input {...register('date', { required: true })}
+                        type="date"
+                        id="date"
+                        name="date"
+                        className="form-control"
+                        defaultValue={formValues.date} />
+                    {errors.date?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
+
+                </div>
                 <div className="form-outline m-4">
                     <label
                         className="form-label"
                         htmlFor="description">Descripción</label>
-                    <input {...register('description', {required: true, maxLength: 500})}
+                    <input {...register('description', { required: true, maxLength: 500 })}
 
                         placeholder="Descripción de la noticia"
                         type="text"
@@ -73,16 +74,20 @@ const AddPost = () => {
                         name="description"
                         className="form-control"
                         defaultValue={formValues.description} />
-                        {errors.description?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
-                        {errors.description?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
-                        
+                    {errors.description?.type === 'maxLength' && <p className="text-danger">* El campo debe tener menos de 500 caracteres</p>}
+                    {errors.description?.type === 'required' && <p className="text-danger">* El campo debe ser completado</p>}
+
                 </div>
 
-{ /*<div class="form-outline m-4">
-    <label for="formFileSm" class="form-label">Adjuntar foto en JPG</label>
-    <input {...register('imagePost')}
-    class="form-control form-control-sm" id="formFileSm" type="file" />
-</div>*/}
+                <div class="form-outline m-4">
+                    <label for="formFileSm" class="form-label">Adjuntar foto en JPG</label>
+                    <input {...register('imagePost')}
+                        class="form-control form-control-sm" 
+                        id="img" 
+                        name="img"
+                        type="file" 
+                        onChange={actions.handleChangeFilePost}/>
+                </div>
                 <button id="btn-add-news" className="btn btn-ms mt-1" type="submit" value="send">Agregar Noticia</button>
             </form>
         </div>

@@ -13,10 +13,10 @@ const Blog = (props) => {
 
     return (
         <div className="container">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col">
                     <div class="card h-100">
-                        <img src="https://www.purina-latam.com/sites/default/files/styles/social_share_large/public/purina-gatos%20en%20adopcion-que-es-mejor-gatitos-bebes-o-gatos-adultos.jpg?itok=IqRKD1Zt" class="card-img-top" alt="..." />
+                        <img src={props.post.imagePost} class="card-img-top" alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">{props.post.title}</h5>
                             <p class="card-text">{props.post.description}</p>  

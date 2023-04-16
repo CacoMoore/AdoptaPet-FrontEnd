@@ -434,6 +434,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then(data => console.log(data))
 
       },
+
       sendPost: (postAnswers) => {
         fetch("http://localhost:8080/posts", {
           headers: {
