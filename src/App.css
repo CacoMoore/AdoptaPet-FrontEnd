@@ -189,3 +189,14 @@ a:visited {
   background-color: lightgray;
 
 }
+#img-blog{
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.img-container img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}

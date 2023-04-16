@@ -53,12 +53,12 @@ const User = () => {
                         </Link>
                     </div>
 
-                    <div className="container p-4">
+                    <div className="container-fluid">
                         <h1>Favoritos</h1>
-                        <div className="d-flex justify-content-center">
-                            <div className="">
+                        <div class="row">
+                            
                                 <Favorites />
-                            </div>
+                            
                         </div>
                     </div>
 

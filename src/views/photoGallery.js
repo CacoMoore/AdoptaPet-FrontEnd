@@ -46,10 +46,10 @@ const PhotoGallery = () => {
                                     style={{ borderRadius: '5px' }}
                                     className=" col-lg-4 col-md-12 mb-5 border p-2" key={pet.id}>
                                         <CardGallery pet={pet}/>
-                                        <div className="text-center border"> 
+                                        <div className="text-center"> 
                                         <Link 
                                         style={{backgroundColor: "#353755"}}
-                                        className="btn btn-lg text-light w-100"
+                                        className=" card-footer btn btn-lg text-light w-100 rounded" 
                                         to={`/pet/${pet.id}`}> Ver más sobre {pet.name} </Link></div>
                                     </div>
                                 }).slice(firstIndex, lastIndex)

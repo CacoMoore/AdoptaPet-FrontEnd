@@ -79,15 +79,14 @@ const AddPost = () => {
 
                 </div>
 
-                <div class="form-outline m-4">
-                    <label for="formFileSm" class="form-label">Adjuntar foto en JPG</label>
+             { /*  <div class="form-outline m-4">
+                    <label htmlFor="imagePost" class="form-label">Adjuntar foto en JPG</label>
                     <input {...register('imagePost')}
                         class="form-control form-control-sm" 
                         id="img" 
                         name="img"
-                        type="file" 
-                        onChange={actions.handleChangeFilePost}/>
-                </div>
+                        type="file"/>
+                </div> */}
                 <button id="btn-add-news" className="btn btn-ms mt-1" type="submit" value="send">Agregar Noticia</button>
             </form>
         </div>

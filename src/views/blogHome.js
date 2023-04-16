@@ -29,7 +29,7 @@ const BlogHome = (props) => {
                 <div className="col-md-10">
                     <div className="card" >
                         <div className="row g-0 p-2">
-                            <div className="col-md-4 d-flex">
+                            <div className="col-md-4 d-flex img-container">
                                 <img src="https://conecta.tec.mx/sites/default/files/styles/header_full/public/2021-06/adoptar-perro.jpg?itok=BSPwpz4C" className="img-fluid rounded-start" alt="..." />
                             </div>
                             <div className="col-md-8 ">
@@ -163,7 +163,9 @@ const BlogHome = (props) => {
                          key={post.id}>
                             <Blog post={post}
                                 title={post.title}
+                        
                                 description={post.description}
+
                                 rol_id={post.rol_id}
                             />
                         </div>

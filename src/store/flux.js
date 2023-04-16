@@ -99,7 +99,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         title: "",
         date: "",
         description: "",
-        /*imagePost: "",*/
+        imagePost: null,
         rol_id: "",
       },
       favorites: [],
@@ -453,10 +453,6 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((res) => res.json())
           .then((data) => setStore({ posts: data }))
           .catch((error) => console.log(error))
-
-        /*   .then(data => console.log(data),
-           getActions().getPost())
-         .catch(error => console.log(error)) */
       },
       handleDeletePost: (id) => {
         const { token } = getStore();
