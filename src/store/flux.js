@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2'
 const getState = ({ setStore, getActions, getStore }) => {
   return {
     store: {
@@ -188,7 +189,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            alert(data);
+            Swal.fire(data);
             getActions().fetchUserData(user_id, data.token);
           })
           .catch((error) => console.log(error));
@@ -210,7 +211,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           })
             .then((res) => {
               if (res.status === 204) {
-                alert("El usuario ha sido eliminado exitosamente");
+                Swal.fire("El usuario ha sido eliminado exitosamente");
               } else {
                 return res.json();
               }
@@ -218,7 +219,7 @@ const getState = ({ setStore, getActions, getStore }) => {
             .then((data) => {
               if (data) {
                 console.log(data);
-                alert(data);
+                Swal.fire(data);
               }
             })
             .catch((error) => console.log(error));
@@ -245,7 +246,7 @@ const getState = ({ setStore, getActions, getStore }) => {
                 style: data.style,
               },
             });
-            alert(data);
+            Swal.fire(data);
             console.log(data);
             getActions().getUserDescription(data.user_id);
           })
@@ -283,11 +284,11 @@ const getState = ({ setStore, getActions, getStore }) => {
               },
             });
             console.log(data);
-            alert(JSON.stringify(data));
+            Swal.fire(JSON.stringify(data));
             navigate("/login");
           })
           .catch((error) => {
-            alert(error.message);
+            Swal.fire(error.message);
             console.log(error);
           });
       },
@@ -355,7 +356,7 @@ const getState = ({ setStore, getActions, getStore }) => {
             navigate("/");
           })
           .catch((error) => {
-            alert(error.message);
+            Swal.fire(error.message);
             console.log(error);
           });
       },
@@ -454,7 +455,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            alert(data);
+            Swal.fire(data);
             getActions().getPost();
           });
       },
@@ -479,7 +480,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then((res) => {
             if (res.status === 204) {
-              alert("El post ha sido eliminado exitosamente");
+              Swal.fire("El post ha sido eliminado exitosamente");
             } else {
               return res.json();
             }
@@ -506,14 +507,14 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            alert(data);
+            Swal.fire(data);
             getActions().fetchUserData(user_id, data.token);
           })
           .catch((error) => console.log(error));
       },
       handlePet: (pet_id) => {
         setStore({ pet_id: pet_id });
-        alert("¡Se eliminará el elemento seleccionado!");
+        Swal.fire("¡Se eliminará el elemento seleccionado!");
         getActions().deleteFavorite();
       },
       deleteFavorite: () => {
@@ -527,14 +528,14 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then((res) => {
             if (res.status === 204) {
-              alert("La mascota ha sido eliminada de favoritos exitosamente");
+              Swal.fire("La mascota ha sido eliminada de favoritos exitosamente");
             } else {
               return res.json();
             }
           })
           .then((data) => {
             if (data) {
-              alert(data);
+              Swal.fire(data);
               getActions().fetchUserData();
             }
           })
