@@ -31,7 +31,7 @@ function Favorites() {
     <div className="container">
       {isLoading ? (
         <div className="spinner-border text-primary" role="status">
-          <span className="visually-hidden">Loading...</span>
+          <span className="visually-hidden">Loading....</span>
         </div>
       ) : (
         <div className="row flex-wrap justify-content-center">
