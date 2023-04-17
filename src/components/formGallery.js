@@ -33,7 +33,7 @@ const FormGallery = () => {
                 onChange={actions.PetFilterContainer}
                 name="species"
                 aria-label="Default select example"
-                value={store.PetFilterContainer.spicies || ""}
+                value={store.PetFilterContainer.species || ""}
               >
                 <option value="">Selecionar</option>
                 <option value="Perro">Perro</option>
@@ -57,13 +57,13 @@ const FormGallery = () => {
             </div>
 
             <div className="mb-3 d-flex justify-content-center">
-              <button type="submit" class="btn btn-light ">
+              <button type="submit" className="btn  text-light  btn-lg mt-3 me-2" style={{ backgroundColor: "#5BD3C7" }}>
                 Buscar
               </button>
               <button
                 onClick={actions.handlePostPetRestore}
                 type="submit"
-                class="btn btn-light"
+                className="btn btn-dark btn-lg mt-3 " style={{ backgroundColor: "#353755" }}
               >
                 Restablecer
               </button>
@@ -73,20 +73,14 @@ const FormGallery = () => {
       </div>
 
       <div className=" container  w-75 mb-5 paragraph-gallery ">
-        <p className="display-7 fw-bold ">
+        <p className="h3 fw-bold ">
           "En nuestro país existen 12.482.679 perros y gatos con dueños,
           alcanzando los 8.306.650 y 4.176.029 respectivamente. Paralelamente,
           hay otros 4.049.277 animales que no tienen ninguna supervisión en
           Chile."
         </p>
       </div>
-      <div className=" container  w-75 mb-5 paragraph-gallery ">
-        <p className="display-7 fw-bold">
-          La adopción animal es un proceso en el cual se busca el mejor hogar
-          para los animales de compañía abandonados. La adopción, sin duda, es
-          un acto de humanidad y compromiso.
-        </p>
-      </div>
+
     </>
   );
 };
