@@ -35,33 +35,17 @@ const BlogHome = (props) => {
       </div>
       <div className="container d-flex justify-content-around p-4 shadow-lg ">
         <div className="col-md-10">
-          <div className="card">
+          <div className="card" >
             <div className="row g-0 p-2">
-              <div className="col-md-4 d-flex">
-                <img
-                  src="https://conecta.tec.mx/sites/default/files/styles/header_full/public/2021-06/adoptar-perro.jpg?itok=BSPwpz4C"
-                  className="img-fluid rounded-start"
-                  alt="..."
-                />
+              <div className="col-md-4 d-flex img-container">
+                <img src="https://conecta.tec.mx/sites/default/files/styles/header_full/public/2021-06/adoptar-perro.jpg?itok=BSPwpz4C" className="img-fluid rounded-start" alt="..." />
               </div>
-              <div className="col-md-8">
+              <div className="col-md-8 ">
                 <div className="card-body">
                   <h3 className="mb-0">Jornadas de adopción</h3>
                   <div className="mb-1 text-body-secondary">2023</div>
-                  <p className="mb-auto">
-                    Encuentra las fechas destindas a jornadas de adopción y
-                    adopta al nuevo miembro de la familia.
-                  </p>
-                  <button
-                    id="btn-date-adoption"
-                    className="btn"
-                    type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasWithBothOptions"
-                    aria-controls="offcanvasWithBothOptions"
-                  >
-                    Ver fechas
-                  </button>
+                  <p className="mb-auto">Encuentra las fechas destindas a jornadas de adopción y adopta al nuevo miembro de la familia.</p>
+                  <button id="btn-date-adoption" className="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Ver fechas</button>
 
                   <div
                     className="offcanvas offcanvas-start"
@@ -186,17 +170,19 @@ const BlogHome = (props) => {
       </div>
       <div className="container p-4 shadow-lg mb-4">
         {store.posts.length ? (
-          store.posts.map((post) => {
-            return (
-              <div className="row mt-4" key={post.id}>
-                <Blog
-                  post={post}
-                  title={post.title}
-                  description={post.description}
-                  rol_id={post.rol_id}
-                />
-              </div>
-            );
+          store.posts.map(post => {
+
+            return <div className="row mt-4 "
+              key={post.id}>
+              <Blog post={post}
+                title={post.title}
+
+                description={post.description}
+
+                rol_id={post.rol_id}
+              />
+            </div>
+
           })
         ) : (
           <h4 className="text-center p-4 border">No hay posts para mostrar</h4>

@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/context";
 import CardGallery from "../components/cardGallery";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Swal from 'sweetalert2'
 
 function Favorites() {
   const [data, setData] = useState([{}]);
   const [isLoading, setIsLoading] = useState(true);
   const { store, actions } = useContext(Context);
   const { user_id, token } = store;
-  const trash = <FontAwesomeIcon icon={faTrash} />;
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -29,24 +28,48 @@ function Favorites() {
   }, [token, user_id]);
 
   return (
-    <div className="container d-flex">
+    <div className="container">
       {isLoading ? (
-        <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
       ) : (
-        <div className="row">
+        <div className="row flex-wrap justify-content-center">
+
+
+
           {data.length > 0 ? (
             data.map((item, index) => (
-              <div className="col-4 p-2" style={{ listStyle: "none" }}>
+
+
+              <div className="col-sm-8 col-md-6 col-lg-4 p-2" style={{ listStyle: "none" }}>
                 <div key={index} className="p-2 text-dark shadow-lg">
                   <CardGallery pet={item} />
                   <button
+                    id="btn-dislike"
                     type="button"
-                    className="btn btn-lg btn-danger w-100"
-                    onClick={() => actions.handlePet(item.id)}
+                    className="btn btn w-100"
+                    onClick={() => {
+                      Swal.fire({
+                        text: '¿Realmente deseas eliminarlo de tu lista de favoritos?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Sí',
+                        confirmButtonColor: '#5BD3C7',
+                        cancelButtonText: 'Cancelar'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          actions.handlePet(item.id)
+                          Swal.fire(
+                            'Listo',
+                            'Ha hecho clic en el botón',
+                            'success'
+                          )
+                        }
+                      })
+                    }}
                   >
-                    {trash}
+                    <i className="bi bi-heartbreak"></i>
                   </button>
                 </div>
               </div>
@@ -56,11 +79,12 @@ function Favorites() {
               Vacío
             </li>
           )}
+
         </div>
+
       )}
     </div>
   );
 }
 
 export default Favorites;
-

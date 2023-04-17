@@ -84,7 +84,7 @@ const getState = ({ setStore, getActions, getStore }) => {
       petsDelete: "",
       PetFilterContainer: {
         gender: "",
-        spicies: "",
+        species: "",
         size: "",
       },
       loginUser: [],
@@ -99,7 +99,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         title: "",
         date: "",
         description: "",
-        /*imagePost: "",*/
+        imagePost: null,
         rol_id: "",
       },
       favorites: [],
@@ -314,7 +314,7 @@ const getState = ({ setStore, getActions, getStore }) => {
               },
             });
             getActions().getUserDescription(user_id);
-            getActions().getFavoriteUser(user_id);
+
           })
           .catch((error) => console.log(error));
       },
@@ -449,6 +449,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .then((data) => setStore({ forms: data }))
           .then((data) => console.log(data));
       },
+
       sendPost: (postAnswers) => {
         fetch("http://localhost:8080/posts", {
           headers: {
@@ -467,11 +468,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         fetch("http://localhost:8080/posts/list")
           .then((res) => res.json())
           .then((data) => setStore({ posts: data }))
-          .catch((error) => console.log(error));
-
-        /*   .then(data => console.log(data),
-           getActions().getPost())
-         .catch(error => console.log(error)) */
+          .catch((error) => console.log(error))
       },
       handleDeletePost: (id) => {
         const { token } = getStore();
@@ -681,7 +678,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         setStore({
           PetFilterContainer: {
             gender: "",
-            spicies: "",
+            species: "",
             size: "",
           },
         });
