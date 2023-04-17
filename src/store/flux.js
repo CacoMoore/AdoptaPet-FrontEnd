@@ -455,7 +455,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            Swal.fire(data);
+            Alert(data);
             getActions().getPost();
           });
       },
@@ -480,7 +480,7 @@ const getState = ({ setStore, getActions, getStore }) => {
         })
           .then((res) => {
             if (res.status === 204) {
-              Swal.fire("El post ha sido eliminado exitosamente");
+              Alert("El post ha sido eliminado exitosamente");
             } else {
               return res.json();
             }
@@ -514,7 +514,7 @@ const getState = ({ setStore, getActions, getStore }) => {
       },
       handlePet: (pet_id) => {
         setStore({ pet_id: pet_id });
-        Swal.fire("¡Se eliminará el elemento seleccionado!");
+        Alert("¡Se eliminará el elemento seleccionado!");
         getActions().deleteFavorite();
       },
       deleteFavorite: () => {
