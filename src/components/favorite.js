@@ -13,11 +13,11 @@ const Favorites = () => {
     return (
 
 
-            <div className="container d-flex" >
-                <div className="row">
+            <div className="container" >
+                <div className="row flex-wrap justify-content-center">
                     {store.favorites.length > 0 ? (
                         store.favorites.map((item, index) => (
-                            <div className="col-4 p-2" style={{ listStyle: "none" }}>
+                            <div className="col-sm-8 col-md-6 col-lg-4 p-2" style={{ listStyle: "none" }}>
                                 <div key={index} className="p-2 text-dark shadow-lg">
                                     <CardGallery pet={item} />
                                     <button
