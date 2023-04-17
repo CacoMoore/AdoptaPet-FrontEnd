@@ -3,6 +3,7 @@ import { Context } from "../store/context";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import { useState } from "react";
+import Swal from 'sweetalert2'
 
 const defaultValues = {
     title: "",
@@ -17,7 +18,31 @@ const AddPost = () => {
 
     const [formValues] = useState(defaultValues);
 
+
+    const imagePost = useRef();
+    
     const onSubmit = (data) => {
+        reset()
+        console.log(data)
+        data.rol_id = store.loginUser.rol_id
+        actions.sendPost(data)
+          .then(() => {
+            Swal.fire({
+              title: 'Post enviado exitosamente',
+              icon: 'success',
+              timer: 2000, // Duración en milisegundos
+              timerProgressBar: true,
+              showConfirmButton: false
+            })
+          })
+          .catch(() => { 
+            Swal.fire({
+              title: 'Debe completar todos los campos',
+              icon: 'error'
+            }) 
+          })
+      }
+   /* const onSubmit = (data) => {
         reset()
         console.log(data)
         data.rol_id = store.loginUser.rol_id
@@ -26,7 +51,7 @@ const AddPost = () => {
                 alert("Post enviado exitosamente")
             })
             .catch(() => { alert("debe completar todos los campos") })
-    }
+    }*/
 
     return (
         <div
@@ -79,14 +104,14 @@ const AddPost = () => {
 
                 </div>
 
-             { /*  <div class="form-outline m-4">
-                    <label htmlFor="imagePost" class="form-label">Adjuntar foto en JPG</label>
+               {/* <div class="form-outline m-4">
+                    <label htmlFor="imageInput" class="form-label">Adjuntar foto en JPG</label>
                     <input {...register('imagePost')}
-                        class="form-control form-control-sm" 
-                        id="img" 
-                        name="img"
-                        type="file"/>
-                </div> */}
+                        className="form-control form-control-sm"
+                        id="imageInput"
+                        type="file"
+                        />
+                </div>*/}
                 <button id="btn-add-news" className="btn btn-ms mt-1" type="submit" value="send">Agregar Noticia</button>
             </form>
         </div>

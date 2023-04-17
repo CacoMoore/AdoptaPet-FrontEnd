@@ -22,10 +22,9 @@
     "react-hook-form": "^7.43.8",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4",
-    "webpack-dev-server": "^4.13.2",
     "sweetalert2": "^11.7.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack-dev-server": "^4.13.2"
   },
   "scripts": {
     "start": "react-scripts start",

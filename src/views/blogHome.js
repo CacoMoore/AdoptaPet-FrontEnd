@@ -165,7 +165,7 @@ const BlogHome = (props) => {
                                 title={post.title}
                         
                                 description={post.description}
-
+                                
                                 rol_id={post.rol_id}
                             />
                         </div>
