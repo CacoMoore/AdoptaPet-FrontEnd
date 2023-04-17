@@ -8,12 +8,12 @@ const InfoTwo = () => {
             <h1>¿Quieres colaborar?</h1>
             <div className="accordion" id="accordionExample2">
                 <div className="accordion-item">
-                    <h2 className="accordion-header" id="headingFour">
-                        <button id="btn-collapsed" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <h2 className="accordion-header" id="headingSix">
+                        <button id="btn-collapsed" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                             Ayuda económica
                         </button>
                     </h2>
-                    <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample2">
+                    <div id="collapseSix" className="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample2">
                         <div className="accordion-body">¡Bienvenidos a nuestra Fundación! Si eres un amante de los animales y te gustaría ayudar a aquellos que cuidan de mascotas en su hogar, ¡estás en el lugar correcto! Nuestro objetivo es brindar apoyo económico a los cuidadores de mascotas que necesiten ayuda para cubrir los gastos médicos y de alimentación de sus animales. Si deseas hacer una donación, puedes hacerlo directamente en nuestra cuenta bancaria. ¡Cada pequeña contribución cuenta! En nuestra página web encontrarás información detallada sobre nuestra fundación y su trabajo, así como una lista de los cuidadores de mascotas que han recibido nuestra ayuda.
                             <br></br><br></br>
                             $20.000 = equivale a una esterilización
@@ -36,24 +36,24 @@ const InfoTwo = () => {
                     </div>
                 </div>
                 <div className="accordion-item">
-                    <h2 className="accordion-header" id="headingFive">
-                        <button id="btn-collapsed" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    <h2 className="accordion-header" id="headingSeven">
+                        <button id="btn-collapsed" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                             Dona alimentos
                         </button>
                     </h2>
-                    <div id="collapseFive" className="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample2">
+                    <div id="collapseSeven" className="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample2">
                         <div className="accordion-body">
                             ¡Hola de nuevo! Si prefieres hacer una donación de alimentos para ayudar a los cuidadores de mascotas en su hogar, ¡tenemos varias opciones para ti!Puedes donar alimentos para mascotas en uno de nuestros puntos de recolección cercanos. Asegúrate de revisar nuestra página web para obtener más información sobre dónde se encuentran nuestros puntos de recolección.Si tienes alimentos para mascotas que ya no necesitas en casa, ¡también aceptamos donaciones de alimentos usados! Solo asegúrate de que los alimentos estén en buen estado y dentro de su fecha de vencimiento.Cada pequeña contribución cuenta y es muy apreciada por los cuidadores de mascotas que necesitan ayuda para cubrir los gastos de alimentos de sus animales. <br></br><strong>¡Gracias por tu generosidad y apoyo a nuestra misión!</strong>
                         </div>
                     </div>
                 </div>
                 <div className="accordion-item">
-                    <h2 className="accordion-header" id="headingSix">
-                        <button id="btn-collapsed" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseThree">
+                    <h2 className="accordion-header" id="headingEight">
+                        <button id="btn-collapsed" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
                             ¿Quieres ser un hogar temporal?
                         </button>
                     </h2>
-                    <div id="collapseSix" className="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample2">
+                    <div id="collapseEight" className="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample2">
                         <div className="accordion-body">
                             ¡Gracias por considerar convertirte en un hogar temporal para una mascota en adopción! Si estás interesado en convertirte en un hogar temporal para una mascota en adopción, aquí están los requisitos:
                             Debes ser mayor de edad y tener un lugar seguro y adecuado para que la mascota se quede.

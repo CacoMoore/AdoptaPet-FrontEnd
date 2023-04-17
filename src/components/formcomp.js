@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 
 
 const Formcomp = () => {
@@ -17,8 +18,24 @@ const Formcomp = () => {
 
     const onSubmit = (data) => {
         actions.sendForm(data)
-        .then(()=>{alert("su formulario fue enviado exitosamente")})
-        .catch (()=>{alert("debe completar todos los campos")})                       
+        .then(() => {
+            Swal.fire({
+                title: 'Éxito',
+                text: 'Su formulario fue enviado exitosamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor:'#5BD3C7',
+            });
+        })
+        .catch(() => {
+            Swal.fire({
+                title: 'Error',
+                text: 'Error al enviaar a la base de datos',
+                icon: 'error',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor:'#5BD3C7',
+            });
+        });
     }
     
     return (

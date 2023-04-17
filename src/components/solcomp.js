@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from "react";
 import { Context } from "../store/context";
+import Swal from 'sweetalert2'
 
 
 const Solcomp = (props) => {
@@ -17,13 +18,14 @@ const Solcomp = (props) => {
             <div className="accordion col-11" id="accordionExample">
 
                 <div className="accordion-item">
+
                     <h2 className="accordion-header">
-                        <button className="accordion-button text-light opacity-50  " style={{ backgroundColor: "#353755" }} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
+                        <button id="acordionbtn2" className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >
                             <div><strong>Solicitud de adopción N° {props.id}</strong> &nbsp;Usuario <strong>{props.user}</strong></div>
                         </button>
                     </h2>
 
-                    <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div className="accordion-body">
                             <strong>Formulario</strong>
                             <ul style={{ listStyle: "none" }}>
@@ -168,11 +170,28 @@ const Solcomp = (props) => {
             </div>
 
             <button
-                className="col-1 btn d-flex align-items-start"
-                style={{ color: "#353755" }}
-                onClick={() => actions.deleteForm(props.form.id)
-                }>
-                {trash}</button>
+                className="col-1 btn d-flex justify-content-center pt-3"
+                id="acordionbtn2"
+                style={{ height: "54px", width: "54px" }}
+                onClick={() => {
+                    Swal.fire({
+                        title: '¿Estás seguro?',
+                        text: 'No podrás revertir esta acción',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#5BD3C7',
+                        confirmButtonText: 'Sí, borrar'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            actions.deleteForm(props.form.id)
+                        }
+                    })
+                }}
+            >
+                {trash}
+            </button>
+
 
 
 
