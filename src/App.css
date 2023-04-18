@@ -174,3 +174,29 @@ a:visited {
 #postHome{
   border: none;
 }
+
+#btn-trash-blog{
+  font-size: 25px;
+  margin-left: 90%;
+  margin-bottom: none;
+ 
+}
+#btn-dislike{
+  font-size: 22px;
+}
+#btn-dislike:hover{
+  font-size: 25px;
+  background-color: lightgray;
+
+}
+#img-blog{
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.img-container img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}

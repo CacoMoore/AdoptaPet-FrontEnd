@@ -9,7 +9,7 @@ const User = () => {
   const { name, last_name, phone, rol_id } = loginUser;
   const { description, motivation, style } = userDescription;
 
- 
+
 
   if (rol_id === 1 || rol_id === 2) {
     return (
@@ -59,13 +59,13 @@ const User = () => {
             </Link>
           </div>
 
-          <div className="container p-4">
+          <div className="container-fluid ">
             <h1>Favoritos</h1>
-            <div className="d-flex justify-content-center">
-              <div className="">
+            <div className="row">
+             
                 <Favorites />
               </div>
-            </div>
+            
           </div>
 
           <div className="mt-4">
