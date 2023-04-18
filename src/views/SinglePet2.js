@@ -1,3 +1,5 @@
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faPaw } from '@fortawesome/free-solid-svg-icons'
@@ -5,6 +7,8 @@ import { useEffect } from 'react'
 import { Link, useParams } from "react-router-dom"
 import { useContext } from "react";
 import { Context } from "../store/context";
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const SinglePet2 = (props) => {
 
@@ -12,11 +16,33 @@ const SinglePet2 = (props) => {
     const { id } = useParams()
     useEffect(() => {
         actions.getPet(id)
-    }, [id, actions])
-    const { petGet } = store
+    }, [])
+    const { pet } = store
+    const navigate = useNavigate();
+
     const deletePetId = () => {
-        actions.handlePostPetDelete(id)
-        alert('Se elimino satisfactoriamente')
+
+        Swal.fire({
+            title: 'Advertencia',
+            text: 'Está seguro que desea eliminar esta mascota?',
+            icon: 'Error',
+            showDenyButton: true,
+            denyButtonText: 'no',
+            confirmButtonText: 'Sí',
+        }).then(response => {
+            if (response.isConfirmed) {
+                Swal.fire('Éxito', 'La mascota se elimino satisfactoriamente', 'success')
+                actions.handlePostPetDelete(id)
+                navigate('/photoGallery')
+            } else if (response.isDenied) {
+                Swal.fire('Información', 'La mascota no se elimino', 'info')
+            } else {
+                Swal.fire('Error', 'Ocurrió algo no esperado', 'info')
+            }
+        })
+
+
+
     }
     const { loginUser } = store;
     const { rol_id } = loginUser
@@ -39,7 +65,7 @@ const SinglePet2 = (props) => {
 
                     <div className="row">
                         <div className='col-6 d-flex justify-content-end'>
-                            <img src={'http://127.0.0.1:8080/uploads/' + petGet.img} className="img-fluid img-thumbnail" alt='imagen mascota' />
+                            <img src={'http://127.0.0.1:8080/uploads/' + pet.img} className="img-fluid img-thumbnail" alt='imagen mascota' />
                         </div>
 
 
@@ -51,7 +77,7 @@ const SinglePet2 = (props) => {
                                         Nombre
                                     </div>
                                     <div className="col w-75 ms-2 me-auto fw-bold">
-                                        {petGet.name}
+                                        {pet.name}
                                     </div>
                                 </li>
                                 <li className="row list-group-item d-flex justify-content-between align-items-start">
@@ -59,7 +85,7 @@ const SinglePet2 = (props) => {
                                         Género
                                     </div>
                                     <div className="col w-75 ms-2 me-auto fw-bold">
-                                        {petGet.gender}
+                                        {pet.gender}
                                     </div>
                                 </li>
                                 <li className="row list-group-item d-flex justify-content-between align-items-start">
@@ -67,7 +93,7 @@ const SinglePet2 = (props) => {
                                         Edad
                                     </div>
                                     <div className="col w-75 ms-2 me-auto fw-bold">
-                                        {petGet.age}
+                                        {pet.age}
                                     </div>
                                 </li>
                                 <li className="row list-group-item d-flex justify-content-between align-items-start">
@@ -75,7 +101,7 @@ const SinglePet2 = (props) => {
                                         Especie
                                     </div>
                                     <div className="col w-75 ms-2 me-auto">
-                                        {petGet.species}
+                                        {pet.species}
                                     </div>
                                 </li>
                                 <li className="row list-group-item d-flex justify-content-between align-items-start">
@@ -83,7 +109,7 @@ const SinglePet2 = (props) => {
                                         Tamaño
                                     </div>
                                     <div className="col w-75 ms-2 me-auto">
-                                        {petGet.size}
+                                        {pet.size}
                                     </div>
                                 </li>
                                 <li className="row list-group-item d-flex justify-content-between align-items-start">
@@ -91,7 +117,7 @@ const SinglePet2 = (props) => {
                                         Historial médico
                                     </div>
                                     <div className="col w-75 ms-2 me-auto">
-                                        {petGet.medical_history}
+                                        {pet.medical_history}
                                     </div>
                                 </li>
                                 <li className="row list-group-item d-flex justify-content-between align-items-start">
@@ -99,7 +125,7 @@ const SinglePet2 = (props) => {
                                         Descripción
                                     </div>
                                     <div className="col w-75 ms-2 me-auto">
-                                        {petGet.description}
+                                        {pet.description}
                                     </div>
                                 </li>
                                 <li className="row list-group-item d-flex justify-content-between align-items-start">
@@ -107,7 +133,7 @@ const SinglePet2 = (props) => {
                                         Disponibilidad
                                     </div>
                                     <div className="col w-75 ms-2 me-auto">
-                                        {petGet.is_adopted === true ? 'Sin adoptar' : 'Ya adoptado'}
+                                        {pet.is_adopted === 'si' ? 'Sin adoptar' : 'Ya adoptado'}
                                     </div>
                                 </li>
 
@@ -118,17 +144,17 @@ const SinglePet2 = (props) => {
                                     onClick={actions.addFavorite}
                                     type="button"
                                     style={{ backgroundColor: "#353755" }}
-                                    class="btn btn-lg text-light mt-5 me-3">{fav}</button>
+                                    className="btn btn-lg text-light mt-5 me-3">{fav}</button>
 
                                 <Link
                                     style={{ backgroundColor: "#353755" }}
-                                    to="/adopform" type="button" class="btn btn-lg text-light mt-5 me-3">Adoptar</Link>
+                                    to="/adopform" type="button" className="btn btn-lg text-light mt-5 me-3">Adoptar</Link>
 
 
                                 {rol_id === 1 ? (
                                     <>
-                                        <button onClick={() => deletePetId()} type="button" class="btn btn-dark btn-lg mt-5 me-3" style={{ backgroundColor: "#353755" }}>Eliminar</button>
-                                        <Link to={`/pex/${id}`}><button type="button" class="btn btn-dark btn-lg mt-5 " style={{ backgroundColor: "#353755" }}>Editar</button></Link>
+                                        <button onClick={(e) => deletePetId()} type="button" className="btn btn-dark btn-lg mt-5 me-3" style={{ backgroundColor: "#353755" }}>Eliminar</button>
+                                        <Link to={`/pex/${id}`}><button type="button" className="btn btn-dark btn-lg mt-5 " style={{ backgroundColor: "#353755" }}>Editar</button></Link>
                                     </>
                                 ) : null}
                             </div>
