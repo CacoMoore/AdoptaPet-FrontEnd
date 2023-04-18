@@ -519,8 +519,7 @@ const getState = ({ setStore, getActions, getStore }) => {
           .catch((error) => console.log(error));
       },
       handlePet: (pet_id) => {
-        setStore({ pet_id: pet_id });
-        alert("¡Se eliminará el elemento seleccionado!");
+        setStore({ pet_id: pet_id });        
         getActions().deleteFavorite();
       },
       deleteFavorite: () => {

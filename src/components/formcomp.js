@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 
 const Formcomp = () => {
   const { actions } = useContext(Context);
@@ -16,53 +17,42 @@ const Formcomp = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => {
-    actions
-      .sendForm(data)
-      .then(() => {
-        alert("su formulario fue enviado exitosamente");
-      })
-      .catch(() => {
-        alert("debe completar todos los campos");
-      });
-  };
-
-  return (
-    <div>
-      <div className="row g-5">
-        <div className="col-md-5 col-lg-4 order-md-last">
-          <div
-            className="btn-group-vertical"
-            role="group"
-            aria-label="Vertical button group"
-          >
-            <Link to="/info">
-              <button
-                type="butnton"
-                className="btn my-3 fw-semibold text-start rounded shadow "
-                style={{ backgroundColor: "#5BD3C7" }}
-              >
-                {pawn} Revisa acá las condiciones para adoptar
-              </button>
-              <button
-                type="button"
-                className="btn my-3 fw-semibold text-start rounded shadow "
-                style={{ backgroundColor: "#5BD3C7" }}
-              >
-                {pawn} Quiero Colaborar
-              </button>
-            </Link>
-            <Link to="/photoGallery">
-              <button
-                type="button"
-                className="btn my-3 fw-semibold text-start rounded shadow "
-                style={{ backgroundColor: "#5BD3C7" }}
-              >
-                {pawn} Quiero ver los animales en adopción
-              </button>
-            </Link>
-          </div>
-        </div>
+     const onSubmit = (data) => {
+        actions.sendForm(data)
+        .then(() => {
+            Swal.fire({
+                title: 'Éxito',
+                text: 'Su formulario fue enviado exitosamente',
+                icon: 'success',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor:'#5BD3C7',
+            });
+        })
+        .catch(() => {
+            Swal.fire({
+                title: 'Error',
+                text: 'Error al enviaar a la base de datos',
+                icon: 'error',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor:'#5BD3C7',
+            });
+        });
+    }
+    
+    return (
+        <div>
+            <div className="row g-5">
+                <div className="col-md-5 col-lg-4 order-md-last">
+                    <div className="btn-group-vertical" role="group" aria-label="Vertical button group">
+                        <Link to="/info">
+                            <button type="butnton" className="btn my-3 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Revisa acá las condiciones para adoptar</button>
+                            <button type="button" className="btn my-3 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Quiero Colaborar</button>
+                        </Link>
+                        <Link to="/photoGallery">
+                            <button type="button" className="btn my-3 fw-semibold text-start rounded shadow " style={{ backgroundColor: "#5BD3C7" }}>{pawn} Quiero ver los animales en adopción</button>
+                        </Link>
+                    </div>
+                </div>
 
         <div className="col-md-7 col-lg-8">
           <h4 className="mb-5 border-bottom">Solicitud de adopción</h4>
